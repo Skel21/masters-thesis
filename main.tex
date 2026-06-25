@@ -95,6 +95,8 @@
 
     \section{Moore-Read state}
 
+    $\tilde{U}_{\tau \tau'}(\mathbf{q}) \to \tilde{U}_{\tau \tau'}(\mathbf{q}) \cdot L_n(\frac{\mathbf{q}^2}{2})$ where $L()$ is the Laguerre polynomial, for Moore-Read state we have $n=1$. The ground state degeneracy should be dependent on the parity of the numer of fermions.
+
 \section{Random Thoughts and calculations}
     \subsection{MF treatment of transitions dependent on $\alpha$, at $W=0$}
     I do not think generic stoner like $U_0 N(E_f) > 1$ would work for our case, right? Espetially since it's derivation assumes a fermi liquid-like behaviour (noninteracting fermions with dispersion, fermi velocity etc.). Meanwhile in our case, we work in small $W$ regime where the interaction energy is the leading one(?). I guess we can try a mean field HF-like treatment as a first approximation:
@@ -105,15 +107,68 @@
     \hat{H}_{HF} = \hat{H}_H + \hat{H}_X
     \]
     \[
-        \hat{H}_H = \frac{1}{A} \sum_{\mathbf{k}, \mathbf{k'}} \sum_{\tau, \tau'} \tilde{U}_{\tau \tau'}(0) \Lambda_\tau(\mathbf{k}, 0) \Lambda_{\tau'}(\mathbf{k'}, 0) \langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle d^\dagger_{\mathbf{k'},\tau'} d_{\mathbf{k'},\tau'} = \frac{1}{A} \sum_{\mathbf{k}, \mathbf{k'}} \sum_{\tau, \tau'} 2\pi(1+\tau \tau' \alpha)d_{SC} \langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle d^\dagger_{\mathbf{k'},\tau'} d_{\mathbf{k'},\tau'}
+        \hat{H}_H = \frac{1}{A} \sum_{\mathbf{k}, \mathbf{k'}} \sum_{\tau, \tau'} \tilde{U}_{\tau \tau'}(0) \Lambda_\tau(\mathbf{k}, 0) \Lambda_{\tau'}(\mathbf{k'}, 0) \langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle d^\dagger_{\mathbf{k'},\tau'} d_{\mathbf{k'},\tau'} \]
+    \[
+        = \frac{1}{A} \sum_{\mathbf{k}, \mathbf{k'}} \sum_{\tau, \tau'} 2\pi(1+\tau \tau' \alpha)d_{SC} \langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle d^\dagger_{\mathbf{k'},\tau'} d_{\mathbf{k'},\tau'}
     \]
     \[
-        \hat{H}_X = -\frac{1}{A} \sum_{\mathbf{k}, \mathbf{q}} \sum_{\tau} \tilde{U}_{\tau \tau'}(\mathbf{q}) \Lambda_\tau(\mathbf{k}, \mathbf{q}) \Lambda_{\tau'}(\mathbf{k} + \mathbf{q}, -\mathbf{q}) \langle d^\dagger_{\mathbf{k+q},\tau} d_{\mathbf{k+q},\tau} \rangle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} = -\frac{1}{A} \sum_{\mathbf{k}, \mathbf{q}} \sum_{\tau} \tilde{U}_{\tau \tau'}(\mathbf{q}) \Lambda_\tau(\mathbf{k}, \mathbf{q}) \Lambda_{\tau'}^*(\mathbf{k}, \mathbf{q}) \langle d^\dagger_{\mathbf{k+q},\tau} d_{\mathbf{k+q},\tau} \rangle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau}
+        \hat{H}_X = -\frac{1}{A} \sum_{\mathbf{k}, \mathbf{q}} \sum_{\tau} \tilde{U}_{\tau \tau}(\mathbf{q}) \Lambda_\tau(\mathbf{k}, \mathbf{q}) \Lambda_{\tau}(\mathbf{k} + \mathbf{q}, -\mathbf{q}) \langle d^\dagger_{\mathbf{k+q},\tau} d_{\mathbf{k+q},\tau} \rangle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} 
+    \]
+    \[
+        = -\frac{1}{A} \sum_{\mathbf{k}, \mathbf{q}} \sum_{\tau} \tilde{U}_{\tau \tau}(\mathbf{q}) |\Lambda_\tau(\mathbf{k}, \mathbf{q})|^2 \langle d^\dagger_{\mathbf{k+q},\tau} d_{\mathbf{k+q},\tau} \rangle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau}
     \]
     First approximation in flat Landau level might be $\langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle = \text{const.}$ and $\sum_\mathbf{k} \langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle = N_{flux} \nu$ so
 
     \[
-        \
+        \langle \hat{H}_{HF} \rangle = \frac{1}{A} \sum_{\mathbf{k}, \mathbf{k'}} \sum_{\tau, \tau'} 2\pi(1+\tau \tau' \alpha)d_{SC} \langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle \langle d^\dagger_{\mathbf{k'},\tau'} d_{\mathbf{k'},\tau'} \rangle - \frac{1}{A} \sum_{\mathbf{k}, \mathbf{q}} \sum_{\tau} \tilde{U}_{\tau \tau}(\mathbf{q}) |\Lambda_\tau(\mathbf{k}, \mathbf{q})|^2 \langle d^\dagger_{\mathbf{k+q},\tau} d_{\mathbf{k+q},\tau} \rangle \langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle
+    \]
+    \[
+        = \frac{1}{A} \sum_{\tau, \tau'} 2\pi(1+\tau \tau' \alpha)d_{SC} N_{flux}^2 \nu_\tau \nu_{\tau'} - \frac{1}{A} \sum_{\mathbf{q}} \sum_{\tau} \tilde{U}_{\tau \tau}(\mathbf{q}) e^{-\mathbf{q}^2/2} N_{flux} \nu_\tau^2 
+    \]
+    \[
+        E_{HF}(\nu_+, \nu_-) = = \frac{2\pi d_{\text{SC}} N_{\text{flux}}^2}{A} \left[ (\nu_+ + \nu_-)^2 + \alpha(\nu_+ - \nu_-)^2 \right] - \frac{N_{\text{flux}} (1+\alpha)}{A} \left( \nu_+^2 + \nu_-^2 \right) \sum_{\mathbf{q}} u_0(\mathbf{q}) e^{-q^2/2}
     \]
 
+    Now one can calculate 
+    \[
+        E(2\nu, 0) - E(\nu, \nu) = 2\nu^2 \frac{N_{\text{flux}}^2}{A}\left[ 2\alpha \left( 2\pi d_{\text{SC}} \right) - \frac{1+\alpha}{N_{flux}} \sum_{\mathbf{q}} u_0(\mathbf{q}) e^{-q^2/2} \right]
+    \]
+    Let's write $\mathcal{I} = \frac{2\pi}{A} \sum_{\mathbf{q}} u_0(\mathbf{q}) e^{-q^2/2}, \quad \left(\frac{1}{N_{flux}} = \frac{2\pi}{A} \right)$. The Valley-Polarized (VP) state is energetically favored when $E(2\nu, 0) - E(\nu, \nu) < 0$, which yields the condition:
+    \[
+        4\pi d_{\text{SC}} \alpha  - (1+\alpha) \mathcal{I} < 0 \quad \Rightarrow \quad \alpha \left( 4\pi d_{\text{SC}} - \mathcal{I} \right) < \mathcal{I}
+    \]
+    The final behavior of the phase boundary depends explicitly on the sign of the denominator:
+    \begin{align}
+        \alpha &< \frac{1}{\frac{4\pi d_{\text{SC}}}{\mathcal{I}} - 1} \quad \text{for} \quad 4\pi d_{\text{SC}} > \mathcal{I} \\
+        \alpha &> \frac{1}{\frac{4\pi d_{\text{SC}}}{\mathcal{I}} - 1} \quad \text{for} \quad 4\pi d_{\text{SC}} < \mathcal{I}
+    \end{align}
+    
+    In the continuum limit we have $\frac{1}{A} \sum_{\mathbf{q}} \to \int \frac{d^2q}{(2\pi)^2}$, so 
+
+    \[
+        \mathcal{I}(d_{\text{SC}}) = 2\pi\, \int_0^\infty dq \, \tanh(q d_{\text{SC}}) e^{-q^2/2}
+    \]
+e
+    For $d_{\text{SC}} = 6a$, we get $\alpha_c \approx 0.04$ which is the same order of magnitude as the numerical result.
+
+    \subsection{Transition dependent on $W$ at $\alpha=0$}
+
+    Here a stoner-like criterion might work. By the same kind of mean field treatment at $\alpha=0$, approximating occupations by step function:
+
+    \[
+        \frac{\partial^2 E_X}{\partial \delta^2} = -4A \int \frac{d^2q}{(2\pi)^2} u_0(\mathbf{q}) e^{-q^2/2} \int \frac{d^2k}{(2\pi)^2} \delta(\mu(\nu) - \epsilon(\mathbf{k})) \delta(\mu(\nu) - \epsilon(\mathbf{k+q})) \cdot \frac{1}{g_F(\nu)^2} = -4A \int \frac{d^2q}{(2\pi)^2} u_0(\mathbf{q}) e^{-q^2/2} \frac{J(q)}{g_F(\nu)^2}
+    \]
+    where $J(q)$ is the joint density of states and $g_F(\nu)$ is the density of states at the Fermi level. $J(q) \approx g_F(\nu)^2$ for small $q$, so we could write
+
+    \[
+        \frac{\partial^2 E_X}{\partial \delta^2} = -4A \int \frac{d^2q}{(2\pi)^2} u_0(\mathbf{q}) e^{-q^2/2} = -\frac{4A}{(2\pi)^2} \mathcal{I}
+    \]
+    \[
+        \frac{\partial^2 E_kin}{\partial \delta^2} = 2A g_F(\nu)^{-1}
+    \]
+    So the stoner criterion takes form
+    \[
+        \frac{2\mathcal{I}}{(2\pi)^2} g(\mu) > 1 \quad (?)
+    \]
+    Which, with DOS evaluated numerically, gives the transition at $W_c \approx 0.5$ which is the same order of magnitude as the numerical result (NOT SURE OF THE CALCULATIONS YET)
 \end{document}
