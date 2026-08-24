@@ -1,67 +1,74 @@
-    \section{Exact diagonalization}
-    The model Hamiltonian was solved using the DiagHam package for exact diagonalization~\cite{DiagHam}. On a torus geometry (Periodic Boundary Conditions), center of mass momentum is a good quantum number~\cite{bernevig2012emergent}, which leads to an initial block-diagonalization into sectors labeled by ($K_x$, $K_y$, $P_z$) where $\mathbf{K}$ is the COM momentum and $P_z$ is the valley polarization. In each of the blocks, the Hamiltonian matrix is explicitly constructed and its first few eigenvalues (at least the number corresponding to maximum predicted ground state degeneracy + 1) are iteratively found using the Lanczos algorithm~\cite{Lanczos1950}. Unless stated otherwise, $n=10$ for calculations done in the thesis.
+\chapter{Methods}
+\label{ch:methods}
+
+Having introduced the model Hamiltonian in Chapter~\ref{ch:model}, we now describe how it is solved numerically. All results in Chapter~\ref{ch:results} are obtained by exact diagonalization (ED) on finite tori, using the criteria for identifying topological order laid out at the end of this chapter.
+
+\section{Exact diagonalization}
+\label{sec:ed}
+
+The model Hamiltonian is solved using the DiagHam package for exact diagonalization~\cite{DiagHam}. On a torus geometry (periodic boundary conditions), the center-of-mass (COM) momentum is a good quantum number~\cite{bernevig2012emergent}, which allows an initial block-diagonalization into sectors labeled by $(K_x, K_y, P_z)$, where $\mathbf{K}$ is the COM momentum and $P_z$ is the valley polarization. Within each block, the Hamiltonian matrix is constructed explicitly, and its lowest few eigenvalues are found iteratively using the Lanczos algorithm~\cite{Lanczos1950}. The number of eigenvalues requested in each sector is chosen to exceed the maximum ground-state degeneracy expected for the filling under consideration; unless stated otherwise, the $n=10$ lowest eigenvalues are computed per sector throughout this thesis.
+
+\section{Momentum grid discretization and tilted boundary conditions}
+\label{sec:tilted_bc}
+
+To construct the finite Hamiltonian matrix, the Brillouin zone $[0, Q) \times [0, Q)$ must be discretized into a finite set of momentum points. This grid is not unique: as shown by L\"auchli~\cite{lauchli2013hierarchy} and Repellin~\cite{repellin2014z} in the context of fractional Chern insulators, different admissible grids sample the same Brillouin zone very differently, and this choice can noticeably affect the stability of the resulting topological phases.
+
+The grid is constructed by first choosing two real-space spanning vectors,
+\begin{equation}
+    \mathbf{T}_1 = n_{x1}\mathbf{a}_1 + n_{y1}\mathbf{a}_2, \qquad
+    \mathbf{T}_2 = n_{x2}\mathbf{a}_1 + n_{y2}\mathbf{a}_2,
+    \label{eq:tilted_vectors}
+\end{equation}
+with integer coefficients $n_{x1}, n_{y1}, n_{x2}, n_{y2}$, where $\mathbf{a}_1, \mathbf{a}_2$ are the primitive lattice vectors of the underlying square lattice. These two vectors define the finite cluster on which the many-body problem is solved, enclosing $N_\phi = |n_{x1}n_{y2} - n_{x2}n_{y1}|$ unit cells (flux quanta).
+
+Invariance of the many-body wavefunction under a translation by $\mathbf{T}_1$ or $\mathbf{T}_2$ forces the single-particle momentum $\mathbf{k}$ to satisfy $\mathbf{k}\cdot\mathbf{T}_1, \, \mathbf{k}\cdot\mathbf{T}_2 \in 2\pi\mathbb{Z}$. Equivalently, $\mathbf{k}$ must lie on the lattice spanned by the reciprocal vectors $\tilde{\mathbf{T}}_1, \tilde{\mathbf{T}}_2$ dual to $\mathbf{T}_1, \mathbf{T}_2$,
+\begin{equation}
+    \tilde{\mathbf{T}}_i \cdot \mathbf{T}_j = 2\pi \delta_{ij}, \qquad i,j = 1,2.
+    \label{eq:dual_vectors}
+\end{equation}
+The admissible momenta are the $N_\phi$ points of this reciprocal lattice that fall within one Brillouin zone, i.e.\ they are defined modulo $\tilde{\mathbf{a}}_1$ and $\tilde{\mathbf{a}}_2$. Concretely, we label them by two integers $(p,q)$,
+\begin{equation}
+    \mathbf{k}_{p,q} = p\,\tilde{\mathbf{T}}_1 + q\,\tilde{\mathbf{T}}_2 \pmod{\tilde{\mathbf{a}}_1, \tilde{\mathbf{a}}_2},
+    \label{eq:tilted_momenta}
+\end{equation}
+choosing $p \in [0, N_x)$ and $q \in [0, N_y)$ with $N_xN_y = N_\phi$, such that every point is counted exactly once and no two choices of $(p,q)$ give equivalent momenta. In practice this means wrapping $\mathbf{k}_{p,q}$ back into the first BZ whenever it falls outside, i.e.\ imposing $N_x\tilde{\mathbf{T}}_1 \equiv 0$ and $N_y\tilde{\mathbf{T}}_2 \equiv 0 \pmod{\tilde{\mathbf{a}}_1,\tilde{\mathbf{a}}_2}$.
 
 
-    \section{Momentum grid discretization / Tilted boundary conditions}
+For a fixed $N_\phi$, this construction allows much more freedom in choosing the cluster shape than an untilted grid. L\"auchli~\cite{lauchli2013hierarchy} showed that clusters with $|\mathbf{T}_1|/|\mathbf{T}_2| \gg 1$ tend to favor charge-density-wave states over the target topological phase; this was the main criterion used here for selecting the tilting, i.e.\ $\mathbf{T}_1, \mathbf{T}_2$ were chosen so that $|\mathbf{T}_1|/|\mathbf{T}_2|$ is as close to $1$ as possible. Among the remaining choices with comparable aspect ratio, the angle between $\mathbf{T}_1$ and $\mathbf{T}_2$ was further chosen to be as close as possible to $60^\circ$ (equivalently $120^\circ$), so that the resulting momentum-space sampling is most isotropic, i.e.\ closest to a hexagonal grid.
 
-    To construct the finite Hamiltonian matrix, the Brillouin zone $[0, Q) \times [0, Q)$ must be discretized into a finite set of momentum points. The choice of this grid is not unique: as shown by L\"auchli~\cite{lauchli2013hierarchy} and Repellin~\cite{repellin2014z} in the context of fractional Chern insulators, different admissible grids sample the same Brillouin zone very differently, and this choice can noticeably affect the stability of the resulting topological phases.
+For simplicity, however, unless stated otherwise, the calculations presented in this thesis use the conventional (untilted) boundary conditions $\mathbf{T}_1 = N_x\mathbf{a}_1$, $\mathbf{T}_2 = N_y\mathbf{a}_2$, corresponding to a rectangular grid of momenta in the Brillouin zone. Tilted boundary conditions are used only where explicitly noted, primarily for the momentum-occupation calculations of Chapter~\ref{ch:results}.
+\section{Twisted boundary conditions and flux insertion}
+\label{sec:flux_insertion}
 
-    We construct the grid by first choosing two real-space spanning vectors
-    \begin{equation}
-        \mathbf{T}_1 = n_{x1}\mathbf{a}_1 + n_{y1}\mathbf{a}_2, \qquad
-        \mathbf{T}_2 = n_{x2}\mathbf{a}_1 + n_{y2}\mathbf{a}_2,
-    \end{equation}
-    with integer coefficients $n_{x1}, n_{y1}, n_{x2}, n_{y2}$, where $\mathbf{a}_1, \mathbf{a}_2$ are the primitive lattice vectors of the underlying square lattice. These two vectors define the finite cluster on which the many-body problem is solved, enclosing $N_\phi = |n_{x1}n_{y2} - n_{x2}n_{y1}|$ unit cells (flux quanta).
+To explicitly check for spectral flow, twisted boundary conditions are used, whereby an additional flux $\Phi$ is inserted into the system through one of the cycles of the torus. This is equivalent to a uniform shift of the momentum grid sampled in the Hamiltonian. In the units used in this thesis, $\Phi = 2\pi$ corresponds to one flux quantum inserted into the system, with an effective momentum shift
+\begin{equation}
+    k_i = k_i^0 + \frac{\Phi}{N_i}\,Q, \qquad i = x, y,
+    \label{eq:flux_shift}
+\end{equation}
+where $k_i^0$ is the original (untwisted) momentum and $N_i$ is the number of grid points in direction $i$. Thus $\Phi = 2\pi$ shifts the momentum grid by exactly one grid step in the corresponding direction, which is why the spectrum must be identical at $\Phi = 0$ and $\Phi = 2\pi$: the twisted grid coincides with the original one, merely relabeled.
 
-    Invariance of the many-body wavefunction under a translation by $\mathbf{T}_1$ or $\mathbf{T}_2$ forces the single-particle momentum $\mathbf{k}$ to satisfy $\mathbf{k}\cdot\mathbf{T}_1, \mathbf{k}\cdot\mathbf{T}_2 \in 2\pi\mathbb{Z}$. Equivalently, $\mathbf{k}$ must lie on the lattice spanned by the reciprocal vectors $\tilde{\mathbf{T}}_1, \tilde{\mathbf{T}}_2$ dual to $\mathbf{T}_1, \mathbf{T}_2$,
-    \begin{equation}
-        \tilde{\mathbf{T}}_i \cdot \mathbf{T}_j = 2\pi \delta_{ij}, \qquad i,j = 1,2.
-    \end{equation}
+While twisted boundary conditions can in principle be inserted along either direction, flux is inserted along $x$ throughout what follows.
 
-    The admissible momenta are then the $N_{\phi}$ points of this reciprocal lattice that fall within one Brillouin zone, i.e.\ they are defined modulo $\tilde{\mathbf{a}}_1$ and $\tilde{\mathbf{a}}_2$. Concretely, we label them by two integers $(p,q)$,
-    \begin{equation}
-        \mathbf{k}_{p,q} = p\,\tilde{\mathbf{T}}_1 + q\,\tilde{\mathbf{T}}_2 \pmod{\tilde{\mathbf{a}}_1, \tilde{\mathbf{a}}_2},
-    \end{equation}
-    choosing $p \in [0, N_x)$ and $q \in [0, N_y)$ with $N_xN_y = N_\phi$ such that every point is counted exactly once and no two choices of $(p,q)$ give equivalent momenta. In practice this means wrapping $\mathbf{k}_{p,q}$ back into the first BZ whenever it falls outside, i.e.\ imposing $N_x\tilde{\mathbf{T}}_1 \equiv 0$ and $N_y\tilde{\mathbf{T}}_2 \equiv 0 \pmod{\tilde{\mathbf{a}}_1,\tilde{\mathbf{a}}_2}$.
+\section{Recognition of topological phases}
+\label{sec:recognition}
 
-    For a fixed $N_\phi$, this construction gives much more freedom in choosing the cluster shape than the untilted grid.      L\"auchli~\cite{lauchli2013hierarchy} showed that clusters with $|\mathbf{T}_1|/|\mathbf{T}_2| \gg 1$ tend to favor charge-density-wave states over the target topological phase --- this was the main criterion for selecting the tilting, i.e.\ we chose $\mathbf{T}_1, \mathbf{T}_2$ so that $|\mathbf{T}_1|/|\mathbf{T}_2|$ is as close to $1$ as possible. Among the remaining choices with comparable aspect ratio, we further selected the angle between $\mathbf{T}_1$ and $\mathbf{T}_2$ to be as close as possible to $60^\circ$ (equivalently $120^\circ$), so that the resulting momentum-space sampling is most isotropic, i.e.\ closest to a hexagonal grid.
+The nature of each ground-state phase is determined from the following characteristics.
 
-    However, for simplicity, unless stated otherwise, the calculations presented here use the conventional (untilted) boundary conditions $\mathbf{T}_1 = N_x\mathbf{a}_1$, $\mathbf{T}_2 = N_y\mathbf{a}_2$, corresponding to a rectangular grid of momenta in the Brillouin zone.
+First, the ground-state valley polarization is identified as the $P_z$ sector containing the overall lowest-energy state.
 
-    \section{Twisted boundary conditions / flux insertion}
-    To explicitly check for spectral flow, twisted boundary conditions are used, where an additional flux $\Phi$ is inserted into the system through one of the cycles of the torus. This is effectively equivalent to a uniform shift of the momentum grid sampled in the Hamiltonian. In the units used in this thesis, $\Phi = 2\pi$ corresponds to one flux quantum inserted into the system, with the effective shift in momentum being
-    \begin{equation}
-        k_i = k_i^0 + \frac{\Phi}{N_i}\,Q, \qquad i = x, y,
-    \end{equation}
-    where $k_i^0$ is the original (untwisted) momentum and $N_i$ is the number of grid points in direction $i$. Thus $\Phi = 2\pi$ shifts the momentum grid by exactly one grid step in the corresponding direction, which is why the spectrum must be identical at $\Phi = 0$ and $\Phi = 2\pi$: the twisted grid coincides with the original one, merely relabeled.
+Second, the ground-state degeneracy and the gap to the first excited state are computed. Exact diagonalization is performed for $10$ equally spaced flux values $\phi \in [0, 2\pi]$, and the $N$-fold degenerate spectral gap is defined as
+\begin{equation}
+    \Delta_N =
+    \begin{cases}
+        \min_\phi \left(E_{N+1}(\phi) - E_N(\phi)\right) & \text{if } \{\mathbf{k}_n(\phi_1)\}_{n=1}^{N} = \{\mathbf{k}_n(\phi_2)\}_{n=1}^{N} \ \ \forall\, \phi_1, \phi_2 \in [0, 2\pi], \\[4pt]
+        0 & \text{otherwise,}
+    \end{cases}
+    \label{eq:spectral_gap}
+\end{equation}
+evaluated for every $N$ relevant to the filling under consideration. Here $E_n(\phi)$ is the energy of the $n$-th state at flux $\phi$, ranked across all center-of-mass momentum and valley-polarization sectors, and $\mathbf{k}_n(\phi)$ is the center-of-mass momentum of that state. The second condition sets the gap to zero if the set of center-of-mass momenta spanning the candidate ground-state manifold changes with flux: such a change signals a level crossing with a state outside the manifold, and hence a closing of the gap. The ground-state degeneracy is then identified as the value of $N$ for which $\Delta_N$ is largest.
 
-    While twisted boundary conditions can in principle be inserted along either direction, we insert flux along $x$ in what follows.
+Third, the flux-insertion spectra are inspected visually for spectral flow between the states within the ground-state manifold.
 
-    \section{Recognition of topological phases}
+As discussed in Chapter~\ref{ch:introduction}, for a fixed system size, spectral flow, a robust ground-state degeneracy, and the absence of gap closing under flux insertion together constitute strong evidence for a gapped topological phase. A fully rigorous identification would additionally require finite-size scaling, i.e.\ confirming that the gap remains open and the degeneracy persists as the system size is increased. Due to the limited computational resources available for this thesis, such a systematic scaling analysis was not performed; the results presented here should therefore be understood as consistent with, rather than a definitive proof of, the identified phases, and finite-size scaling is left as an important direction for future work.
 
-    The nature of the ground state phases is determined using the following characteristics.
-
-    First, the ground-state valley polarization is identified as the $P_z$ sector containing the overall lowest-energy state.
-
-    Second, the ground-state degeneracy and the gap to the first excited state are computed. Exact diagonalization is performed for $10$ equally spaced flux values $\phi \in [0, 2\pi]$, and the $N$-fold degenerate spectral gap is defined as
-    \begin{equation}
-        \Delta_N =
-        \begin{cases}
-            \min_\phi \left(E_{N+1}(\phi) - E_N(\phi)\right) & \text{if } \{\mathbf{k}_n(\phi_1)\}_{n=1}^{N} = \{\mathbf{k}_n(\phi_2)\}_{n=1}^{N} \ \ \forall\, \phi_1, \phi_2 \in [0, 2\pi], \\[4pt]
-            0 & \text{otherwise,}
-        \end{cases}
-    \end{equation}
-    evaluated for every $N$ relevant to the filling under consideration. Here $E_n(\phi)$ is the energy of the $n$-th state at flux $\phi$, ranked across all center-of-mass momentum and valley-polarization sectors, and $\mathbf{k}_n(\phi)$ is the center-of-mass momentum of that state. The second condition ensures that if the set of center-of-mass momenta spanning the candidate ground-state manifold changes with flux, the gap is set to zero: such a change signals a level crossing with a state outside the manifold, and hence a closing of the gap.
-
-    The ground-state degeneracy is then identified as the value of $N$ for which $\Delta_N$ is largest.
-
-    Third, the flux-insertion spectra are inspected visually for spectral flow between the states within the ground-state manifold.
-
-    As discussed in the introduction, for a fixed system size, spectral flow, a robust ground-state degeneracy, and the absence of gap closing under flux insertion together constitute strong evidence for a gapped topological phase. A fully rigorous identification would additionally require finite-size scaling, i.e.\ confirming that the gap remains open and the degeneracy persists as the system size is increased. Due to the limited computational resources available for this thesis, such a systematic scaling analysis was not performed; the results presented here should therefore be understood as consistent with, rather than a definitive proof of, the identified phases, and finite-size scaling is left as an important direction for future work.
-
-    For some systems, the momentum-space occupation $n(\mathbf{k})$ of the ground state at zero flux is additionally computed, in order to distinguish a flat occupation characteristic of topological states (e.g.\ FCIs) or of gapless composite-fermi-liquid-like Landau-level states from the peaked occupation expected of a Fermi-liquid-like state.
-
-
-As mentioned in introduction, to classify gapped topological phases, the spectral flow, ground state degeneracy and lack of gap closing in the thermodynamic limit are sufficient conditions to identify a topological phase. In the thesis, due to limited computational resources and system sizes, finite size scaling was not done and the first two conditions  are treated as strong evidence for topological phases.
-
-For some systems, the momentum-space occupation $n(\mathbf{k})$ of the ground state at zero flux is additionally computed, in order to distinguish a flat occupation characteristic of topological states (e.g.\ FCIs) or of gapless composite-fermi-liquid-like Landau-level states from the peaked occupation expected of a Fermi-liquid-like state.
+Finally, for some systems the momentum-space occupation $n(\mathbf{k})$ of the ground state at zero flux is additionally computed, in order to distinguish the flat occupation characteristic of topological states (e.g.\ FCIs) or of gapless composite-Fermi-liquid-like states from the peaked occupation expected of a Fermi-liquid-like state. These four diagnostics --- valley polarization, ground-state degeneracy, spectral flow, and momentum occupation --- are applied systematically throughout Chapter~\ref{ch:results} to classify the ground states found at each filling considered.
