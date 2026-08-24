@@ -1,0 +1,542 @@
+First, the lowest Landau level is considered. The phase diagram (ground state polarization, spectral gap and phase winding) calculations are done in a $3\times4$ system (default BZ sampling), with varying $W$ and $\alpha$, while the momentum distribution function calculations are performed in a tilted lattice with BZ sampling visualized in Figure~\ref{fig:half_half_density}. If not otherwise stated, $d_{\text{SC}} = 6a$ and $l_{\text{RK}} = 0$ are used as default paramters, after Kwan et al.~\cite{kwan2024could}.
+
+To relate to previous theoretical and experimental work and due to the suspected topological phases, fillings $\nu= \frac{1}{2}$, $\nu = \frac{2}{3}$ and $\nu = 1$ are considered.
+
+\section{expected phases}
+    \subsection{$\nu = \frac{2}{3}$}
+    At the decoupled limit $\alpha = 1$, $W=0$, the intra-valley repulsion favors a valley-unpolarized $\frac{1}{3} + \frac{1}{3}$ state, and the ground state is expected to be a fractional topological insulator (FTI) consisting of two time-reversal-conjugate copies of the Laughlin $\frac{1}{3}$ state, $|\text{FTI}\rangle = |\text{FQH}\rangle \otimes |\text{FQH}\rangle$ with a characteristic $3\times 3 = 9$-fold ground state degeneracy on the torus~\cite{chen2012interaction}. At low $\alpha$, the large inter-valley interaction should favor a valley-polarized state, and a $\nu = \frac{2}{3}$ Laughlin-type fractional quantum Hall (FQH) state in a single valley is expected, supported by prior theoretical work on the same filling~\cite{crepel2023anomalous}.
+    Experimentally, fractional Chern insulator
+states have been reported in twisted MoTe$_2$ at closely related fillings
+\cite{cai2023signatures, xu2023observation, zeng2023thermodynamic, park2023observation}, and
+in homobilayer MoS$_2$~\cite{zhao2023probing}, supporting this general picture.
+
+    The nature of the states and transitions connecting FQH and FTI as the $\alpha$ is tuned is not well understood a priori. Near the decoupled limit $\alpha \to 1$, McDonald and Haldane~\cite{mcdonald1996topological} studied a closely related problem of two-component quantum Hall states at $\nu_T = 2/3$ using a $K$-matrix Chern-Simons description, and found that increasing inter-component coupling drives a transition from the decoupled $(3,3,0)$-type state (equivalent to our FTI) to a competing $(1,1,2)$ Halperin state. However, since our two valleys carry opposite Chern number, the standard holomorphic Halperin $(m,n,l)$ wavefunction construction is not directly applicable.
+
+    Independently, the bandwidth $W$ is expected to compete against the interaction-favored ordered states.
+    In the limit of $W \to \infty$ kinetic energy favors a gapless, valley-unpolarized Fermi liquid (FL) state. Thus, transitions destroying both the valley polarization and the topological nature of the low-$\alpha$ phases (FTI, FCI) are expected. While the nature of transitions out of gapped topological states is not addressed in the literature, the valley polarization transition is expected to be of Stoner-type and was addressed with mean-field treatment of Ref.~\cite{raines2024unconventional}. It is worth noting that the reference also describes that a similar FL$\to$ Inter Valley Coherent (IVC) phase transition is expected to appear instead of valley polarization depending on inter-valley coupling --- it is expected be described by a similar Stoner mechanism --- thus, IVC state could also be a candidate for phases at intermediate alpha values.
+
+    \subsection{$\nu = 1$}
+    At $\alpha = 1$, $W = 0$, the ground state is expected to be a pair of decoupled composite Fermi liquids, $|\text{CFL}\rangle \otimes |\text{CFL}\rangle$, consistent with exact diagonalization studies of the continuum MoTe$_2$ model at the same filling~\cite{dong2023composite}.
+
+    At small $\alpha$, valley polarization and an integer filling of one valley is expected, leading to an integer quantum Hall (IQH) state consistent with Kwan et al.~\cite{kwan2025textured}. Similarly to before, increasing $W$ is expected to lead to depolarization (Stoner-like) and a transition to a FL state. Additionally, consistently with the Stoner treatment of Ref.~\cite{raines2024unconventional}, an IVC state is expected to appear at intermediate $\alpha$ values, with a transition to a FL state at large $W$. The IVC state was also directly found in Hartree-Fock treatment of the same model used here, in Ref.~\cite{kwan2025textured}. 
+    However, the transition between IVC and the decoupled CFL pair with increasing $\alpha$, was not directly addressed in literature.
+
+    Two-valley LLL and 1LL model was studied also by Das, Wagner and Neupert~\cite{das2025fractional}. With tuning of the Haldane pseudopotentials, similar phases to the ones described above were found, in addition to partially particle-hole transformed Halperin states.
+
+
+    \subsection{$\nu = \tfrac{1}{2}$}
+
+    We do not expect a gapped topological phase at this filling. By analogy with $\nu=1$, a
+    composite-Fermi-liquid state $|\text{CFL}\rangle\otimes|\text{CFL}\rangle$ is expected at
+    $\alpha=1$, and a single valley-polarized CFL at $\alpha\to 0$ in the valley-polarized region,
+    with both expected to give way to an uncorrelated Fermi liquid at large $|W|$. We are not aware
+    of prior literature directly addressing this specific filling.
+
+
+
+    \section{Mean-field treatment of valley-depolarizing phase transitions}
+    To understand the phase transitions out of the valley-polarized phase,
+    the interaction Hamiltonian is treated in a Hartree–Fock mean-field approximation. Starting from
+    \[
+        \hat{H}_{\text{int}} = \frac{1}{2A} \sum_{\mathbf{k}, \mathbf{k'}, \mathbf{q}} \sum_{\tau, \tau'} \tilde{U}_{\tau \tau'}(\mathbf{q}) \Lambda_\tau(\mathbf{k}, \mathbf{q}) \Lambda_{\tau'}(\mathbf{k'}, -\mathbf{q}) \, d^\dagger_{\mathbf{k},\tau} d^\dagger_{\mathbf{k'},\tau'} d_{\mathbf{k'-q},\tau'} d_{\mathbf{k+q},\tau},
+    \]
+    Wick's theorem gives two contraction channels for the quartic operator: a \emph{direct} (Hartree) channel, pairing $d^\dagger_{\mathbf{k},\tau}$ with $d_{\mathbf{k+q},\tau}$, and an \emph{exchange} (Fock) channel, pairing $d^\dagger_{\mathbf{k},\tau}$ with $d_{\mathbf{k'-q},\tau'}$. The Hartree channel is nonzero only for $\mathbf{q}=0$; the exchange channel requires $\tau=\tau'$ and $\mathbf{k'}=\mathbf{k}+\mathbf{q}$, and picks up an overall minus sign from anticommuting the fermionic operators. This yields $\hat{H}_{HF} = \hat{H}_H + \hat{H}_X$ with
+
+    \[
+        \hat{H}_H = \frac{1}{A} \sum_{\mathbf{k}, \mathbf{k'}} \sum_{\tau, \tau'} \tilde{U}_{\tau \tau'}(0) \, \Lambda_\tau(\mathbf{k}, 0) \Lambda_{\tau'}(\mathbf{k'}, 0) \, \langle n_{\mathbf{k},\tau} \rangle \, d^\dagger_{\mathbf{k'},\tau'} d_{\mathbf{k'},\tau'},
+    \]
+    \[
+        \hat{H}_X = -\frac{1}{A} \sum_{\mathbf{k}, \mathbf{q}} \sum_{\tau} \tilde{U}_{\tau \tau}(\mathbf{q}) \, |\Lambda_\tau(\mathbf{k}, \mathbf{q})|^2 \, \langle n_{\mathbf{k+q},\tau} \rangle \, d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau},
+    \]
+    where $n_{\mathbf{k},\tau} \equiv d^\dagger_{\mathbf{k},\tau}d_{\mathbf{k},\tau}$. Note that $\Lambda_\tau(\mathbf{k},0) = 1$ identically (the phase vanishes and $L_n(0)=1$ for both $n=0,1$), so the form factor drops out of $\hat H_H$ entirely; this cancellation is used implicitly below.
+
+    \subsection{Transition dependent on $\alpha$ at $W=0$}
+
+    At $W=0$, rotational and translational symmetry of the interaction imply a momentum-independent occupation, $\langle n_{\mathbf{k},\tau}\rangle = \text{const.}$ (assuming the ground state does not spontaneously break this symmetry; verified empirically in the results~\ref{sec:third_third_density}). With $\sum_{\mathbf{k}} \langle n_{\mathbf{k},\tau}\rangle = N_\phi \nu_\tau$, and using $\tilde{U}_{\tau\tau'}(0) = 2\pi d_{SC}(1+\alpha\tau\tau')$ (the $q\to0$ limit of $\tilde U$, since $\tanh(qd_{SC})/q \to d_{SC}$), the Hartree–Fock energy becomes a function of the valley filling factors $\nu_\pm$ alone:
+    \[
+        E_{HF}(\nu_+, \nu_-) = \frac{2\pi d_{\text{SC}} N_{\phi}^2}{A} \left[ (\nu_+ + \nu_-)^2 + \alpha(\nu_+ - \nu_-)^2 \right] - \frac{N_{\phi} (1+\alpha)}{A} \left( \nu_+^2 + \nu_-^2 \right) \sum_{\mathbf{q}} u_0(\mathbf{q}) e^{-q^2/2},
+    \]
+    where $u_0(\mathbf{q}) \equiv \frac{2\pi}{q(1+l_{\text{RK}}q)}\tanh(qd_{SC})$ is the $\alpha$-independent part of the interaction, and the factor $L_n(q^2/2)$ has been set to $1$ (working in the lowest Landau level).
+
+    Comparing the energies of the fully valley-polarized state to the unpolarized state at fixed total density $2\nu = \nu_++\nu_-$,
+    \[
+        E(2\nu, 0) - E(\nu, \nu) = 2\nu^2 \frac{N_{\phi}}{A}\left[ 4\pi d_{\text{SC}} N_\phi\, \alpha - (1+\alpha) \sum_{\mathbf q} u_0(\mathbf q) e^{-q^2/2} \right].
+    \]
+    Defining $\mathcal{I} \equiv \dfrac{2\pi}{A}\sum_{\mathbf{q}} u_0(\mathbf{q}) e^{-q^2/2}$ and using $1/N_\phi = 2\pi/A$, the valley-polarized (VP) state is energetically favored, $E(2\nu,0)-E(\nu,\nu)<0$, when
+    \[
+        4\pi d_{\text{SC}}\, \alpha - (1+\alpha)\, \mathcal{I} < 0 \quad\Longleftrightarrow\quad \alpha\left(4\pi d_{\text{SC}} - \mathcal{I}\right) < \mathcal{I}.
+    \]
+    Dividing by $(4\pi d_{\text{SC}} - \mathcal{I})$ and tracking the sign of the denominator gives the phase boundary:
+    \begin{align}
+        \alpha &< \frac{1}{\dfrac{4\pi d_{\text{SC}}}{\mathcal{I}} - 1} \quad \text{for} \quad 4\pi d_{\text{SC}} > \mathcal{I}, \\
+        \alpha &> \frac{1}{\dfrac{4\pi d_{\text{SC}}}{\mathcal{I}} - 1} \quad \text{for} \quad 4\pi d_{\text{SC}} < \mathcal{I}.
+    \end{align}
+
+    In the continuum limit, $\frac{1}{A}\sum_{\mathbf{q}} \to \int \frac{d^2q}{(2\pi)^2} = \frac{1}{2\pi}\int_0^\infty q\,dq$, so
+    \[
+        \mathcal{I}(d_{\text{SC}}) = 2\pi\, \int_0^\infty dq \, \frac{\tanh(q d_{\text{SC}})}{1 + l_{\text{RK}} q} \, e^{-q^2/2}.
+    \]
+    \subsection{Transition dependent on $W$}
+
+    The depolarizing transition driven by increasing $W$ was treated with a Stoner-like criterion in Ref.~\cite{raines2024unconventional}, assuming a dispersion of the form $\varepsilon(\mathbf{k}) \propto |\mathbf{k}|^m$, $m\in\mathbb{N}$; this is not a good approximation to the harmonic dispersion used here and gives an order-of-magnitude error in the critical $W$. 
+    
+    \begin{figure}
+        \centering
+        \includegraphics[width=0.6\textwidth]{plots/dispersion_with_fermi_surfaces_W_1.00.pdf}
+        \caption{Dispersion $\varepsilon(\mathbf{k})$ and Fermi surfaces at $W=1.0$ for fillings $\nu = 1/4, 1/3, 1/2$, shown for the dispersion used and for a parabolic dispersion.}\label{fig:fermi_surface}
+    \end{figure}
+    As shown in Figure~\ref{fig:fermi_surface} the Fermi surface (and in effect also density of states) of the actual dispersion differs significantly from the one of parabolic approximation --- especially considering the proximity of Van Hove simularity at $\nu = \frac{1}{2}$.
+    Thus, we relax this assumption: a similar criterion is derived below, and while the fermi surface is assumed circular for simplicity, the density of states is obtained by numerical integration of the actual dispersion rather than assumed in closed form.
+
+    Here $W$ is large enough that the occupation follows a Fermi–Dirac step, $n_\tau(\mathbf{k}) = \theta(k_{F\tau}- |\mathbf{k}|)$ with $k_{F\tau}=\sqrt{2\nu_\tau}$.
+
+    \paragraph{Hartree energy ($\alpha=0$).} Since $\tilde U_{\tau\tau'}(0)=2\pi d_{SC}$ independent of valley at $\alpha=0$,
+    \[
+        \langle \hat{H}_H \rangle = \frac{2\pi d_{SC}}{A} \sum_{\mathbf{k}, \mathbf{k'}} \sum_{\tau, \tau'} \langle n_{\mathbf{k},\tau} \rangle \langle n_{\mathbf{k'},\tau'} \rangle = \frac{2\pi d_{SC} N_{\phi}^2}{A} (\nu_+ + \nu_-)^2,
+    \]
+    independent of the valley polarization.
+
+    \paragraph{Exchange energy.} At $\alpha=0$, $\tilde U_{\tau\tau}(\mathbf q) = u_0(\mathbf q)$, giving
+    \[
+        \langle \hat{H}_X \rangle = -\frac{1}{A} \sum_{\mathbf{q}} u_0(\mathbf{q}) e^{-q^2/2} \sum_{\tau, \mathbf{k}} n_\tau(\mathbf{k+q}) \, n_\tau(\mathbf{k}).
+    \]
+    Converting sums to integrals ($\sum_{\mathbf{k}} \to \frac{A}{(2\pi)^2}\int d^2k$, same for $\mathbf q$),
+    \[
+        E_X = -\frac{A}{(2\pi)^4} \int d^2q\, u_0(\mathbf{q}) e^{-q^2/2} \sum_{\tau} \int d^2k\, \theta(k_{F\tau}-|\mathbf{k+q}|)\theta(k_{F\tau}-|\mathbf{k}|).
+    \]
+    The inner integral is exactly the overlap area of two disks of radius $k_{F\tau}$ with centers separated by $q$,
+    \[
+        F(k_{F\tau}, q) = 2 k_{F\tau}^2 \arccos\!\left(\frac{q}{2 k_{F\tau}}\right) - \frac{q}{2} \sqrt{4 k_{F\tau}^2 - q^2}
+    \]
+    Grouping, one gets
+    \[
+        E_X = -\frac{A}{(2\pi)^2} \int \frac{d^2q}{(2\pi)^2}\, u_0(\mathbf{q}) e^{-q^2/2} \sum_\tau F(k_{F\tau}, q)
+    \]
+
+    \paragraph{Expansion around the unpolarized point.} Write $\nu_\tau = \nu + \tau\delta$, so $\delta$ is the polarization ($\delta=0$ corresponds to the unpolarized state), and $k_{F\tau} =\sqrt{2\nu_{\tau}}$ (approximating the Fermi surface as a circle). Expanding $F$ to second order in $\delta$ and integrating over angle,
+\[
+        \left. \frac{d^2 E_X}{d \delta^2} \right|_{\delta=0} = -\frac{4A}{\nu} \int_0^{\sqrt{8\nu}} \frac{q \tanh(qd_{\text{SC}})\, e^{-q^2/2}}{(2\pi)^2 (1+l_{\text{RK}} q)\sqrt{8\nu - q^2}}\, dq \;\equiv\; -\frac{4A}{\nu}\, \mathcal{I}_2(\nu, d_{\text{SC}})
+    \]
+    The kinetic-energy curvature follows directly from the dispersion (numerically, via the density of states $D(\nu)=d\mu/d\nu$ obtained from $\varepsilon_\tau(\mathbf{k})$):
+    \[
+        \left. \frac{d^2 E_K}{d \delta^2} \right|_{\delta=0} = 2 A W \frac{d\mu}{d\nu} = \frac{A W}{\pi} D(\nu).
+    \]
+    The transition occurs where the unpolarized state's curvature changes sign, i.e. where the kinetic cost of polarizing exactly cancels the exchange gain:
+    \[
+        \left. \frac{d^2 E_K}{d\delta^2} \right|_{\delta=0} + \left. \frac{d^2 E_X}{d\delta^2} \right|_{\delta=0} = 0
+        \quad\Longrightarrow\quad
+        \frac{AW_c}{\pi} D(\nu) = \frac{4A}{\nu}\,\mathcal{I}_2(\nu, d_{\text{SC}}),
+    \]
+    giving
+    \[
+        W_c(\nu, d_{\text{SC}}) = \frac{4\pi\, \mathcal{I}_2(\nu, d_{\text{SC}})}{\nu\, D(\nu)}.
+    \]
+
+    This can be easily extended to nonzero $\alpha$, giving, via exactly the same procedure,
+
+    \[
+        W_c(\nu, d_{SC}, \alpha) = \frac{4\pi\, (1+\alpha) \mathcal{I}_2(\nu, d_{SC})}{\nu\, D(\nu)}  - \frac{4\, \alpha d_{\text{SC}}}{D(\nu)}.
+    \]
+
+    \subsection{Comparison with the numerical mean-field estimates}
+
+
+    We evaluate the analytic estimates of Secs.~4.2.1--4.2.2 numerically at the default parameters $d_{\text{SC}}=6a$, $l_{\text{RK}}=0$, with $D(\nu)$ obtained from the actual cosine dispersion (Fig.~\ref{fig:fermi_surface}) rather than a parabolic approximation, and compare against the ED phase diagrams above.
+
+    At $W=0$, Eq.~(4.1--4.2) gives $\alpha_c \approx 0.042$ at $\nu=\frac13$ per valley, compared to the ED value $\alpha_c \approx 0.004$ extracted from Figure~\ref{fig:third_third_phase_diagram}. The mean-field estimate thus overestimates $\alpha_c$ by roughly an order of magnitude, but correctly predicts its sign and, more importantly, its trend: scanning $\alpha_c(d_{\text{SC}})$ and $\alpha_c(l_{\text{RK}})$ analytically gives a monotonic decrease with both parameters, matching the monotonic narrowing of the $\alpha$-stable FQH region with increasing $d_{\text{SC}}$ and $l_{\text{RK}}$ observed in Figure~\ref{fig:third_third_screening_alpha_vs_d_phase_diagram_a} and Figure~\ref{fig:third_third_screening_alpha_vs_lRK_phase_diagram_b}.
+
+    For the $W$-driven depolarization transition, the mean-field estimate at $\nu=\frac13$, $\alpha=0$ gives $W_c\approx0.84$, compared to the $\alpha$-dependent transition scale of order $W\sim0.5$ read off from Figure~\ref{fig:third_third_phase_diagram} (VP $\to$ FL and FQH $\to$ VP boundaries). As with $\alpha_c$, the analytic estimate is systematically too large but of the correct order of magnitude. This is consistent with the circular-Fermi-surface approximation used in the derivation (Sec.~4.2.2, Fig.~\ref{fig:fermi_surface}), which becomes progressively worse away from $\nu=\frac13$ and is expected to be least accurate near $\nu=\frac12$, where the true Fermi surface approaches a Van Hove singularity not captured by $k_{F\tau}=\sqrt{2\nu_\tau}$.
+
+    Overall, the analytic mean-field treatment reproduces the correct qualitative structure of the phase diagram --- the existence and approximate location of both the $\alpha$- and $W$-driven depolarization transitions, and their correct monotonic dependence on the screening parameters $d_{\text{SC}}$ and $l_{\text{RK}}$ --- while systematically overestimating both $\alpha_c$ and $W_c$.
+
+
+
+
+\section{Phase diagram for $\nu = \frac{2}{3}$}
+At this filling an FQH state is expected at $W=0$ in a valley polarized region, and an FTI at $\alpha=1$, $W=0$. The numerical phase diagram is presented, answering questions of how resilient the topological phases are against non-zero $|W|$ and non-ideal $\alpha$. We also study the dependence of the stability of topological phases on the screening parameters $d_{\text{SC}}$ and $l_{\text{RK}}$ and take a look at phase transitions in the system.
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/third_third_phase_diagram.pdf}
+        \subcaption{}
+        \label{fig:third_third_phase_diagram}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/third_third_q0_phase_diagram.pdf}
+        \subcaption{}
+        \label{fig:third_third_q0_phase_diagram}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/third_third_zoom_3_phase_diagram.pdf}
+        \subcaption{}
+        \label{fig:third_third_zoom_3_phase_diagram}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/third_third_zoom_9_phase_diagram.pdf}
+        \subcaption{}
+        \label{fig:third_third_zoom_9_phase_diagram}
+    \end{subfigure}
+    \caption{Phase diagrams of the $\nu = \frac{2}{3}$ filling. VP --- gapless valley-polarized state, FL --- gapless unpolarized state (Fermi liquid or composite Fermi liquid), FQH --- 3-fold degenerate valley-polarized fractional quantum hall state, FTI --- 9-fold degenerate valley-unpolarized fractional topological insulator state. (a) With $U(q=0)$, (b) without $U(q=0)$, (c) zoom-in at FQH, (d) zoom-in at FTI.}
+    \label{fig:third_third_phases}
+\end{figure}
+
+
+
+Figure~\ref{fig:third_third_phases} presents the phase diagram of the $\nu=\frac{2}{3}$ filling. The only significant gaps in the system are $\Delta_3$, $\Delta_9$ and $\Delta_{6}$ (discussed later). In the $U(q=0) \neq 0$ case, at low $|W|$ and low $\alpha$ full valley polarization is observed, with $\alpha_c \approx 0.004$, and the non-polarized prevailing at larger $\alpha$. At $\alpha=1$, down to $\alpha \approx 0.74$ the unpolarized state has clear 9-fold degeneracy, which is consistent with the FTI state (each FQH contributing 3-fold degeneracy). The valley-polarized state consists of two regions. At low $|W|$ the state has a topological 3-fold degeneracy, consistent with $\nu=\frac{2}{3}$ FQH state in one valley. The topological nature of both phases is confirmed below via spectral flow. Both topological states survive non-zero dispersion of $|W| \approx 0.09$ and $|W| \approx 0.1$ for FQH and FCI respectively. At intermediate $|W|$ the FQH state transitions into a gapless valley polarized state --- caused by the kinetic energy cost of a flat momentum occupation of FQH state, and at $\alpha$ -dependent $W_c$ on the order of $\pm0.5$, into a valley unpolarized state. Similarly, FTI transitions into a gapless non-polarized state.
+
+The whole phase diagram is approximately symmetric with respect to the $W=0$ line --- the stability of topological and VP states depends on the range of kinetic energy, and not on the exact shape or shift of the dispersion.
+
+ At $\alpha \to -1$ the FQH is not detected, as the valley polarization and the lack of intravalley interaction makes the system effective noninteracting and closes the gap in the spectrum.
+
+A different situation can be seen for the $U(q=0) = 0$ phase diagram (Fig.~\ref{fig:third_third_q0_phase_diagram}), where the valley polarized region is found at large $\alpha$ instead. Inside this part, the same two VP and FQH phases can be seen, with similar $W$-dependent transition in-between. However, the existence of the polarized phase in the whole $\alpha > 0$ part prevents existence of FTI.
+
+On the left side at low $\alpha$, only non-polarized gapless state is be found.
+
+\subsection{Phase transitions at $W\approx0$ and variable $\alpha$}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/alpha_transition_W=0.05_alpha=0.0024.pdf}
+        \subcaption{}
+        \label{fig:low_alpha_transition_a}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/alpha_transition_W=0.05_alpha=0.003.pdf}
+        \subcaption{}
+        \label{fig:low_alpha_transition_b}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/alpha_transition_W=0.05_alpha=0.0036.pdf}
+        \subcaption{}
+        \label{fig:low_alpha_transition_c}
+    \end{subfigure}
+    \caption{Phase winding of the energy spectrum near the valley-isotropic limit $\alpha\approx 0$, at $W=0.05$ and $\nu = \frac{2}{3}$. Ground state manifold in red. Visible transition from FCI to a gapless state. (a) $\alpha = 0.0024$ --- FQH state, (b) $\alpha = 0.003$ --- gapless state, (c) $\alpha = 0.0036$ --- gapless state.}
+    \label{fig:low_alpha_transition}
+\end{figure}
+In the Figure~\ref{fig:low_alpha_transition} phase winding of the energy spectrum is shown, at $W=0.05$ with different $\alpha$ values, around the transition out of the FQH phase. It can be seen that the 3-fold degenerate ground state manifold survives the transition --- the only thing that changes is the relative energy of the manifold and the gapless continuum above it.
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/alpha1_transition_W=0.05_alpha=0.8500000000000001.pdf}
+        \subcaption{}
+        \label{fig:high_alpha_transition_a}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/alpha1_transition_W=0.05_alpha=0.76.pdf}
+        \subcaption{}
+        \label{fig:high_alpha_transition_b}
+    \end{subfigure}
+    \caption{Phase winding of the energy spectrum near the decoupled limit $\alpha \approx 1$, at $W=0.05$ and $\nu = \frac{2}{3}$. Ground state manifold in red. Visible transition from FCI to a gapless state. (a) $\alpha = 0.85$ --- FTI state, (b) $\alpha = 0.76$ --- gapless state.}
+    \label{fig:high_alpha_transition}
+\end{figure}
+
+In the Figure~\ref{fig:high_alpha_transition} phase winding is shown at $W=0.05$ with $\alpha$ decreasing from the $FTI$-like topological state. Similarly to the former, the manifold moves relative to the excited state continuum to finally close the 9-fold degenerate gap. However, it can be seen that relative energy difference of lowest 3 states of the GS manifold and the higher 6 increases, opening the gap between them at similar $\alpha$ value --- non-zero 3-fold gap in the unpolarized state can indeed be found in a small region of the phase diagram. This may correspond to $(3,3,0) \to (1,1,2)$ transition examined previously in the literature~\cite{mcdonald2023fractional}, however, the exact nature would have to be confirmed e.g. by calculating overlap of the ground state with the model wavefunction of $(1,1,2)$ state. Thus, the state was not included in the phase diagram above.
+
+\subsection{Phase transitions with variable $W$}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/phase_winding_W=0.05_alpha=0.0.pdf}
+        \subcaption{}
+        \label{fig:phase_winding_low_alpha_a}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/phase_winding_W=0.1_alpha=0.0.pdf}
+        \subcaption{}
+        \label{fig:phase_winding_low_alpha_b}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/phase_winding_W=0.15_alpha=0.0.pdf}
+        \subcaption{}
+        \label{fig:phase_winding_low_alpha_c}
+    \end{subfigure}
+    \caption{Phase winding of the energy spectrum at $\alpha=0$ and $\nu = \frac{2}{3}$. Ground state manifold in red. Visible transition from FQH to gapless state with increasing $W$. (a) $W=0.05$, (b) $W=0.1$, (c) $W=0.15$.}
+    \label{fig:phase_winding_low_alpha}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/phase_winding_W=0.05_alpha=1.0.pdf}
+        \subcaption{}
+        \label{fig:phase_winding_high_alpha_a}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/phase_winding_W=0.1_alpha=1.0.pdf}
+        \subcaption{}
+        \label{fig:phase_winding_high_alpha_b}
+    \end{subfigure}
+    \begin{subfigure}{0.3\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/phase_winding_W=0.15_alpha=1.0.pdf}
+        \subcaption{}
+        \label{fig:phase_winding_high_alpha_c}
+    \end{subfigure}
+    \caption{Phase winding of the energy spectrum at $\alpha=1$ and $\nu = \frac{2}{3}$. Ground state manifold in red. Visible transition from FTI to a gapless state with increasing $W$. (a) $W=0.05$, (b) $W=0.1$, (c) $W=0.15$.}
+    \label{fig:phase_winding_high_alpha}
+\end{figure}
+
+In Figure~\ref{fig:phase_winding_low_alpha} and \ref{fig:phase_winding_high_alpha} a phase winding of the energy spectrum is shown, for FQH ($\alpha=0.0$) and FTI ($\alpha=1$) phases respectively. At low $W$ (Fig.~\ref{fig:phase_winding_low_alpha_a}, Fig.~\ref{fig:phase_winding_high_alpha_a}), spectral flow of the ground state manifold is directly observed --- the spectrum at $\Phi_x = 0$ and $\Phi_x = 2\pi$ is the same, but the states in the manifold are permuted --- full periodicity would be achieved only after $\phi = 6\pi$. This further confirms the topological nature of the phases. 
+Additionally, the phase transition from topological to gapless phase is visualized. The increased bandwidth naturally closes the gap in the spectrum.
+
+\subsection{Nature of intermediate-$\alpha$ and high $|W|$ phases}\label{sec:third_third_density}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/third_third_gap_n3.pdf}
+        \subcaption{}
+        \label{fig:third_third_gap_n3}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/third_third_gap_n6.pdf}
+        \subcaption{}
+        \label{fig:third_third_gap_n6}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/third_third_gap_n9.pdf}
+        \subcaption{}
+        \label{fig:third_third_gap_n9}
+    \end{subfigure}
+    \begin{subfigure}{0.25\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/phase_winding_W=0.025_alpha=0.7225000000000001.pdf}
+        \subcaption{}
+        \label{fig:phase_winding_3fold_degenerate}
+    \end{subfigure}
+    \begin{subfigure}{0.25\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/phase_winding_W=0.025_alpha=0.5625.pdf}
+        \subcaption{}
+        \label{fig:phase_winding_6fold_degenerate}
+    \end{subfigure}
+
+    \caption{Spectral gaps in the system as a function of $\alpha$ and $W$, at $\nu=\frac{2}{3}$. (a) $\Delta_3$, (b) $\Delta_6$, (c) $\Delta 9$, (d) phase winding of the 3-fold degenerate state at $\alpha=0.72$ and $W=0.025$, (e) phase winding of the 6-fold degenerate state at $\alpha=0.56$ and $W=0.025$.}
+    \label{fig:third_third_gaps}
+\end{figure}
+The Figure~\ref{fig:third_third_gaps} shows the size of the gaps $\Delta_3$ and $\Delta_9$ in the system. It directly shows that the stability of the FQH and FTI is best at $W=0$ as the gap is largest there. One issue worth noting is a presence of a $\Delta_3$ and $\Delta_6$ gaps also in the unpolarized phase at intermediate $\alpha$ values. The 3-fold degenerate state also exhibits phase winding (Fig.~\ref{fig:phase_winding_3fold_degenerate}) and could correspond to a Halperin $(1,1,2)$ state (transition examined in literature~\cite{mcdonald1996topological}). Because of its existence in a narrow region it was not further examined here and it was conflated with the gapless FL region of the phase diagram above.\checkthis{Maybe worth checking in more detail anyway? But idk if there is time - first ask Glenn if it is even reasonable theory} On the other hand, as shown on Figure~\ref{fig:phase_winding_6fold_degenerate}, the 6-fold degenerate state does not exhibit phase winding --- the energy levels do not cross and do not permute, thus it is not topological.
+
+To further examine the nature of the intermediate phases, the assumptions done in mean-field treatment, the momentum distribution function $n(\mathbf{k})$ was calculated.
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{plots/density_third_third_std_mesh.pdf}
+    \caption{Standard deviation of $n(\mathbf{k})$ in the BZ as a function of $\alpha$ and $W$, at $\nu=\frac{2}{3}$.}
+    \label{fig:third_third_density}
+\end{figure}
+
+Figure~\ref{fig:third_third_density} shows that indeed at $W\approx 0 $ the distribution function is completely flat, while for large $|W|$ its standard deviation is large --- confirming the suspected Fermi liquid character of the large |W| phases. Additionally, the gapless VP phase also shows a non-flat distribution function, consistent with FL there.
+The interesting features are two regions of low standard deviation of distribution function surviving up to a discontinuity at large $|W|$. The lower region may correspond to IVC phase, with a similar Stoner-like transition into FL as the VP phase, but with a different order parameter. This would agree with the Ref.~\cite{raines2024unconventional}, where the VP transition would prevail at $\alpha < 0$ and IVC at $\alpha > 0$.
+
+\subsection{Screening of the interaction}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/third_third_screening_alpha_vs_d_phase_diagram.pdf}
+        \subcaption{}
+        \label{fig:third_third_screening_alpha_vs_d_phase_diagram_a}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/third_third_screening_alpha_vs_lRK_phase_diagram_d5.01.pdf}
+        \subcaption{}
+        \label{fig:third_third_screening_alpha_vs_lRK_phase_diagram_b}
+    \end{subfigure}
+    \caption{Phase diagrams of the $\nu = \frac{2}{3}$ filling with respect to screening parameters. (a) $\alpha$ vs. $d_{\text{SC}}$ at $l_{\text{RK}} = 0$, (b) $\alpha$ vs. $l_{\text{RK}}$ at $d_{\text{SC}} = 2a$.}
+    \label{fig:third_third_screening_alpha_vs_d_phase_diagram}
+\end{figure}
+
+
+The stability of topological phases was tested with respect to the two screening parameters. In the Figure~\ref{fig:third_third_screening_alpha_vs_d_phase_diagram_a} the extent of phases at $W=0$, with respect to $\alpha$ and variable screening length $d_{\text{SC}}$ is shown. Two main conclusions follow. First, the $\alpha$-stability of the FQH phase decreases monotonously with the increase of $d_{\text{SC}}$. This agrees with the analytic mean-field estimate where increasing $d_{\text{SC}}$ shifts the $\alpha_c$ phase boundary. On the other hand, no change in the stability of the FTI phase is visible.
+
+The stability with respect to $l_{\text{RK}}$ at $W=0$ is shown in the Figure~\ref{fig:third_third_screening_alpha_vs_lRK_phase_diagram_b}. Here on the other hand, the stability both topological phases varies. The FQH behaves the same as in the former case --- stability decreasing with $l_{\text{RK}}$ increase. The FTI on the other hand has a non-monotonous dependence --- a maximum of stability at finite $l_{\text{RK}}$.
+
+
+
+\begin{figure}[htbp]
+\centering
+\begin{tikzpicture}[
+    node distance = 0.6cm and 1.25cm, % Vertical and Horizontal spacing
+    arrowstyle/.style={->, >=Stealth, thick, color=ethpetrol},
+    labelstyle/.style={font=\small\sffamily, fill=white, inner sep=2pt, rounded corners=1pt, draw=ethpetrol, align=center}
+]
+    % --- ROW 1 ---
+    % Subfigure 1
+    \node (sub1) {
+        \begin{subfigure}{0.4\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{plots/third_third_screening_alpha_vs_W_phase_diagram_d2.51_lRK0.00.pdf}
+            \caption{}
+            \label{fig:third_third_screening_alpha_vs_W_phase_diagram_a}
+        \end{subfigure}
+    };
+
+    % Subfigure 2 (Placed to the right of Subfigure 1)
+    \node[right=of sub1] (sub2) {
+        \begin{subfigure}{0.4\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{plots/third_third_screening_alpha_vs_W_phase_diagram_d15.04_lRK0.00.pdf}
+            \caption{}
+            \label{fig:third_third_screening_alpha_vs_W_phase_diagram_b}
+        \end{subfigure}
+    };
+
+    % --- ROW 2 ---
+    % Subfigure 3 (Centered below the space between sub1 and sub2)
+    \node[below=of $(sub1.south)!0.5!(sub2.south)$] (sub3) {
+        \begin{subfigure}{0.4\textwidth}
+            \centering
+            \includegraphics[width=\textwidth]{plots/third_third_screening_alpha_vs_W_phase_diagram_d15.04_lRK5.01.pdf}
+            \caption{}
+            \label{fig:third_third_screening_alpha_vs_W_phase_diagram_c}
+        \end{subfigure}
+    };
+
+    % --- ARROWS ---
+    % Arrow 1: Plot 1 -> Plot 2
+    \draw[arrowstyle] ($(sub1.east) + (-5pt,0)$) -- ($(sub2.west) + (15pt,0)$) 
+        node[midway, labelstyle] {$\mathbf{d \nearrow }$};
+
+    % Arrow 2: Plot 2 -> Plot 3 (Connects bottom of Plot 2 to right edge of centered Plot 3)
+    \draw[arrowstyle] ($(sub2.south west) + (15pt,30pt)$) -- ($(sub3.north) + (0, -5pt)$)%($(sub2.south west) + (10pt,-5pt)$) -- ($(sub3.north) + (0, 5pt)$) 
+        node[midway, labelstyle] {$\mathbf{l_{\text{RK}} \nearrow }$};
+
+\end{tikzpicture}
+\caption{Phase diagrams of the $\nu = \frac{2}{3}$ filling with respect to screening parameters. Arrows indicate the direction of change of screening parameters. (a) $d_{\text{SC}} = 1a$, $l_{\text{RK}} = 0$, (b) $d_{\text{SC}} = 6a$, $l_{\text{RK}} = 0$, (c) $d_{\text{SC}} = 6a$, $l_{\text{RK}} = 2a$.}
+\label{fig:third_third_screening_alpha_vs_W_phase_diagram_mindmap}
+\end{figure}
+
+In Figure~\ref{fig:third_third_screening_alpha_vs_W_phase_diagram_mindmap} full $\alpha$-$W$ phase diagrams are shown at different screening parameters --- with additional benefit of studying the $W$-stability. The main conclusion is that the $W$ stability is independent of $d_{\text{SC}}$ screening length, but it significantly decreases with increasing $l_{\text{RK}}$ --- especially important in the $FTI$ phase, where this additional $W$-stability cost has to be paid to increase $\alpha$-stability through the screening.
+
+\section{Results for the $\nu = \frac{1}{2} + \frac{1}{2}$}
+While in the LLL any fractional topological states at $\nu=1$ filling are not suspected, it was studied in literature and serves as a good benchmark for the method, and for future 1LL calculations at the same filling.\cite{das2025fractional, kwan2025textured}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/half_half_phase_diagram.pdf}
+        \subcaption{}\label{fig:half_half_phase_diagram}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/half_half_q0_phase_diagram.pdf}
+        \subcaption{}\label{fig:half_half_q0_phase_diagram}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/half_half_zoom_phase_diagram.pdf}
+        \subcaption{}\label{fig:half_half_zoom_phase_diagram}
+    \end{subfigure}
+    \caption{Phase diagrams of the $\nu = 1$ filling. VP --- gapless valley-polarized state, FL --- gapless unpolarized state (Fermi liquid or composite Fermi liquid), IQH --- valley-polarized integer quantum hall state. (a) With $U(q=0)$, (b) without $U(q=0)$, (c) zoom-in at IQH (with $U(q=0)$).}\label{fig:half_half_phases}
+\end{figure}
+In Figure~\ref{fig:half_half_phases} the phase diagram is shown. With $U(q) \neq 0$, similarly to $\nu=\frac{2}{3}$ a valley polarized region is found at low $\alpha$, and a gapless non-polarized phase at larger $\alpha$ or larger $|W|$. The valley polarized phase consists dominantly of IQH with $\nu = 1 + 0$. At larger $|W|$ an intermediate gapless VP phase is found, however, its extent is extremely small and it was not found in literature before. It can be argued that it is just a finite size effect. Since for $\nu=\frac{2}{3}$ filling the polarized valley is not fully filled the system can exhibit instabilities in terms of both magnon/excition \checkthis{idk how to name it} and neutral modes. However, for $\nu=1$ only magnon excitations are possible which stabilizes the IQH state. The phase boundary is consistent with past results~\cite{kwan2025textured} and within the same order of magnitude as the numeric mean-field estimate.
+
+The nature of the gapped state can again be discussed in terms of literature and momentum occupation function. For the $\alpha = 1,\, W=0$ limit, it is known that the $\nu = \frac{1}{2} + \frac{1}{2}$ state may consist decoupled composite Fermi liquids $\ket{\text{CFL}} \otimes \ket{\text{CFL}}$, and for large bandwidth $W$, with kinetic energy being the prevailing energy scale, of Fermi liquids $\ket{\text{FL}} \otimes \ket{\text{FL}}$. The question of the phase transition and phase boundary between these two states, or the nature of states when coupling $\alpha \neq 1$ is introduced, cannot be answered with the limited extent of the simulations here. 
+
+
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/density_half_half_std_mesh.pdf}
+        \subcaption{}
+        \label{fig:half_half_density_std}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/density_half_half_alpha1_std_cut_alpha_1.00.pdf}
+        \subcaption{}
+        \label{fig:half_half_density_cut}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/density_half_half_nk_W_0.00_alpha_1.00.pdf}
+        \subcaption{}
+        \label{fig:half_half_density_CFL}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/density_half_half_nk_W_0.50_alpha_1.00.pdf}
+        \subcaption{}
+        \label{fig:half_half_density_FL}
+    \end{subfigure}
+    \caption{The momentum space occupation $n(\mathbf{k})$ for $\nu=1$ filling in arbitrary valley. a) Standard deviation of $n(\mathbf{k})$ in the BZ as a function of $\alpha$ and $W$. b) Cut of (a) at $\alpha=1$ c) Momentum space occupation at $W=0.0$, $\alpha=1.0$ --- $\ket{\text{CFL}} \otimes \ket{\text{CFL}}$ state. d) Momentum space occupation at $W=0.5$, $\alpha=1.0$ --- $\ket{\text{FL}} \otimes \ket{\text{FL}}$ state.}
+    \label{fig:half_half_density}
+\end{figure}
+
+Figure~\ref{fig:half_half_density} shows the momentum space occupation function's $n(\mathbf{k})$ standard deviation in the BZ. Again, a large region of flat occupation is observed at $\sqrt{\alpha} \in [0.05, 0.4]$. This, comparing with literature might correspond to the IVC state, with a discontinuous transition to Fermi liquid at higher $|W|$. While Kwan et al.~\cite{kwan2025textured} confirms the IVC phase, the transition is not found. Additionaly, a clear first-order transition between $\ket{\text{CFL}} \otimes \ket{\text{CFL}}$ and $\ket{\text{FL}} \otimes \ket{\text{FL}}$ is seen at $\alpha=1$, with a jump in the standard deviation of $n(\mathbf{k})$ at $W \approx 0.17$ (Fig.~\ref{fig:half_half_density_cut}). Similar transition for a single Landau level was studied By Barkeshli and McGreevy~\cite{barkeshli2012continuous}. The momentum space occupation function is shown for both regions. At low $|W|$ the occupation is flat (Fig.~\ref{fig:half_half_density_CFL}), while at high $|W|$ a clear Fermi surface is observed (Fig.~\ref{fig:half_half_density_FL}).
+\checkthis{write somewhere that IVC cannot be calcualted}
+
+\section{Results for the $\nu = \frac{1}{4} + \frac{1}{4}$}
+
+For completeness, the $\nu = \frac{1}{2}$ state was studied in an analogous way. Here, no gapped topological order is suspected, however, the valley polarization is suspected to be quantitatively similar to other fillings.
+
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/fourth_fourth_phase_diagram.pdf}
+        \subcaption{}
+        \label{fig:fourth_fourth_phase_diagram}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/fourth_fourth_q0_phase_diagram.pdf}
+        \subcaption{}
+        \label{fig:fourth_fourth_q0_phase_diagram}
+    \end{subfigure}
+    \caption{Phase diagrams of the $\nu = \frac{1}{2}$ filling. VP --- gapless valley-polarized state, FL --- gapless unpolarized state (Fermi liquid or composite Fermi liquid). (a) With $U(q=0)$, (b) without $U(q=0)$.}
+    \label{fig:fourth_fourth_phases}
+\end{figure}
+
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{plots/density_fourth_fourth_std_mesh.pdf}
+    \caption{Standard deviation of $n(\mathbf{k})$ in the BZ as a function of $\alpha$ and $W$, at $\nu=\frac{1}{2}$.}
+    \label{fig:fourth_fourth_density}
+\end{figure}
+
+
+In the Figure~\ref{fig:fourth_fourth_phases} the phase diagram is shown. With $U(q=0)\neq 0$, two phases are present --- VP phase at low $\alpha$ or low $|W|$, and a non-polarized phase otherwise. Both phases are gapless. Following similar reasoning to $\nu=1$ and earlier results, the limit $\alpha=1, W=0$ consists of $\ket{\text{CFL}} \otimes \ket{\text{CFL}}$ state with $\nu=\frac{1}{4} + \frac{1}{4}$, gapless phase at $\alpha=1$ and high $|W|$ is believed to be $\ket{\text{FL}} \otimes \ket{\text{FL}}$, while intermediate parameter values are difficult to clearly distinguish.
+
+Contrary to other fillings, here, the VP state is similar in nature to the unpolarized state. At $W=0$ due to valley polarization, the state will be a CFL at all $\alpha$ favoring valley polarization --- the coupling does not make a difference since in VP case there is no inter-valley interaction anyway. For high $|W|$, again, a Stoner-like transition from valley polarized state to unpolarized state is found.
+
+As additional measure, the momentum space occupation function's $n(\mathbf{k})$ standard deviation in the BZ is shown in the Figure~\ref{fig:fourth_fourth_density}. For low $|W|$ the distribution is flat, while for high $|W|$ a clear Fermi surface is observed. 
+While the valley polarized region is gapless, within this region a clear distinction between flat distribution of $\ket{\text{CFL}}$ and a Fermi surface of $\ket{\text{FL}}$ is seen --- while not studied in more detail, a phase transition similar to the $\nu=1$ filling case is suspected here.
+
+
+\checkthis{Comment on the no q=0 version everywhere}
+
+\checkthis{maybe describe IVC state and composite fermions / composite fermi liquid in the introduction as well a bit?}
+\checkthis{make CFL description in the introduction}
+\checkthis{I could add also some results wihtouth the valley degree of freedom but idk if it is important - it does not seem like they are very interesting}
+\checkthis{I calculated structure factor / density density correlations - but i cannot interpret them consistently}

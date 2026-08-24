@@ -1,174 +1,140 @@
-\documentclass[12pt]{article}
-%\usepackage[utf-8]{inputenc}
-\usepackage[margin=1in]{geometry}
+\documentclass[11pt]{report}
+\usepackage[a4paper, margin=1in]{geometry}
 \usepackage{setspace}
 \usepackage{graphicx}
 \usepackage{amsmath}
 \usepackage{amssymb}
 \usepackage{float}
+\usepackage{caption}
+\usepackage{svg}
+\usepackage{braket}
 
-\onehalfspacing
 
-\title{Fractional Topological Phases in Two-Dimensional Moire Systems}
-\author{Bartłomiej Leks}
-\date{\today}
+\usepackage{tikz}
+\usetikzlibrary{matrix, arrows.meta, positioning, calc}
+
+
+\usepackage{subcaption}
+
+
+\usepackage{xcolor}
+\definecolor{ethblue}{HTML}{215CAF}
+\definecolor{ethpetrol}{HTML}{00596D}
+\definecolor{ethgrey}{HTML}{575757}
+
+
+
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks=true,
+    linkcolor=ethpetrol,
+    citecolor=ethpetrol,
+    urlcolor=ethpetrol
+    }
+
+
+
+\usepackage{titlesec}
+\titleformat{\chapter}[display]
+  {\normalfont\huge\bfseries}
+  {\color{ethgrey}\chaptertitlename\ \thechapter}
+  {20pt}
+  {\Huge}
+
+\titleformat{\section}
+  {\normalfont\Large\bfseries}
+  {\color{ethgrey}\thesection}
+  {1em}{}
+
+\titleformat{\subsection}
+  {\normalfont\large\bfseries}
+  {\color{ethgrey}\thesubsection}
+  {1em}{}
+
+\titleformat{\subsubsection}
+  {\normalfont\normalsize\bfseries}
+  {\thesubsubsection}
+  {1em}{}
+
+
+
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+
+\fancyhead[L]{\color{ethgrey}\nouppercase{\leftmark}}
+\fancyfoot[C]{\color{ethgrey}\thepage}
+
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\color{ethgrey}\hrule width\headwidth height\headrulewidth}
+\renewcommand{\footrulewidth}{0pt}
+
+\renewcommand{\chaptermark}[1]{\markboth{\thechapter.\ #1}{}}
+
+
+
+\usepackage[style=numeric-comp,citetracker=true]{biblatex}
+\addbibresource{bibliography.bib}
+\setlength{\bibitemsep}{1.2\itemsep}
+\AtEveryBibitem{%
+  \ifciteseen
+    {}
+    {\color{red}}
+}
+
+
+\AtEveryBibitem{%
+  \ifboolexpr{ test {\iffieldundef{doi}} }
+    {}
+    {\clearfield{url}}% doi present -> drop url
+}
+
+\AtEveryBibitem{\clearfield{isbn}\clearfield{issn}\clearfield{month}}
+
+
+
+
+\newcommand{\checkthis}[1]{{\color{red}\bfseries [ #1 ]}}
+\newcommand{\question}[1]{{\color{green}\bfseries [??? #1 ???]}}
 
 \begin{document}
 
-    \maketitle
 
-    \section{Model}
-        Model
-        Additional valley antisymmetric flux
-    \section{Methods}
-    \textit{DiagHam} used for exact diagonalization.
-    \begin{itemize}
-        \item Block diagoonalization in momentum space and by valley polarization
-        \item Lanczos algorithm, $n=15$ eigenvalues per valley polarization sector
-    \end{itemize}
+    \begin{titlepage}
 
-    \section{Results --- with $q=0$ interaction term included}
-    \subsection{$\nu = \frac{1}{3} + \frac{1}{3}$}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.8\textwidth]{results/2026-06-18/phase_diagram_third_third/phase_diagram_3x4_alpha<0.png}
-    \end{figure}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.8\textwidth]{results/2026-06-18/phase_diagram_third_third/phase_diagram_3x4_alpha>0.png}
-    \end{figure}
-    \begin{itemize}
-        \item $\nu = \frac{2}{3} + 0$ valley--polarized state, caused by exchange interaction at low alpha and low W. 3-fold degeneracy
-        \item $\nu = \frac{1}{3} + \frac{1}{3}$ valley--unpolarized state, caused by small inter-valley coupling (two coupled $\nu = \frac{1}{3}$ Laughlin states). 9-fold degeneracy
-        \item Gapless state at all other fillings
-    \end{itemize}
-    \subsubsection{transition from $nu=\frac{2}{3} + 0$ with increasing alpha}
-    \begin{figure}[H]
-        \centering
-        \begin{tabular}{cc}
-            \includegraphics[width=0.45\textwidth]{results/2026-06-18/phase_diagram_third_third/pw_alpha_transition_W=0.05_alpha=0.002.png} &
-            \includegraphics[width=0.45\textwidth]{results/2026-06-18/phase_diagram_third_third/pw_alpha_transition_W=0.05_alpha=0.0024.png} \\
-            \includegraphics[width=0.45\textwidth]{results/2026-06-18/phase_diagram_third_third/pw_alpha_transition_W=0.05_alpha=0.0028.png} &
-            \includegraphics[width=0.45\textwidth]{results/2026-06-18/phase_diagram_third_third/pw_alpha_transition_W=0.05_alpha=0.0032.png} \\
-            \includegraphics[width=0.45\textwidth]{results/2026-06-18/phase_diagram_third_third/pw_alpha_transition_W=0.05_alpha=0.0036.png} &
-            \includegraphics[width=0.45\textwidth]{results/2026-06-18/phase_diagram_third_third/pw_alpha_transition_W=0.05_alpha=0.004.png}
-        \end{tabular}
-        \caption{Energies of the lowest eigenstates at low-W, low-alpha regime, while changing alpha. The state in red is the ground state manifold (fixed valley polarization and momentum sectors). Green states are excited states of the same momentum and valley polarization as the gorund state manifold. States in blue are lowest energy states with different quantum numbers. We can see that the ground state manifold just increases in energy --- it survives the transition but is not a ground state anymore.}
-    \end{figure}
-    CURRENTLY WORKING ON GETTING AN ANALYTIC ESTIMATE OF THE TRANSITION
-    \subsubsection{transition from $nu=\frac{2}{3} + 0$ with increasing W}
-    CURRENTLY WORKING ON GETTING AN ANALYTIC ESTIMATE OF THE TRANSITION
-    
-    \subsubsection{Phase winding of the ground state manifold}
-    
-    \subsection{$\nu = \frac{1}{2} + \frac{1}{2}$}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.8\textwidth]{results/2026-06-18/phase_diagram_half_half/phase_diagram_3x4.png}
-    \end{figure}
+        \includegraphics[width=0.4\textwidth]{plots/eth-logo-pos.png}\par
+        \centering 
+        \vspace*{4cm}
+        {\LARGE \bfseries Fractional Topological Phases in Two-Dimensional Moire Systems \par}
+        \vspace{1.5cm}
+        {\Large Bartłomiej Leks \par}
+        \vspace{0.5cm}
+        {\large Master's Thesis \par}
+        \vspace{0.3cm}
+        {\large Department of Materials Science, ETH Zurich \par}
+        \vspace{1cm}
+        {\large \textbf{Supervisors:} \par Dr.\ Glenn Wagner \par Prof.\ Peter Derlet}
+        \vfill
+        {\large \today \par}
+    \end{titlepage}
+    \tableofcontents
+    \newpage
 
-    \subsection{$\nu = \frac{1}{4} + \frac{1}{4}$}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.8\textwidth]{results/2026-06-18/phase_diagram_fourth_fourth/phase_diagram_3x4.png}
-    \end{figure}
+    \chapter{Introduction}
+    \input{introduction.tex}
 
-    \section{Results --- excluding $q=0$ interaction term}
-    \subsection{$\nu = \frac{1}{3} + \frac{1}{3}$}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.8\textwidth]{results/2026-06-18/phase_diagram_third_third_q0/phase_diagram_3x4.png}
-    \end{figure}
+    \chapter{Model}
+    \input{model.tex}
 
-    \subsection{$\nu = \frac{1}{2} + \frac{1}{2}$}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.8\textwidth]{results/2026-06-18/phase_diagram_half_half_q0/phase_diagram_3x4.png}
-    \end{figure}
+    \chapter{Methods}
+    \input{methods.tex}
 
-    \subsection{$\nu = \frac{1}{4} + \frac{1}{4}$}
-    \begin{figure}[H]
-        \centering
-        \includegraphics[width=0.8\textwidth]{results/2026-06-18/phase_diagram_fourth_fourth_q0/phase_diagram_3x4.png}
-    \end{figure}
+    \chapter{Results --- lowest Landau level}
+    \input{results_LLL.tex}
 
+    \newpage
 
-    \section{Moore-Read state}
+    \nocite{*}
+    \printbibliography
 
-    $\tilde{U}_{\tau \tau'}(\mathbf{q}) \to \tilde{U}_{\tau \tau'}(\mathbf{q}) \cdot L_n(\frac{\mathbf{q}^2}{2})$ where $L()$ is the Laguerre polynomial, for Moore-Read state we have $n=1$. The ground state degeneracy should be dependent on the parity of the numer of fermions.
-
-\section{Random Thoughts and calculations}
-    \subsection{MF treatment of transitions dependent on $\alpha$, at $W=0$}
-    I do not think generic stoner like $U_0 N(E_f) > 1$ would work for our case, right? Espetially since it's derivation assumes a fermi liquid-like behaviour (noninteracting fermions with dispersion, fermi velocity etc.). Meanwhile in our case, we work in small $W$ regime where the interaction energy is the leading one(?). I guess we can try a mean field HF-like treatment as a first approximation:
-    \[
-        \hat{H}_{\text{int}} = \frac{1}{2A} \sum_{\mathbf{k}, \mathbf{k'}, \mathbf{q}} \sum_{\tau, \tau'} \tilde{U}_{\tau \tau'}(\mathbf{q}) \Lambda_\tau(\mathbf{k}, \mathbf{q}) \Lambda_{\tau'}(\mathbf{k'}, -\mathbf{q}) d^\dagger_{\mathbf{k},\tau} d^\dagger_{\mathbf{k'},\tau'} d_{\mathbf{k'-q},\tau'} d_{\mathbf{k+q},\tau}
-    \]
-    \[
-    \hat{H}_{HF} = \hat{H}_H + \hat{H}_X
-    \]
-    \[
-        \hat{H}_H = \frac{1}{A} \sum_{\mathbf{k}, \mathbf{k'}} \sum_{\tau, \tau'} \tilde{U}_{\tau \tau'}(0) \Lambda_\tau(\mathbf{k}, 0) \Lambda_{\tau'}(\mathbf{k'}, 0) \langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle d^\dagger_{\mathbf{k'},\tau'} d_{\mathbf{k'},\tau'} \]
-    \[
-        = \frac{1}{A} \sum_{\mathbf{k}, \mathbf{k'}} \sum_{\tau, \tau'} 2\pi(1+\tau \tau' \alpha)d_{SC} \langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle d^\dagger_{\mathbf{k'},\tau'} d_{\mathbf{k'},\tau'}
-    \]
-    \[
-        \hat{H}_X = -\frac{1}{A} \sum_{\mathbf{k}, \mathbf{q}} \sum_{\tau} \tilde{U}_{\tau \tau}(\mathbf{q}) \Lambda_\tau(\mathbf{k}, \mathbf{q}) \Lambda_{\tau}(\mathbf{k} + \mathbf{q}, -\mathbf{q}) \langle d^\dagger_{\mathbf{k+q},\tau} d_{\mathbf{k+q},\tau} \rangle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} 
-    \]
-    \[
-        = -\frac{1}{A} \sum_{\mathbf{k}, \mathbf{q}} \sum_{\tau} \tilde{U}_{\tau \tau}(\mathbf{q}) |\Lambda_\tau(\mathbf{k}, \mathbf{q})|^2 \langle d^\dagger_{\mathbf{k+q},\tau} d_{\mathbf{k+q},\tau} \rangle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau}
-    \]
-    First approximation in flat Landau level might be $\langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle = \text{const.}$ and $\sum_\mathbf{k} \langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle = N_{flux} \nu$ so
-
-    \[
-        \langle \hat{H}_{HF} \rangle = \frac{1}{A} \sum_{\mathbf{k}, \mathbf{k'}} \sum_{\tau, \tau'} 2\pi(1+\tau \tau' \alpha)d_{SC} \langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle \langle d^\dagger_{\mathbf{k'},\tau'} d_{\mathbf{k'},\tau'} \rangle - \frac{1}{A} \sum_{\mathbf{k}, \mathbf{q}} \sum_{\tau} \tilde{U}_{\tau \tau}(\mathbf{q}) |\Lambda_\tau(\mathbf{k}, \mathbf{q})|^2 \langle d^\dagger_{\mathbf{k+q},\tau} d_{\mathbf{k+q},\tau} \rangle \langle d^\dagger_{\mathbf{k},\tau} d_{\mathbf{k},\tau} \rangle
-    \]
-    \[
-        = \frac{1}{A} \sum_{\tau, \tau'} 2\pi(1+\tau \tau' \alpha)d_{SC} N_{flux}^2 \nu_\tau \nu_{\tau'} - \frac{1}{A} \sum_{\mathbf{q}} \sum_{\tau} \tilde{U}_{\tau \tau}(\mathbf{q}) e^{-\mathbf{q}^2/2} N_{flux} \nu_\tau^2 
-    \]
-    \[
-        E_{HF}(\nu_+, \nu_-) = = \frac{2\pi d_{\text{SC}} N_{\text{flux}}^2}{A} \left[ (\nu_+ + \nu_-)^2 + \alpha(\nu_+ - \nu_-)^2 \right] - \frac{N_{\text{flux}} (1+\alpha)}{A} \left( \nu_+^2 + \nu_-^2 \right) \sum_{\mathbf{q}} u_0(\mathbf{q}) e^{-q^2/2}
-    \]
-
-    Now one can calculate 
-    \[
-        E(2\nu, 0) - E(\nu, \nu) = 2\nu^2 \frac{N_{\text{flux}}^2}{A}\left[ 2\alpha \left( 2\pi d_{\text{SC}} \right) - \frac{1+\alpha}{N_{flux}} \sum_{\mathbf{q}} u_0(\mathbf{q}) e^{-q^2/2} \right]
-    \]
-    Let's write $\mathcal{I} = \frac{2\pi}{A} \sum_{\mathbf{q}} u_0(\mathbf{q}) e^{-q^2/2}, \quad \left(\frac{1}{N_{flux}} = \frac{2\pi}{A} \right)$. The Valley-Polarized (VP) state is energetically favored when $E(2\nu, 0) - E(\nu, \nu) < 0$, which yields the condition:
-    \[
-        4\pi d_{\text{SC}} \alpha  - (1+\alpha) \mathcal{I} < 0 \quad \Rightarrow \quad \alpha \left( 4\pi d_{\text{SC}} - \mathcal{I} \right) < \mathcal{I}
-    \]
-    The final behavior of the phase boundary depends explicitly on the sign of the denominator:
-    \begin{align}
-        \alpha &< \frac{1}{\frac{4\pi d_{\text{SC}}}{\mathcal{I}} - 1} \quad \text{for} \quad 4\pi d_{\text{SC}} > \mathcal{I} \\
-        \alpha &> \frac{1}{\frac{4\pi d_{\text{SC}}}{\mathcal{I}} - 1} \quad \text{for} \quad 4\pi d_{\text{SC}} < \mathcal{I}
-    \end{align}
-    
-    In the continuum limit we have $\frac{1}{A} \sum_{\mathbf{q}} \to \int \frac{d^2q}{(2\pi)^2}$, so 
-
-    \[
-        \mathcal{I}(d_{\text{SC}}) = 2\pi\, \int_0^\infty dq \, \tanh(q d_{\text{SC}}) e^{-q^2/2}
-    \]
-e
-    For $d_{\text{SC}} = 6a$, we get $\alpha_c \approx 0.04$ which is the same order of magnitude as the numerical result.
-
-    \subsection{Transition dependent on $W$ at $\alpha=0$}
-
-    Here a stoner-like criterion might work. By the same kind of mean field treatment at $\alpha=0$, approximating occupations by step function:
-
-    \[
-        \frac{\partial^2 E_X}{\partial \delta^2} = -4A \int \frac{d^2q}{(2\pi)^2} u_0(\mathbf{q}) e^{-q^2/2} \int \frac{d^2k}{(2\pi)^2} \delta(\mu(\nu) - \epsilon(\mathbf{k})) \delta(\mu(\nu) - \epsilon(\mathbf{k+q})) \cdot \frac{1}{g_F(\nu)^2} = -4A \int \frac{d^2q}{(2\pi)^2} u_0(\mathbf{q}) e^{-q^2/2} \frac{J(q)}{g_F(\nu)^2}
-    \]
-    where $J(q)$ is the joint density of states and $g_F(\nu)$ is the density of states at the Fermi level. $J(q) \approx g_F(\nu)^2$ for small $q$, so we could write
-
-    \[
-        \frac{\partial^2 E_X}{\partial \delta^2} = -4A \int \frac{d^2q}{(2\pi)^2} u_0(\mathbf{q}) e^{-q^2/2} = -\frac{4A}{(2\pi)^2} \mathcal{I}
-    \]
-    \[
-        \frac{\partial^2 E_kin}{\partial \delta^2} = 2A g_F(\nu)^{-1}
-    \]
-    So the stoner criterion takes form
-    \[
-        \frac{2\mathcal{I}}{(2\pi)^2} g(\mu) > 1 \quad (?)
-    \]
-    Which, with DOS evaluated numerically, gives the transition at $W_c \approx 0.5$ which is the same order of magnitude as the numerical result (NOT SURE OF THE CALCULATIONS YET)
 \end{document}

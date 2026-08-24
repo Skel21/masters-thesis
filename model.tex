@@ -1,0 +1,36 @@
+ 
+    The model used is aimed to emulate Moir\'e materials and is based on the work of Kwan et.\ al.~\cite{kwan2025textured}.
+    For the sake of simplicity of modelling and interpretation, we consider a square lattice with a lattice constant $a=\sqrt{2\pi}$, with effective magnetic field corresponding to the magnetic length $l_B = 1$ and one flux quantum per unit cell. The magnitude of the primitive reciprocal lattice vector is thus $Q = \frac{2\pi}{a} = a = \sqrt{2\pi}$. The single particle hilbert space consists of two Landau levels that carry a valley index $\tau = \pm 1$ and experience opposite magnetic fields $B_\tau = \tau B$. To represent a general moir\'e material the model consists of screened Coulomb interaction projected onto a Landau level (no mixing), and a single-particle potential --- representing the moir\'e potential present in real materials. We consider a torus geometry --- periodic boundary conditions, and treat the magnetic field (potential) in the periodic gauge. The model is additionally modified compared to the original to accommodate projections onto higher Landau levels.
+
+    Throughout this work, we consider two variants of the interaction potential $\tilde{U}_{\tau\tau'}(\mathbf{q})$: the full interaction of Eq.~\ref{eq:interaction}, matching Kwan et al.~\cite{kwan2025textured}, and a variant with $\tilde{U}_{\tau\tau'}(\mathbf{q}=0)=0$ for all $\tau,\tau'$, following the common convention in multicomponent quantum-Hall calculations corresponding to a neutralizing background. \checkthis{this is a bit of a hack --- in reality I realized I should only drop the component that couples to the total charge, and still keep the $\alpha$ dependence of $\tilde{U}_{\tau\tau'}(\mathbf{q}=0)$}.
+
+        \section{Interactions}
+    The interaction is modelled as a screened Coulomb interaction projected onto the Landau level, with a tunable inter-valley interaction strength:
+    \begin{equation}
+        H_{int} = \frac{1}{2A} \sum_{\mathbf{k} \in \text{BZ}, \mathbf{k'} \in \text{BZ}, \mathbf{q} \in \text{all}} \tilde{U}_{\tau \tau'}(\mathbf{q}) \Lambda_\tau(\mathbf{k}, \mathbf{q}) \Lambda_\tau'(\mathbf{k'}, -\mathbf{q}) d^\dagger_{\mathbf{k}, \tau} d^\dagger_{\mathbf{k'}, \tau'} d_{\lfloor \mathbf{k'-q} \rfloor, \tau'} d_{\lfloor \mathbf{k+q} \rfloor, \tau} 
+    \end{equation}\label{eq:interaction}
+    Where $A=L_x L_y$ is the area of the system and
+    \begin{equation}
+        \tilde{U}_{\tau \tau'}(\mathbf{q}) = \frac{2\pi}{q(1+l_{\text{RK}}q)} \tanh(q d_{SC}) (1 + \alpha \tau \tau')
+    \end{equation}
+    is the interaction potential. The $l_{\text{RK}} = 0$ limit of the interaction describes screened Coulomb interaction of a charge placed halfway between two perfectly conducting plates with a distance $d_{\text{SC}}$ between them. Additionally, the Rytova-Keldysh correction, $l_{\text{RK}} \neq=0$, represents the effect of dielectric environment and the polarizability of the sample itself~\cite{rytova2018screened, keldysh2024coulomb, cudazzo2011dielectric}. 
+    For the calculations to come, the $\alpha \in [-1, 1]$ parameter in the last term is crucial as it controls the inter- and intra-valley interaction strength. For $\alpha=0$ the interaction is valley-isotropic, for $\alpha = 1$ only the intra-valley interaction is non-zero (decoupled valleys), while for $\alpha=-1$ there is only inter-valley interaction present. The interaction is projected onto the Landau level through the form factor $\Lambda$ which, in periodic gauge $k \in [0, Q) \times [0, Q)$, for the lowest Landau level is given by
+    \begin{equation}
+        \Lambda_\tau(\mathbf{k}, \mathbf{q}) = e^{-\frac{|\mathbf{q}|^2}{4}} e^{-i \tau \left( -q_x (k_y + \frac{q_y}{2}) - k_x k_y + \lfloor k_x + q_x \rfloor (k_y + q_y) \right) }
+    \end{equation}~\cite{kwan2025textured}.
+    Additionally, it was shown by Abouelkomsan and Fu~\cite{abouelkomsan2025non} that the projection of the interaction onto higher Landau levels, effectively amounts to multiplication of the lowest landau level form factor by the Laguerre polynomial $L_n$ of order $n$ corresponding to the Landau level index, giving
+    \begin{equation}
+        \Lambda_{n,\, \tau}(\mathbf{k}, \mathbf{q}) = \Lambda_\tau(\mathbf{k}, \mathbf{q}) L_n\left( \frac{|\mathbf{q}|^2}{2} \right)
+    \end{equation}
+    For this work, the relevant polynomials are $L_0(x) = 1$ and $L_1(x) = 1 - x$ representing the $n=0$ lowest Landau level (LLL) and the $n=1$ Landau level (1LL) respectively. The $\lfloor \cdot \rfloor$ operator is a modulo operator that maps the momentum back into the Brillouin zone, with the brillouin zone defined as $[0, Q) \times [0, Q)$.
+
+    \section{Single-particle dispersion}
+    The single particle dispersion is modelled as a lowest-harmonic cosine potential compatible with the choice of the magnetic unit cell after Kwan et al.~\cite{PhysRevLett.124.166601} and Bultinck et al.~\cite{PhysRevLett.124.166601}:
+    \begin{equation}
+        \epsilon_\tau(\mathbf{k}) = -\frac{W}{4} \left( \cos k_x a + \cos k_y a \right) \cdot \tau^{(1-\text{sgn}(W))/2}
+    \end{equation}
+    As a modification compared to references, the last term is added to allow for an inverted dispersion in one of the valleys.
+    Thus, positive $W$ corresponds in the same dispersion in both valleys (as in the original model), while negative $W$ corresponds to an inverted dispersion in one of the valleys.
+
+
+
