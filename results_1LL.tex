@@ -52,8 +52,7 @@ The tilted lattices used here are shown in Fig.~\ref{fig:bz_sampling}.
         \includegraphics[width=1.0\textwidth]{plots/non_abelian_N12_phase_diagram.pdf}
         \subcaption{Phase diagram for $N_\phi = 12$ system.}
     \end{subfigure}
-    \caption{The low-$\alpha$ gapped phase could be just a CDW or something similar --- from a rough look at the flux insertion there is no spectral flow, it seems.}
-    \label{fig:non_abelian_gaps}
+    \caption{Relevant spectral gaps and phase diagrams for the $n=1$ Landau level at $\nu = 1$.}\label{fig:non_abelian_gaps}
 \end{figure}
 
 Figure~\ref{fig:non_abelian_gaps} shows the $\Delta_4$ and $\Delta_{36}$ gaps for the two system sizes, as well as the schematic phase diagrams. The suspected results are confirmed: at low $\alpha$ and low $W$ the system is in a gapped, valley-polarized phase --- the IQH phase --- and the gap closes at large $W$ as the system transitions to a gapless Fermi liquid, first valley-polarized, then unpolarized. At $\alpha = 1$, $W = 0$, the system is in a gapped, unpolarized phase with 4-fold and 36-fold degeneracy for $N_\phi = 10$ and $N_\phi = 12$ respectively, which is consistent with the expected non-Abelian FTI phase.
@@ -72,13 +71,13 @@ Figure~\ref{fig:non_abelian_gaps} shows the $\Delta_4$ and $\Delta_{36}$ gaps fo
         \includegraphics[width=\linewidth]{plots/phase_winding_moore_read_W=0.05_alpha=0.07.pdf}
         \caption{$\alpha = 0.07$}\label{fig:phase_winding_cdw}
     \end{subfigure}
-    \caption{Phase winding for $N_\phi = 12$ at $W = 0.05$.}
+    \caption{Phase winding for $N_\phi = 12$ at $W = 0.05$ in two $\Delta_{36}$ gapped phases.}
     \label{fig:phase_winding_1LL}
 \end{figure}
 
 Figure~\ref{fig:phase_winding_moore_read} shows a flux-insertion plot for the $N_\phi = 12$ system at $\alpha = 1$, $W = 0.05$. The 36-fold degenerate ground-state manifold is clearly visible, and spectral flow is seen between groups of states in the manifold. However, the gap between the 36-fold degenerate ground-state manifold and the first excited state is in fact smaller than the spread of energies in the ground-state manifold itself. While this is an indication of questionable stability of the phase, it is not a definitive argument against it, as explained below in Sec.~\ref{sec:gap_ratio}.
 
-Second, at the lower end of the unpolarized phase, the size of the $\Delta_{36}$ gap is also quite large (Fig.~\ref{fig:non_abelian_gaps_12}) --- the region is not adiabatically connected to the $\alpha = 1$, $W = 0$ point. Under inspection of the flux insertion (Fig.~\ref{fig:phase_winding_cdw}), it is seen that the spectral flow is not present in this region. The phase is not topological in nature, likely a charge density wave (CDW), and it is not studied further.
+Second, at the lower end of the unpolarized phase, the size of the $\Delta_{36}$ gap is also quite large (Fig.~\ref{fig:non_abelian_gaps_12}) --- the region is not adiabatically connected to the $\alpha = 1$, $W = 0$ point. Under inspection of the flux insertion (Fig.~\ref{fig:phase_winding_cdw}), it is seen that the spectral flow is not present in this region --- the periodicity is $2\pi$ and the states don't permute. The phase is not topological in nature, likely a charge density wave (CDW), and it is not studied further further.
 
 \subsection{Discussion of the gap ratio}\label{sec:gap_ratio}
 
@@ -92,11 +91,11 @@ indicates a perfectly degenerate ground state~\cite{kwan2024could}. A condition 
 \]
 is often used to indicate a good candidate for a topological phase.
 
-Here, I argue that this condition might be too strong when considering a topological insulator made of two decoupled copies of a Chern insulator, $\ket{\mathrm{FTI}} = \ket{\mathrm{FCI}}_- \otimes \ket{\overline{\mathrm{FCI}}}_+$.
+Here, I argue that this condition might be too strong when considering a topological insulator made of two decoupled copies of a Chern insulator, $\ket{\mathrm{FTI}} = \ket{\mathrm{FCI}}_- \otimes \ket{\mathrm{FCI}}_+$.
 
-Let $E_L$ and $E_H$ be the energies of the lowest and highest states in the $n$-fold degenerate ground-state manifold of the single $\ket{\mathrm{FCI}}_\pm$, and let $E_E$ be the energy of the first excited state. Then $\Delta_n^{\mathrm{FCI\pm}} = E_E^{\mathrm{FCI}} - E_H^{\mathrm{FCI}}$ and $\delta_n^{\mathrm{FCI\pm}} = E_H^{\mathrm{FCI}} - E_L^{\mathrm{FCI}}$, and the ratio of interest is
+Let $E_L$ and $E_H$ be the energies of the lowest and highest states in the $n$-fold degenerate ground-state manifold of the single $\ket{\mathrm{FCI}}_\pm$, and let $E_E$ be the energy of the first excited state. Then $\Delta_n^{\mathrm{FCI}} = E_E^{\mathrm{FCI}} - E_H^{\mathrm{FCI}}$ and $\delta_n^{\mathrm{FCI}} = E_H^{\mathrm{FCI}} - E_L^{\mathrm{FCI}}$, and the ratio of interest is
 \[
-    \frac{\delta_n^{\mathrm{FCI\pm}}}{\Delta_n^{\mathrm{FCI\pm}}} = \frac{E_H^{\mathrm{FCI}} - E_L^{\mathrm{FCI}}}{E_E^{\mathrm{FCI}} - E_H^{\mathrm{FCI}}}.
+    \frac{\delta_n^{\mathrm{FCI}}}{\Delta_n^{\mathrm{FCI}}} = \frac{E_H^{\mathrm{FCI}} - E_L^{\mathrm{FCI}}}{E_E^{\mathrm{FCI}} - E_H^{\mathrm{FCI}}}.
 \]
 The condition imposed for a good topological state is
 \[
@@ -122,7 +121,7 @@ which, with the condition imposed above for the FCI, gives simply
     \Delta_{n^2}^{\mathrm{FTI}} > 0.
 \]
 
-Thus, the condition for existence of a non-zero gap in the FTI constructed from two decoupled FCI states is equivalent to the condition for a good topological state in the underlying FCI. The condition $\delta_n^{\mathrm{FTI}}/\Delta_n^{\mathrm{FTI}} < 1$ is much stronger than that.
+Thus, the condition for existence of a non-zero gap in the FTI constructed from two decoupled FCI states is equivalent to the condition for a good topological state in the underlying FCI. The condition $\delta_{n^2}^{\mathrm{FTI}}/\Delta_{n^2}^{\mathrm{FTI}} < 1$ is much stronger than that.
 
 \subsection{Stabilizing the FTI phase --- screening dependence}
 
@@ -146,4 +145,4 @@ Since the non-Abelian FTI phase has a large spread of energies in the ground-sta
 
 In Fig.~\ref{fig:1LL_stability_n6}, the dependence of the $\delta_6/\Delta_6$ ratio on the screening parameters is shown. It is seen that the ratio decreases monotonically with increasing $d_{\mathrm{SC}}$ and $l_{\mathrm{RK}}$. However, comparing with a similar plot for the single-valley $\nu=1/3$ FCI state (Fig.~\ref{fig:LLL_stability_n3}), the ratio is much larger for the $\nu=1/2$ Moore--Read state. While for the lowest Landau level FCI it is consistently close to 0, for the $n=1$ Landau level it does not fall below the $0.5$ threshold. This indicates that the screening of the Coulomb interaction is not sufficient to stabilize the non-Abelian FTI phase.
 
-However, it is important to note that the stability of the FTI phase shown here at the $\alpha=1$ point does not correspond to the stability of the FTI phase in the full $(\alpha, W)$ phase diagram. In Figure~\ref{fig:third_third_screening_alpha_vs_lRK_phase_diagram_b} a maximum of inter--valley coupling stability was seen at $l_{\mathrm{RK}} \neq 0$, while here, the $\delta/\Delta$ ratio decreases monotonically with increasing $l_{\mathrm{RK}}$. This furhter shows the importance of considering the inter-valley interaction.
+However, it is important to note that the stability of the FTI phase shown here at the $\alpha=1$ point does not directly correspond to the extent of the FTI phase in the full $(\alpha, W)$ phase diagram. In Figure~\ref{fig:third_third_screening_alpha_vs_lRK_phase_diagram_b} a maximum of inter--valley coupling stability was shown at $l_{\mathrm{RK}} \neq 0$, while here, the $\delta/\Delta$ ratio decreases monotonically with increasing $l_{\mathrm{RK}}$. This furhter shows the importance of taking the inter-valley interaction into account.

@@ -2,28 +2,28 @@
 \section{Limitations}
 
 Several limitations of the present work should be kept in mind when interpreting
-the results of Chapter~4.
+the results of Chapter~\ref{ch:results} and Chapter~\ref{ch:results_1LL}.
 
 \paragraph{Finite-size effects.} All results are obtained by exact diagonalization
 on a single system size (a $3 \times 4$ torus for the phase diagrams, with a
-separate tilted geometry for the momentum-occupation calculations of \S4.3.3
-onward). As discussed in \S3.4, a rigorous identification of topological order
-requires finite-size scaling -- confirming that the many-body gap remains open and
-the ground-state degeneracy persists as the system size increases -- which was not
+separate tilted geometry for the momentum-occupation calculations of \S\ref{sec:third_third_intermediate_phases}
+onward). As discussed in \S\ref{sec:recognition}, a rigorous identification of topological order
+requires finite-size scaling --- confirming that the many-body gap remains open and
+the ground-state degeneracy persists as the system size increases --- which was not
 performed here due to computational cost. The phase boundaries reported in
-Chapter~4 should therefore be understood as consistent with, rather than a
+Chapter~\ref{ch:results} and Chapter~\ref{ch:results_1LL} should therefore be understood as consistent with, rather than a
 definitive proof of, the identified phases; in particular, the precise location of
 phase boundaries (e.g.\ $\alpha_c$, $W_c$) is expected to shift with system size,
 even where the qualitative phase structure is robust.
 
 \paragraph{Momentum grid choice.} Related to the above, the untilted rectangular
-momentum grid used by default (\S3.2) is known to bias the competition between
+momentum grid used by default (\S\ref{sec:tilted_bc}) is known to bias the competition between
 topological and charge-density-wave-like states relative to more isotropic tilted
-grids \cite{Lauchli2013Hierarchy}. While this choice was made for simplicity and
+grids~\cite{lauchli2013hierarchy}. While this choice was made for simplicity and
 consistency across the phase diagrams, it means the reported phase boundaries may
 not be fully representative of the thermodynamic-limit behavior.
 
-\paragraph{Treatment of the $q=0$ interaction component.} As noted in \S2.1, the
+\paragraph{Treatment of the $q=0$ interaction component.} As noted in \S\ref{sec:interactions}, the
 ``background-subtracted'' variant of the interaction removes the full
 $q \to 0$ component of $\tilde{U}_{\tau\tau'}(q)$ for all $\tau, \tau'$, rather than
 only the part that couples to the total charge density. This is a simplification of
@@ -35,8 +35,7 @@ future work.
 
 \paragraph{Model scope.} The model of Chapter~2 captures the two-valley
 Landau-level physics of Moir\'e TMDs at a single magic angle, projected onto a
-single (Landau-level-like) band per valley, and neglects Landau-level mixing beyond
-the explicit $n=0/n=1$ projection of \S4. Real Moir\'e TMD flat bands deviate from
+single (Landau-level-like) band per valley, and neglects Landau-level mixing. Real Moir\'e TMD flat bands deviate from
 ideal Landau levels in ways not captured by this construction (e.g.\ non-uniform
 Berry curvature, deviations of the form factor from the ideal Gaussian form), and a
 quantitative comparison to specific materials (e.g.\ MoTe$_2$ at
