@@ -76,11 +76,11 @@
 \usepackage[style=numeric-comp,citetracker=true]{biblatex}
 \addbibresource{bibliography.bib}
 \setlength{\bibitemsep}{1.2\itemsep}
-\AtEveryBibitem{%
-  \ifciteseen
-    {}
-    {\color{red}}
-}
+%\AtEveryBibitem{%
+%  \ifciteseen
+%    {}
+%    {\color{red}}
+%}
 
 
 \AtEveryBibitem{%
@@ -105,7 +105,7 @@
         \includegraphics[width=0.4\textwidth]{plots/eth-logo-pos.png}\par
         \centering 
         \vspace*{4cm}
-        {\LARGE \bfseries Fractional Topological Phases in Two-Dimensional Moire Systems \par}
+        {\LARGE \bfseries Fractional Topological Phases in Two-Dimensional Moir\'e Systems \par}
         \vspace{1.5cm}
         {\Large Bartłomiej Leks \par}
         \vspace{0.5cm}
@@ -117,24 +117,38 @@
         \vfill
         {\large \today \par}
     \end{titlepage}
+
+    \begin{abstract}
+      abstract
+    \end{abstract}
     \tableofcontents
     \newpage
 
-    \chapter{Introduction}
+    \chapter{Introduction}\label{ch:introduction}
     \input{introduction.tex}
 
-    \chapter{Model}
+    \chapter{Model}\label{ch:model}
     \input{model.tex}
 
-    \chapter{Methods}
+  \chapter{Methods}\label{ch:methods}
     \input{methods.tex}
 
-    \chapter{Results --- lowest Landau level}
+    \chapter{Results --- lowest Landau level}\label{ch:results}
     \input{results_LLL.tex}
 
+    \chapter{Results --- first excited Landau level}\label{ch:results_1LL}
+    \input{results_1LL.tex}
+
+
+    \chapter{Conclusions and outlook}\label{ch:conclusions}
+    \input{conclusions.tex}
     \newpage
 
-    \nocite{*}
+    %\nocite{*}
     \printbibliography
+
+    \newpage
+    \appendix
+    \input{notes.tex}
 
 \end{document}
