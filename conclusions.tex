@@ -1,0 +1,96 @@
+
+\section{Limitations}
+
+Several limitations of the present work should be kept in mind when interpreting
+the results of Chapter~4.
+
+\paragraph{Finite-size effects.} All results are obtained by exact diagonalization
+on a single system size (a $3 \times 4$ torus for the phase diagrams, with a
+separate tilted geometry for the momentum-occupation calculations of \S4.3.3
+onward). As discussed in \S3.4, a rigorous identification of topological order
+requires finite-size scaling -- confirming that the many-body gap remains open and
+the ground-state degeneracy persists as the system size increases -- which was not
+performed here due to computational cost. The phase boundaries reported in
+Chapter~4 should therefore be understood as consistent with, rather than a
+definitive proof of, the identified phases; in particular, the precise location of
+phase boundaries (e.g.\ $\alpha_c$, $W_c$) is expected to shift with system size,
+even where the qualitative phase structure is robust.
+
+\paragraph{Momentum grid choice.} Related to the above, the untilted rectangular
+momentum grid used by default (\S3.2) is known to bias the competition between
+topological and charge-density-wave-like states relative to more isotropic tilted
+grids \cite{Lauchli2013Hierarchy}. While this choice was made for simplicity and
+consistency across the phase diagrams, it means the reported phase boundaries may
+not be fully representative of the thermodynamic-limit behavior.
+
+\paragraph{Treatment of the $q=0$ interaction component.} As noted in \S2.1, the
+``background-subtracted'' variant of the interaction removes the full
+$q \to 0$ component of $\tilde{U}_{\tau\tau'}(q)$ for all $\tau, \tau'$, rather than
+only the part that couples to the total charge density. This is a simplification of
+the standard neutralizing-background convention, and the $\alpha$-dependence of the
+discarded component is in principle physical. The qualitative difference between the
+two phase diagrams shown throughout Chapter~4 (with and without this subtraction)
+suggests this choice is not negligible, and a more careful treatment is left for
+future work.
+
+\paragraph{Model scope.} The model of Chapter~2 captures the two-valley
+Landau-level physics of Moir\'e TMDs at a single magic angle, projected onto a
+single (Landau-level-like) band per valley, and neglects Landau-level mixing beyond
+the explicit $n=0/n=1$ projection of \S4. Real Moir\'e TMD flat bands deviate from
+ideal Landau levels in ways not captured by this construction (e.g.\ non-uniform
+Berry curvature, deviations of the form factor from the ideal Gaussian form), and a
+quantitative comparison to specific materials (e.g.\ MoTe$_2$ at
+$\theta \approx 1.89^\circ$) would require using the actual continuum-model form
+factors rather than the idealized Landau-level ones used here.
+
+\paragraph{Unresolved intermediate phases.} Several regions of the phase diagrams
+-- most notably the narrow 3-fold-degenerate region near the FTI--gapless boundary
+at $\nu = 2/3$ (\S4.3.3), the candidate IVC regions inferred from flat momentum
+occupation at $\nu = 2/3$ and $\nu = 1$ (\S4.3.3, \S4.4), and the
+$|\mathrm{CFL}\rangle \otimes |\mathrm{CFL}\rangle$--$|\mathrm{FL}\rangle \otimes
+|\mathrm{FL}\rangle$ transition at $\nu = 1$ (\S4.4) -- were identified only
+indirectly, through the degeneracy/spectral-flow/occupation diagnostics of \S3.4,
+rather than through direct comparison with model wavefunctions. A more conclusive
+identification of these states would require computing their overlap with
+candidate trial wavefunctions (e.g.\ the Halperin $(1,1,2)$ state), which was
+beyond the scope of this thesis.
+
+
+% ------------------------------------------------------------
+% 4. CONCLUSIONS
+% Final chapter (or final section of Ch. 5, as preferred).
+% ------------------------------------------------------------
+
+\section{Conclusions}
+
+This thesis studied a two-valley Landau-level model designed to capture the
+essential physics of correlated and topological phases in Moir\'e transition metal
+dichalcogenides, using exact diagonalization on finite tori. At filling
+$\nu = 2/3$, we found clear numerical evidence --- via ground-state degeneracy and
+spectral flow --- for a valley-polarized fractional quantum Hall
+state at small inter-valley coupling $\alpha$ and small bandwidth $W$, and for a
+valley-unpolarized fractional topological insulator built from two time-reversed
+Laughlin copies at large $\alpha$, consistent with theoretical expectations. Both
+phases were shown to survive a finite bandwidth and finite screening length, with
+stability boundaries that depend systematically on $d_{\mathrm{SC}}$ and
+$l_{\mathrm{RK}}$. At $\nu = 1$ and $\nu = 1/2$, we recovered the expected
+valley-polarized integer quantum Hall state and decoupled composite-Fermi-liquid
+pairs, respectively, together with signatures of an intervening
+inter-valley-coherent regime at large $|W|$.
+
+An analytic Hartree--Fock treatment of the valley-depolarization transition,
+developed for both the $\alpha$-driven and $W$-driven cases, reproduced the correct
+qualitative trends of the numerical phase diagrams -- including the direction of
+the phase boundaries with $d_{\mathrm{SC}}$ and $l_{\mathrm{RK}}$ -- while
+systematically overestimating the critical $\alpha_c$ and $W_c$ by up to an order
+of magnitude, a discrepancy attributed largely to the circular-Fermi-surface
+approximation used in the mean-field derivation.
+
+Taken together, these results support the picture of Moir\'e TMDs as a
+magnetic-field-free platform for realizing both fractional Chern insulator and
+fractional topological insulator physics, and provide a systematic account of how
+this physics competes with bandwidth, inter-valley coupling, and dielectric
+screening within a single, tunable model. The main open questions raised by this
+work --- the precise nature of the intermediate phases identified only indirectly in
+\S4.3--4.4, the role of finite-size effects, and the extension to non-Abelian
+Moore--Read-like states in the first excited Landau level --- are left for future work.
