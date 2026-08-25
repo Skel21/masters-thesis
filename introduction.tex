@@ -1,0 +1,223 @@
+\section{Moir\'e materials \& Transition metal dichalcogenides}
+
+Moir\'e materials are two-dimensional heterostructures formed by stacking atomically thin layers with a small lattice mismatch or twist angle between them. Due to this misalignment, a spatial interference pattern is formed between the two lattices, giving rise to an artificial crystal with a substantially larger lattice constant --- the Moir\'e lattice. In the small-angle approximation, the Moir\'e lattice constant is $a_m \approx a_0 / \theta$, so for typical twist angles $\theta \in (0, 4^\circ)$ the lattice constant increases by roughly an order of magnitude relative to $a_0$. This in turn leads to effective folding of the Brillouin zone (BZ) of the original material, and emergence of Moir\'e bands in the band structure. The significant separation of length scales between the Moir\'e lattice and the underlying atomic lattice, the effect of interactions is strongly enhanced relative to the kinetic energy, giving rise to a wide range of strongly correlated phases of matter.
+
+Additionally, their properties can be very widely tuned through:
+\begin{itemize}
+    \item A wide choice of constituent 2D materials --- graphene, transition metal dichalcogenides (TMDs), transition metal oxides~\cite{li2025twist} --- and their combination into multilayer structures
+    \item The twist angle between layers, which sets the Moir\'e lattice constant $a_m$, the interlayer hybridization, and hence the band structure
+    \item Strain engineering~\cite{escudero2024designing}
+    \item Screening of Coulomb interactions via dielectric environment engineering~\cite{zhao2023probing}
+    \item Continuous \textit{in situ} control of the electron filling of each Moir\'e unit cell
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{plots/experimental_setup.png}
+    \caption{Typical experimental setup for a Moir\'e device: the active material is sandwiched between two dielectric spacers and two conducting gates. Adapted from~\cite{Cai2023}.}
+    \label{fig:experimental_setup}
+\end{figure}
+
+The last two points are easiest to understand in terms of a typical device geometry (Fig.~\ref{fig:experimental_setup}), where the material is sandwiched between two spacers and two conducting gates~\cite{Cai2023}. The dielectric properties of the spacers and the distance of the gates from the sample directly affects the screening of electron--electron interactions within the active layer. Independently, because the Moir\'e unit cell is so much larger than the atomic one, tuning the gate potential allows the electron filling of each Moir\'e unit cell to be continuously controlled, enabling doping on the order of $10$ electrons per unit cell.
+
+This combination of enhanced interactions and wide tunability of properties has made Moir\'e materials a central topic in modern condensed matter physics.
+
+\subsection{Transition metal dichalcogenides}
+While the field of Moir\'e materials was catalyzed by the discovery of superconductivity and correlated insulating behavior in twisted bilayer graphene (TBG)~\cite{cao2018correlated, cao2018unconventional}, semiconducting materials joined the field shortly after~\cite{mak2022semiconductor}. A defining feature of Moir\'e materials is the emergence of flat bands, caused by the large Moir\'e lattice constant and the associated BZ folding, which confines electrons and suppresses their kinetic energy. In graphene-based heterostructures, however --- described by massless Dirac fermions with no energy gap~\cite{novoselov2005two} --- flat bands emerge only at special ``magic'' angles. In semiconductors, the nonzero bandgap relaxes this condition~\cite{wu2018hubbard}: magic angles can still be identified~\cite{devakul2021magic}, but the material remains gapped over a wide, continuously tunable range of twist angles. Within this class, homobilayers of TMDs are of particular interest because of their
+\begin{itemize}
+    \item Relatively simple structure (two layers of the same material)
+    \item Relatively low disorder density
+    \item Direct bandgap
+    \item Spin-valley locking~\cite{mak2022semiconductor}
+\end{itemize}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[b]{0.1\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/tmd1.png}
+        \subcaption{}\label{fig:tmd_struct1}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.3\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/image8.png}
+        \subcaption{}\label{fig:tmd_struct2}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.4\textwidth}
+        \centering
+        \includegraphics[width=1.0\textwidth]{plots/spin_valley.png}
+        \subcaption{}\label{fig:tmd_spin_valley}
+    \end{subfigure}
+    \caption{Structure of a transition metal dichalcogenide monolayer. (a) Atomic coordination: the transition metal (red) sits in trigonal-prismatic coordination with the chalcogen atoms (blue). (b) Top-view real-space structure of a TMD monolayer in the 2H phase. (c) Valence-band maxima and conduction-band minima near the $K$ and $K'$ points of the Brillouin zone; arrows indicate electron spin.}
+    \label{fig:tmd_general}
+\end{figure}
+
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}[t]{0.55\textwidth}
+        \centering
+        \includesvg[width=\textwidth]{plots/moire.svg}
+        \subcaption{}
+        \label{fig:moire_real}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[t]{0.4\textwidth}
+        \centering
+        \includesvg[width=\textwidth]{plots/reciprocal1.svg}
+        \subcaption{}
+        \label{fig:moire_reciprocal}
+    \end{subfigure}
+    \caption{Real- and reciprocal-space structure of a twisted TMD homobilayer, adapted from~\cite{pan2020band}. (a) Real-space Moir\'e superlattice; cyan, red, and orange dots mark the $\mathcal{R}_M^M$, $\mathcal{R}_M^X$, and $\mathcal{R}_X^M$ local stacking registries (inset), with the Moir\'e unit cell shown in cyan. (b) Hexagonal Brillouin zones of the top (red) and bottom (blue) monolayers and of the twisted bilayer (black), for twist angle $\theta$.}
+    \label{fig:moire_structure}
+\end{figure}
+
+TMD monolayers consist of three atomic planes: a central plane of transition-metal atoms sandwiched between two planes of chalcogen atoms. The two common structural phases are 1T and 2H, with 2H being the stable phase for most commonly studied group-VI TMDs (Fig.~\ref{fig:tmd_struct1}). In the 2H phase the transition metal sits in trigonal-prism coordination, forming a honeycomb lattice with $\text{D}_{3h}$ symmetry (broken inversion symmetry compared to the bulk material) (Fig.~\ref{fig:tmd_struct2}). This real-space honeycomb structure gives rise, upon twisting two layers, to the triangular Moir\'e superlattice and folded hexagonal Brillouin zone shown in Fig.~\ref{fig:moire_structure}. As in graphene, the low-energy physics can be described near the two time-reversal-conjugate corners $K$ and $-K$ of the hexagonal first Brillouin zone, where the valence-band maxima and conduction-band minima are located~\cite{coehoorn1987electronic, kormanyos2015k}. Xiao et al.~\cite{xiao2012coupled} modeled this with a two-band Hamiltonian in which electrons behave as massive Dirac fermions. The bands near the $K$-points are built from partially filled transition-metal $d$-orbitals,
+\begin{equation}
+    | \phi_c \rangle = | d_{z^2} \rangle, \qquad | \phi_v^\tau \rangle = \frac{1}{\sqrt{2}} \left( | d_{x^2 - y^2} \rangle + i \tau | d_{xy} \rangle \right),
+    \label{eq:tmd_orbitals}
+\end{equation}
+where $\tau = \pm 1$ is the valley index and the subscripts $c$, $v$ denote the conduction and valence bands, respectively. The conduction band, built from $L=0$ orbitals, is (approximately) spin-degenerate, whereas the valence band, built from $L=2$ orbitals, is split by strong spin-orbit coupling --- a consequence of the broken inversion symmetry. This produces spin-valley locking: the low-energy valence-band physics at each valley can be described by a single spin species, with opposite spins locked to opposite valleys, so that the overall model remains time-reversal invariant. Due to the large separation of the valleys in momentum space and spin-valley locking, inter-valley scattering is suppressed,and charge is separately conserved within each valley. This yields an emergent $U(1) \times U(1)$ symmetry under which the valley index $\tau$ is a good quantum number.
+
+\section{Hall effect and topological order}
+\subsection{Integer Quantum Hall effect}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{plots/hall_effect.png}
+    \caption{Hall resistance $R_H$ versus magnetic field, showing the quantum Hall plateaus (labeled by filling fraction). Adapted from~\cite{stormer1992two}.}
+    \label{fig:hall_effect}
+\end{figure}
+
+The physics of correlated phases in Moir\'e materials turns out to be closely tied to the physics of the quantum Hall effect: the response of a two-dimensional electron gas to a perpendicular magnetic field. Classically, electrons in a 2D system subject to a magnetic field simply experience a Lorentz force, resulting in an off-diagonal Hall conductivity $\sigma_{xy} \propto B$. At low temperature and high field, however, the response becomes quantum mechanical. The magnetic field enters the single-particle Hamiltonian through the vector potential,
+\begin{equation}
+    \hat{H} = \frac{1}{2m} \left( \hat{\mathbf{p}} - e \mathbf{A} \right)^2, \qquad B = \nabla \times \mathbf{A}.
+    \label{eq:landau_hamiltonian}
+\end{equation}
+In an appropriate gauge (e.g., the Landau gauge $\mathbf{A} = (0, Bx, 0)$ or the symmetric gauge $\mathbf{A} = (-\tfrac{1}{2}By, \tfrac{1}{2}Bx, 0)$), the Schr\"odinger equation is solved exactly and the spectrum is found to be quantized into equally spaced, highly degenerate Landau levels (LLs). This degeneracy reflects a complete quenching of the kinetic energy --- a result analogous to the flattening of Moir\'e bands discussed above. The degeneracy of each Landau level is proportional to the number of flux quanta threading the system, and the filling factor is defined as $\nu = N_e / N_\phi$, where $N_\phi$ is the number of flux quanta and $N_e$ the number of electrons; varying the magnetic field therefore changes the LL filling. Linear response theory then shows that the Hall conductivity is quantized,
+\begin{equation}
+    \sigma_{xy} = \nu \, \frac{e^2}{h}, \qquad \nu \in \mathbb{Z},
+    \label{eq:iqhe_conductivity}
+\end{equation}
+producing the characteristic plateaus of Fig.~\ref{fig:hall_effect} as a function of magnetic field. This effect, discovered in 1980~\cite{von1986quantized}, is known as the Integer Quantum Hall Effect (IQHE).
+
+Crucially, the IQHE is robust against local disorder and weak perturbations, because it is topological in origin: the quantized Hall conductivity in Eq.~\eqref{eq:iqhe_conductivity} can be related directly to a topological invariant of the system, the Chern number, as we now discuss.
+
+\subsection{Berry phase and Chern number}
+Let $\hat{H}(\mathbf{R}(t))$ be a Hamiltonian depending on a time-dependent parameter set $\mathbf{R}(t)$, and let $\ket{\Psi(0)} = \ket{n(\mathbf{R}(0))}$ be a non-degenerate eigenstate at $t=0$, separated from all other eigenstates by a finite energy gap. The time evolution of $\ket{\Psi}$ obeys the time-dependent Schr\"odinger equation,
+\begin{equation}
+    i \hbar \frac{\partial}{\partial t} \ket{\Psi(t)} = \hat{H}(\mathbf{R}(t)) \ket{\Psi(t)}.
+\end{equation}
+By the adiabatic theorem, if the parameters vary slowly compared with the inverse energy gap, $\ket{\Psi(t)}$ remains an instantaneous eigenstate of $\hat{H}$ up to a phase,
+\begin{equation}
+    \ket{\Psi(t)} = e^{i \gamma(t)} \ket{n(\mathbf{R}(t))},
+\end{equation}
+with
+\begin{equation}
+    \gamma(t) = -\frac{1}{\hbar} \int_0^t E_n(\mathbf{R}(t')) \, dt' + \int_{\mathbf{R}(0)}^{\mathbf{R}(t)} \mathbf{A}(\mathbf{R}) \cdot d\mathbf{R}.
+    \label{eq:berry_phase_total}
+\end{equation}
+The first term in Eq.~\eqref{eq:berry_phase_total} is the familiar dynamical phase, accumulated from the energy of the state during time evolution. The second term is the geometric Berry phase: it is independent of how fast the path in paramter space is traversed, but depends on the path itself. It is expressed as a line integral of the Berry connection,
+\begin{equation}
+    \mathbf{A}(\mathbf{R}) = i \langle \Psi(\mathbf{R}) | \nabla_\mathbf{R} | \Psi(\mathbf{R}) \rangle,
+\end{equation}
+with the associated Berry curvature $\mathbf{\Omega}(\mathbf{R}) = \nabla_\mathbf{R} \times \mathbf{A}(\mathbf{R})$. Crucially, when the path in parameter space is closed, the system returns to its initial state, so the Berry phase can only be a multiple of $2\pi$; writing it as a surface integral of the Berry curvature over the enclosed surface $S$ gives
+\begin{equation}
+    \gamma = \int_S \mathbf{\Omega}(\mathbf{R}) \cdot d\mathbf{S} = 2\pi C,
+    \label{eq:chern_number}
+\end{equation}
+where $C \in \mathbb{Z}$ is the Chern number. Because $C$ is an integer, it cannot change continuously, and can change only when the energy gap to the reference state closes --- hence its topological robustness. While the Berry phase is generally gauge-dependent, both the Berry phase and the Chern number are gauge-invariant for a closed path, which is what makes $C$ a well-defined topological invariant.
+
+Although introduced here in general terms, this formalism directly reproduces the IQHE: for electrons in a magnetic field, the Berry curvature corresponds to the magnetic field itself, the Berry connection to the vector potential, the Berry phase to the Aharonov--Bohm phase, and the Chern number to the number of flux quanta threading the system. Linear response theory then shows that the Chern number determines the Hall conductivity directly,
+\begin{equation}
+    \sigma_{xy} = C \, \frac{e^2}{h},
+    \label{eq:chern_conductivity}
+\end{equation}
+so that $C = \nu$ in the IQHE of Eq.~\eqref{eq:iqhe_conductivity}~\cite{tong2016lectures}.
+
+This construction generalizes to a degenerate subspace: the Berry connection becomes matrix-valued over the degenerate manifold, and the corresponding \textit{first} Chern number --- one member of a larger family of topological invariants --- is
+\begin{equation}
+    C_1 = \frac{1}{2\pi} \int_S \text{Tr}\big(\mathbf{\Omega}(\mathbf{R})\big) \cdot d\mathbf{S}, \qquad \mathbf{\Omega}(\mathbf{R}) = \nabla_\mathbf{R} \times \mathbf{A}(\mathbf{R}) - i \, \mathbf{A}(\mathbf{R}) \times \mathbf{A}(\mathbf{R}),
+\end{equation}
+with $\mathbf{\Omega}$ now the non-abelian Berry curvature~\cite{tong2016lectures}.
+
+\subsection{Fractional quantum Hall effect}
+In sufficiently clean samples at strong magnetic field, additional Hall plateaus appear at \emph{fractional} LL fillings --- the Fractional Quantum Hall Effect (FQHE, Fig.~\ref{fig:hall_effect}). Unlike the IQHE, the FQHE cannot be explained for non-interacting electrons: it is a direct consequence of electron--electron interactions, which lift the massive degeneracy of many-body states within a partially filled LL.
+
+As with the IQHE, the FQHE plateaus can be related to a Chern number, provided the ground-state degeneracy characteristic of the fractional state is properly accounted for. The most prominent plateaus occur at filling $\nu = 1/q$ with $q$ an odd integer (Fig.~\ref{fig:hall_effect}). While no closed-form solution exists for the Coulomb problem, the Laughlin wavefunction~\cite{laughlin1983anomalous} --- the exact ground state of a simplified pseudopotential Hamiltonian --- captures the essential physics and, numerically, retains remarkably high overlap with the ground state of the realistic Coulomb problem.
+
+More generally, at filling $\nu = p/q$ with $p, q \in \mathbb{N}$, $q$ odd, and $\gcd(p,q)=1$, the algebra of magnetic translation operators~\cite{bernevig2012emergent} fixes the ground-state degeneracy to $q^g$, where $g$ is the genus of the manifold on which the system is defined; this thesis uses a torus, $g=1$, throughout. Each of the $q^g$ degenerate ground states contributes equally to the Chern number and hence to the Hall conductivity, giving the fractional quantization
+\begin{equation}
+    \sigma_{xy} = \frac{1}{q} \, \frac{e^2}{h}
+\end{equation}
+for each ground state.
+
+Beyond quantized conductivity, the FQHE hosts anyonic excitations: quasiparticle and quasihole excitations carrying a fraction of the electron charge and obeying fractional exchange statistics. When two indistinguishable quasiparticles are exchanged, their wavefunction can acquire an arbitrary phase, $\Psi \to e^{i\theta}\Psi$. In three dimensions, a closed exchange path can always be continuously deformed to a trivial one, forcing $\theta$ to be a multiple of $\pi$ --- giving a phase of $\pi$ or a minus sign for fermions, and $0$ or plus sign for bosons. In two dimensions, however, this deformation is topologically obstructed --- a path encircling another particle cannot be shrunk past it --- so the exchange phase can take any value $\theta \in [0, 2\pi)$. Such particles, exhibiting exchange phase distinct from fermions and bosons, are called abelian anyons. If instead the local Hilbert space of a quasiparticle is higher-dimensional, exchange corresponds to a more general unitary transformation $\mathbf{U}$ acting on that space, $\Psi \to \mathbf{U}\Psi$; since such exchanges generally do not commute, these are \textit{non-abelian} anyons. Because the FQHE's topological character is robust to perturbations, so is the anyonic statistics of its quasiparticles, making these systems attractive as a platform for topological quantum computation --- a notion of using the non-abelian anyons as qubits, where execution of quantum gates would correspond to simple spatial exchanges of the anyons --- ``braiding''~\cite{das2005topologically, nayak2008non}.
+        In this aspect, Laughlin states in a FQH system have abelian statistics with the exchange phase $\theta = \frac{\pi}{q}$ for $\nu = \frac{1}{q}$.
+
+\subsection{Composite fermions and the composite Fermi liquid}
+A complementary picture of the FQHE, particularly useful at even-denominator fillings such as $\nu = 1/2$, is provided by composite fermions~\cite{jain1989composite}. Here each electron binds an even number $2p$ of magnetic flux quanta, forming an emergent fermionic quasiparticle. This flux attachment can be implemented formally by a singular gauge transformation, giving a mean-field description in which instead of electrons, we consider composite fermions moving in a reduced effective field
+\begin{equation}
+    B_{\mathrm{eff}} = B - 2p\phi_0 n_e,
+\end{equation}
+where $n_e$ is the electron density and $\phi_0 = h/e$ the flux quantum. At filling fractions
+\begin{equation}
+    \nu = \frac{p}{2p \pm 1},
+\end{equation}
+composite fermions fill an integer number of their own effective Landau levels, so that the electronic FQHE is reinterpreted as an integer quantum Hall effect of composite fermions~\cite{jain1989composite}.
+
+At the special filling $\nu = 1/2$ (and more generally $\nu = 1/(2p)$), the attached flux exactly cancels the external field, $B_{\mathrm{eff}} \to 0$, and the composite fermions form a compressible, metallic state known as the composite Fermi liquid (CFL). Consistent with this, Fig.~\ref{fig:hall_effect} shows no plateau in the Hall conductivity at $\nu = 1/2$.
+
+\subsection{Higher Landau levels and non-abelian states}
+Non-abelian states are, in principle, possible already in the lowest Landau level, but have proven largely unattainable there for Coulomb interactions~\cite{storni2010fractional}. They do appear in higher Landau levels, most notably as the prominent Hall plateau at $\nu = 5/2$ (Fig.~\ref{fig:hall_effect})~\cite{willett1987observation}, for which the Moore--Read wavefunction was proposed as an explanation~\cite{MOORE1991362}. Like the Laughlin state, the Moore--Read state is the exact ground state of a model Hamiltonian --- here one containing a three-body interaction term --- and has been shown numerically to describe the true Coulomb ground state at $\nu = 5/2$ well. Note that this filling does not correspond to half filling of the $n=2$ Landau level, but rather to the lowest Landau level being filled by two spin species while the $n=1$ level is half filled by one of them. For realistic Coulomb interactions the state is not particularly robust, lying close to competing phases, and fine-tuning of the interaction is needed to stabilize it~\cite{PhysRevLett.84.4685}.
+
+Because the Moore--Read state can be understood as a $p$-wave paired state of composite fermions, its ground-state degeneracy depends characteristically on the parity of the particle number. For a genus-$g$ manifold, this degeneracy is $3(M+1)^g$ for an even number of fermions and $3M^g$ for an odd number, where $M$ is defined through the filling fraction $\nu = 1/(M+1)$~\cite{bernevig2012emergent}. For the states studied later in this thesis, $g=1$ (torus, periodic boundary conditions) and $M=1$ (i.e., $\nu = 1/2$), giving expected degeneracies of 6 and 2 for even and odd particle number, respectively~\cite{read2000paired, oshikawa2006fractionalization}.
+
+\subsection{Spectral flow}
+On a torus, additional magnetic flux can be threaded through either cycle of the torus on which a quantum Hall system is defined. Such flux insertion modifies the effective boundary conditions used to solve for the single-particle eigenstates, and hence the many-body spectrum. Inserting an integer number of flux quanta must leave the spectrum invariant, since it can be gauged away. This, however, does \emph{not} imply that the eigenstates themselves are unchanged: using the algebra of magnetic translation operators, one finds instead that the states within the degenerate ground-state manifold are cyclically permuted under flux insertion, a phenomenon known as spectral flow.
+
+Together with the ground-state degeneracy, spectral flow is a sufficient condition to identify the topological character of a phase of matter, provided the spectral gap remains open in the thermodynamic limit~\cite{regnault2011fractional}. Both diagnostics are used extensively in Chapter~4 to identify topological ground states in the finite-size numerics.
+
+\section{Topology of Moir\'e materials}
+The quantum Hall effect, as described above, requires a strong external magnetic field, and its topological character in terms of the Chern number does not by itself remove this requirement. The practical difficulty of sustaining such fields motivated the search for topological states realizable in two-dimensional systems \emph{without} a net magnetic field. The first lattice model to achieve this~\cite{PhysRevLett.61.2015} broke time-reversal symmetry explicitly through a complex hopping term acting as an analogue of the Aharonov--Bohm phase; over a range of parameters, the resulting band structure acquires a nonzero Chern number. This model was later adapted to a more realistic setting in graphene~\cite{PhysRevLett.95.226801}, where the analogous complex hopping arises directly from spin-orbit coupling.
+
+A topologically nontrivial phase with nonzero Chern number that reproduces the integer or fractional quantum Hall effect without an external field is called a Chern Insulator (CI) or Fractional Chern Insulator (FCI), respectively. Both explicitly break time-reversal symmetry. A time-reversal-invariant analogue can be built by combining two time-reversed copies of a Chern insulator with opposite Chern numbers: the total Chern number vanishes and time-reversal symmetry is restored, so the net charge Hall conductance is zero. If the spin projection $s_z$ remains a good quantum number, however, the system can still exhibit a spin quantum Hall effect, with opposite spin channels carrying counter-propagating, oppositely signed currents. When spin-orbit coupling breaks $s_z$ conservation, the system instead becomes a topological insulator (TI), or a fractional topological insulator (FTI) in the interacting, fractionally filled case.
+
+An analogous mechanism operates in TMDs. As discussed in \S1.1.1, the low-energy physics of a group-VI TMD monolayer near $K$ and $-K$ is described by a massive Dirac Hamiltonian,
+\begin{equation}
+    \hat{H}(\mathbf{k}) = \mathbf{\Delta}(\mathbf{k}) \cdot \hat{\mathbf{\sigma}},
+    \label{eq:dirac_tmd}
+\end{equation}
+following Xiao et al.~\cite{xiao2012coupled}. This is formally analogous to a two-level system in a momentum-dependent effective ``magnetic field'' $\mathbf{\Delta}(\mathbf{k})$, here generated by strong spin-orbit coupling rather than an external field. Because Eq.~\eqref{eq:dirac_tmd} is parametrized by momentum, the machinery of \S1.2.2 applies directly: treating $k_x, k_y$ as the parameters $\mathbf{R}$, the Chern number of each eigenstate follows from Eq.~\eqref{eq:chern_number}. Depending on the sign of the effective mass term, the valence band acquires Chern number $C = \pm 1$ in the $K$ and $-K$ valleys, respectively. In a full multi-band continuum model the global band topology depends strongly on the twist angle: for MoTe$_2$ near $\theta \approx 1.89^\circ$, the two highest occupied bands together with the lowest conduction band all carry $C=1$ and, combined with their flat dispersion, closely emulate the physics of the three lowest Landau levels~\cite{xu2025multiple, li2025variational}.
+
+\subsection{Valley Polarization and Inter Valley Coherence}
+
+Since the two valleys carry a conserved $U(1) \times U(1)$ charge (\S1.1.1), it is
+natural to treat the valley index $\tau$ as an internal degree of freedom,
+in analogy with real spin. In this analogy, it is easier to see that the system can order in two
+qualitatively different ways: by polarizing along the ``Ising'' axis, populating one
+valley preferentially over the other (valley polarization), or by
+ordering in the ``XY'' plane, developing a fixed phase relationship between the two
+valleys. The latter corresponds to a nonzero expectation value of the off-diagonal,
+inter-valley density operator, $\langle d^\dagger_{k,+} d_{k',-} \rangle \neq 0$, and
+defines an intervalley-coherent (IVC) state. An IVC state breaks the emergent $U(1) \times U(1)$ valley symmetry down to the diagonal $U(1)$ of total charge. IVC order has been found in Hartree--Fock treatments of Moir\'e model on which the thesis is based~\cite{kwan2025textured}.
+
+\section{Goals of the thesis}
+
+The remainder of this thesis investigates this valley-as-Landau-level correspondence
+numerically, using the exact diagonalization framework introduced in Chapter~3.
+Concretely, we study the two-valley Landau-level model of Chapter~2, a slight modification of the original model of Kwan et al.~\cite{kwan2025textured}, at three
+fillings expected to host distinct phases: $\nu = 2/3$,
+where a valley-polarized fractional quantum Hall state and a valley-unpolarized
+fractional topological insulator are both expected to compete with
+gapless states; $\nu = 1$, where the analogous
+integer quantum Hall and composite-Fermi-liquid phases are expected; and
+$\nu = 1/2$, included as a reference filling with no expected gapped topological
+order. At each filling, we map out the phase diagram as a function of the
+intervalley coupling $\alpha$ and the single-particle bandwidth $W$, examining also the screening
+parameters $d_{\mathrm{SC}}$ and $l_{\mathrm{RK}}$, using ground-state degeneracy,
+spectral flow under flux insertion, and momentum-space occupation as diagnostics
+(\S3.4). The resulting numerical phase boundaries are also qualitatively compared
+against analytic Hartree--Fock estimates of the valley-depolarization transition
+(\S4.2), providing an independent check on the numerics and on
+the transition's  dependence on the model's screening parameters.

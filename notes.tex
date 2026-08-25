@@ -1,0 +1,25 @@
+
+
+\chapter{Explanations and questions to Glenn}
+
+In the draft, mainly in the results section, I have provided some theories and explanations of the seen phases and transitions which we haven't discussed yet. Namely, the IVC phase --- and its possible transition to the FL phase, as well as the 3-fold degenerate gapped phase in unpolarized region of $\nu = 2/3$ filling. I provided some references to the literature which I used to get these ideas, but I am not at all sure if it is correct so please treat it more as a question than a statement. Does this make sense, or maybe there is something I am missing which busts these explanations?
+\\
+\\
+
+I found a bug in the calculation of the inter valley coherence --- instead of IVC\^2 order paramter I just calculated the inter valley density-density correlation function / structure factor... Unfortunately this also means that the DiagHam density code does not even produce the correct matrix terms so I cannot calculate the IVC order parameter at all. 
+What I did calculate using this, are the inter and intra-valley static structure factors, however, I was not able to infer anything useful from them yet --- I did not add it to the thesis.
+\\
+\\
+I made quite a big mistake calculating the $U(q=0)=0$ phase diagrams I believe --- what i should cancel is just the total-density part of the interaction, meanwhile I just zeroed out the WHOLE $U(q=0)$ term. For now I just left in these phase diagrams and commented shortly on the interaction used, but probably recalculating them with correct interaction would be a good idea.
+
+
+I also have a bit  more results:
+\begin{itemize}
+    \item I have the comparison of Haldane pseudopotentials between different screenings and different Landau levels, which I can add (along with explanation of the pseudopotentials themselves in the introduction)
+    \item I already have additional plots ready --- different spectral gaps at all of the fillings, and also the \textit{relative} gaps (gap\_inside\_GS\_manifold / gap\_to\_first\_excited\_state). I was thinking about adding them but I don't see if they bring much added value compared to what I already have --- the relative gap in abelian topological phases is very close to zero (as it should be) and then it grows quite quickly to high values near the phase boundaries.
+    \item I could also add the phase transitions $\alpha=0$, increasing $W$ and $W=0$, increasing $\alpha$ to compare them with the ones in the textured exciton insulators paper
+    \item I am quite close to calculating the Chern number numerically
+    \item I have some earlier results for systems WITHOUT the valley degree of freedom --- just single valley. But again I am not sure if they provide any additional information.
+\end{itemize}
+
+What I add of course is mainly constrained by time unfortunately, but I would like to hear your opinion on what you think is worth adding.
