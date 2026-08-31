@@ -6,7 +6,7 @@ The model Hamiltonian is solved using the DiagHam package for exact diagonalizat
 
 \section{Momentum grid discretization and tilted boundary conditions}\label{sec:tilted_bc}
 
-To construct the finite Hamiltonian matrix, the Brillouin zone $[0, Q) \times [0, Q)$ must be discretized into a finite set of momentum points. This grid is not unique: as shown by L\"auchli~\cite{lauchli2013hierarchy} and Repellin~\cite{repellin2014z} in the context of fractional Chern insulators, different admissible grids sample the same Brillouin zone very differently, and this choice can noticeably affect the stability of the resulting topological phases.
+To construct the finite Hamiltonian matrix, the Brillouin zone $[0, Q) \times [0, Q)$ must be discretized into a finite set of momentum points. This grid is not unique: as shown by L\"auchli et al.~\cite{lauchli2013hierarchy} and Repellin et al.~\cite{repellin2014z} in the context of fractional Chern insulators, different admissible grids sample the same Brillouin zone very differently, and this choice can noticeably affect the stability of the resulting topological phases.
 
 The grid is constructed by first choosing two real-space spanning vectors,
 \begin{equation}
@@ -21,28 +21,27 @@ Invariance of the many-body wavefunction under a translation by $\mathbf{T}_1$ o
     \tilde{\mathbf{T}}_i \cdot \mathbf{T}_j = 2\pi \delta_{ij}, \qquad i,j = 1,2.
     \label{eq:dual_vectors}
 \end{equation}
-The admissible momenta are the $N_\phi$ points of this reciprocal lattice that fall within one Brillouin zone, i.e.\ they are defined modulo $\tilde{\mathbf{a}}_1$ and $\tilde{\mathbf{a}}_2$. Concretely, we label them by two integers $(p,q)$,
+The admissible momenta are the $N_\phi$ points of this reciprocal lattice that fall within one Brillouin zone, i.e.\ they are defined modulo $\tilde{\mathbf{a}}_1$ and $\tilde{\mathbf{a}}_2$ (reciprocal vectors dual to $\mathbf{a}_1, \mathbf{a}_2$: $\tilde{\mathbf{a}}_i \cdot \mathbf{a}_j = 2\pi \delta_{ij}$). Concretely, we label them by two integers $(p,q)$,
 \begin{equation}
     \mathbf{k}_{p,q} = p\,\tilde{\mathbf{T}}_1 + q\,\tilde{\mathbf{T}}_2 \pmod{\tilde{\mathbf{a}}_1, \tilde{\mathbf{a}}_2},
     \label{eq:tilted_momenta}
 \end{equation}
-choosing $p \in [0, N_x)$ and $q \in [0, N_y)$ with $N_xN_y = N_\phi$, such that every point is counted exactly once and no two choices of $(p,q)$ give equivalent momenta. In practice this means wrapping $\mathbf{k}_{p,q}$ back into the first BZ whenever it falls outside, i.e.\ imposing $N_x\tilde{\mathbf{T}}_1 \equiv 0$ and $N_y\tilde{\mathbf{T}}_2 \equiv 0 \pmod{\tilde{\mathbf{a}}_1,\tilde{\mathbf{a}}_2}$.
+choosing $p \in [0, N_x)$ and $q \in [0, N_y)$ with $N_x N_y = N_\phi$, such that every point is counted exactly once and no two choices of $(p,q)$ give equivalent momenta. In practice this means wrapping $\mathbf{k}_{p,q}$ back into the first BZ whenever it falls outside, i.e.\ imposing $N_x\tilde{\mathbf{T}}_1 \equiv 0$ and $N_y\tilde{\mathbf{T}}_2 \equiv 0 \pmod{\tilde{\mathbf{a}}_1,\tilde{\mathbf{a}}_2}$.
 
 
-For a fixed $N_\phi$, this construction allows much more freedom in choosing the cluster shape than an untilted grid. L\"auchli~\cite{lauchli2013hierarchy} mentions that clusters with $|\mathbf{T}_1|/|\mathbf{T}_2| \gg 1$ tend to favor charge-density-wave states over the target topological phase; this was the main criterion used here for selecting the tilting, i.e.\ $\mathbf{T}_1, \mathbf{T}_2$ were chosen so that $|\mathbf{T}_1|/|\mathbf{T}_2|$ is as close to $1$ as possible. Among the remaining choices with comparable aspect ratio, the angle between $\mathbf{T}_1$ and $\mathbf{T}_2$ was further chosen to be as close as possible to $60^\circ$ (equivalently $120^\circ$), so that the resulting momentum-space sampling is most isotropic, i.e.\ closest to a uniform hexagonal grid.
+For a fixed $N_\phi$, this construction allows much more freedom in choosing the cluster shape than an untilted grid. L\"auchli et al.~\cite{lauchli2013hierarchy} mentions that clusters with $|\mathbf{T}_1|/|\mathbf{T}_2| \gg 1$ tend to favor charge-density-wave states over the target topological phase; this was the main criterion used here for selecting the tilting, i.e.\ $\mathbf{T}_1, \mathbf{T}_2$ were chosen so that $|\mathbf{T}_1|/|\mathbf{T}_2|$ is as close to $1$ as possible. Among the remaining choices with comparable aspect ratio, the angle between $\mathbf{T}_1$ and $\mathbf{T}_2$ was further chosen to be as close as possible to $60^\circ$ (equivalently $120^\circ$), so that the resulting momentum-space sampling is most isotropic, i.e.\ closest to a uniform hexagonal grid.
 
 For simplicity, however, unless stated otherwise, the calculations presented in this thesis use the conventional (untilted) boundary conditions $\mathbf{T}_1 = N_x\mathbf{a}_1$, $\mathbf{T}_2 = N_y\mathbf{a}_2$, corresponding to a rectangular grid of momenta in the Brillouin zone. Tilted boundary conditions are used only where explicitly noted, primarily for the momentum-occupation calculations of Chapter~\ref{ch:results}, and in Chapter~\ref{ch:results_1LL}, where less stable non-abelian phases are expected.
-\section{Twisted boundary conditions and flux insertion}
-\label{sec:flux_insertion}
+\section{Twisted boundary conditions and flux insertion}\label{sec:flux_insertion}
 
 To explicitly check for spectral flow, twisted boundary conditions are used, whereby an additional flux $\Phi$ is inserted into the system through one of the cycles of the torus. This is equivalent to a uniform shift of the momentum grid sampled in the Hamiltonian. In the units used in this thesis, $\Phi = 2\pi$ corresponds to one flux quantum inserted into the system, with an effective momentum shift
 \begin{equation}
-    k_i = k_i^0 + \frac{\Phi}{N_i}\,Q, \qquad i = x, y,
+    \mathbf{k} = \mathbf{k}^0 + \frac{\Phi_1}{2\pi N_1} \tilde{\mathbf{T}}_1 + \frac{\Phi_2}{2\pi N_2} \tilde{\mathbf{T}}_2
     \label{eq:flux_shift}
 \end{equation}
-where $k_i^0$ is the original (untwisted) momentum and $N_i$ is the number of grid points in direction $i$. Thus $\Phi = 2\pi$ shifts the momentum grid by exactly one grid step in the corresponding direction, which is why the spectrum must be identical at $\Phi = 0$ and $\Phi = 2\pi$: the twisted grid coincides with the original one, merely relabeled.
+where $\mathbf{k}^0$ is the original (untwisted) momentum and $N_i$ is the number of grid points in direction $i$. Thus $\Phi_i = 2\pi$ shifts the momentum grid by exactly one grid step in the corresponding direction, which is why the spectrum must be identical at $\Phi_i = 0$ and $\Phi_i = 2\pi$: the twisted grid coincides with the original one, merely relabeled.
 
-While twisted boundary conditions can in principle be inserted along either direction, flux is inserted along $\tilde{\mathbf{T}}_1$ throughout what follows, so usually along the $x$ axis.
+While twisted boundary conditions can in principle be inserted along either direction, flux is inserted along $\tilde{\mathbf{T}}_1$ throughout what follows ($\Phi_2 = 0$), so usually along the $x$ axis.
 
 \section{Recognition of topological phases}\label{sec:recognition}
 
@@ -54,7 +53,7 @@ Second, the ground-state degeneracy and the gap to the first excited state are c
 \begin{equation}
     \Delta_N =
     \begin{cases}
-        \min_\phi \left(E_{N+1}(\phi) - E_N(\phi)\right) & \text{if } \{\mathbf{k}_n(\phi_1)\}_{n=1}^{N} = \{\mathbf{k}_n(\phi_2)\}_{n=1}^{N} \ \ \forall\, \phi_1, \phi_2 \in [0, 2\pi], \\[4pt]
+        \min_\phi \left(E_{N+1}(\phi) - E_N(\phi)\right) & \text{if } {\{\mathbf{k}_n(\phi_1)\}}_{n=1}^{N} = {\{\mathbf{k}_n(\phi_2)\}}_{n=1}^{N} \ \ \forall\, \phi_1, \phi_2 \in [0, 2\pi], \\[4pt]
         0 & \text{otherwise,}
     \end{cases}
     \label{eq:spectral_gap}

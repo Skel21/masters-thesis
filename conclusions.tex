@@ -1,95 +1,27 @@
-
-\section{Limitations}
-
-Several limitations of the present work should be kept in mind when interpreting
-the results of Chapter~\ref{ch:results} and Chapter~\ref{ch:results_1LL}.
-
-\paragraph{Finite-size effects.} All results are obtained by exact diagonalization
-on a single system size (a $3 \times 4$ torus for the phase diagrams, with a
-separate tilted geometry for the momentum-occupation calculations of \S\ref{sec:third_third_intermediate_phases}
-onward). As discussed in \S\ref{sec:recognition}, a rigorous identification of topological order
-requires finite-size scaling --- confirming that the many-body gap remains open and
-the ground-state degeneracy persists as the system size increases --- which was not
-performed here due to computational cost. The phase boundaries reported in
-Chapter~\ref{ch:results} and Chapter~\ref{ch:results_1LL} should therefore be understood as consistent with, rather than a
-definitive proof of, the identified phases; in particular, the precise location of
-phase boundaries (e.g.\ $\alpha_c$, $W_c$) is expected to shift with system size,
-even where the qualitative phase structure is robust.
-
-\paragraph{Momentum grid choice.} Related to the above, the untilted rectangular
-momentum grid used by default (\S\ref{sec:tilted_bc}) is known to bias the competition between
-topological and charge-density-wave-like states relative to more isotropic tilted
-grids~\cite{lauchli2013hierarchy}. While this choice was made for simplicity and
-consistency across the phase diagrams, it means the reported phase boundaries may
-not be fully representative of the thermodynamic-limit behavior.
-
-\paragraph{Treatment of the $q=0$ interaction component.} As noted in \S\ref{sec:interactions}, the
-``background-subtracted'' variant of the interaction removes the full
-$q \to 0$ component of $\tilde{U}_{\tau\tau'}(q)$ for all $\tau, \tau'$, rather than
-only the part that couples to the total charge density. This is a simplification of
-the standard neutralizing-background convention, and the $\alpha$-dependence of the
-discarded component is in principle physical. The qualitative difference between the
-two phase diagrams shown throughout Chapter~4 (with and without this subtraction)
-suggests this choice is not negligible, and a more careful treatment is left for
-future work.
-
-\paragraph{Model scope.} The model of Chapter~2 captures the two-valley
-Landau-level physics of Moir\'e TMDs at a single magic angle, projected onto a
-single (Landau-level-like) band per valley, and neglects Landau-level mixing. Real Moir\'e TMD flat bands deviate from
-ideal Landau levels in ways not captured by this construction (e.g.\ non-uniform
-Berry curvature, deviations of the form factor from the ideal Gaussian form), and a
-quantitative comparison to specific materials (e.g.\ MoTe$_2$ at
-$\theta \approx 1.89^\circ$) would require using the actual continuum-model form
-factors rather than the idealized Landau-level ones used here.
-
-\paragraph{Unresolved intermediate phases.} Several regions of the phase diagrams
--- most notably the narrow 3-fold-degenerate region near the FTI--gapless boundary
-at $\nu = 2/3$ (\S4.3.3), the candidate IVC regions inferred from flat momentum
-occupation at $\nu = 2/3$ and $\nu = 1$ (\S4.3.3, \S4.4), and the
-$|\mathrm{CFL}\rangle \otimes |\mathrm{CFL}\rangle$--$|\mathrm{FL}\rangle \otimes
-|\mathrm{FL}\rangle$ transition at $\nu = 1$ (\S4.4) -- were identified only
-indirectly, through the degeneracy/spectral-flow/occupation diagnostics of \S3.4,
-rather than through direct comparison with model wavefunctions. A more conclusive
-identification of these states would require computing their overlap with
-candidate trial wavefunctions (e.g.\ the Halperin $(1,1,2)$ state), which was
-beyond the scope of this thesis.
-
-
-% ------------------------------------------------------------
-% 4. CONCLUSIONS
-% Final chapter (or final section of Ch. 5, as preferred).
-% ------------------------------------------------------------
-
 \section{Conclusions}
 
-%This thesis studied a two-valley Landau-level model designed to capture the
-%essential physics of correlated and topological phases in Moir\'e transition metal
-%dichalcogenides, using exact diagonalization on finite tori. At filling
-%$\nu = 2/3$, we found clear numerical evidence --- via ground-state degeneracy and
-%spectral flow --- for a valley-polarized fractional quantum Hall
-%state at small inter-valley coupling $\alpha$ and small bandwidth $W$, and for a
-%valley-unpolarized fractional topological insulator built from two time-reversed
-%Laughlin copies at large $\alpha$, consistent with theoretical expectations. Both
-%phases were shown to survive a finite bandwidth and finite screening length, with
-%stability boundaries that depend systematically on $d_{\mathrm{SC}}$ and
-%$l_{\mathrm{RK}}$. At $\nu = 1$ and $\nu = 1/2$, we recovered the expected
-%valley-polarized integer quantum Hall state and decoupled composite-Fermi-liquid
-%pairs, respectively, together with signatures of an intervening
-%inter-valley-coherent regime at large $|W|$.
+This thesis studied a two-valley Landau-level model designed to capture the essential physics of correlated and topological phases in moir\'e transition metal dichalcogenides, using exact diagonalization on finite tori. At filling $\nu = 2/3$, we found clear numerical evidence --- via ground-state degeneracy and spectral flow --- for a valley-polarized fractional quantum Hall state at small inter-valley coupling $\alpha$ and small bandwidth $W$, and for a valley-unpolarized fractional topological insulator built from two time-reversed Laughlin copies at large $\alpha$, consistent with theoretical expectations. Both phases were shown to survive a finite bandwidth and finite screening length, with the phase boundaries dependent on $d_{\mathrm{SC}}$ and $l_{\mathrm{RK}}$. In particular, non-zero $l_{\mathrm{RK}}$ shows improved stability against inter-valley interaction while exhibiting worse stability against finite bandwidth $W$. At $\nu = 1$ and $\nu = 1/2$, we recovered the expected valley-polarized integer quantum Hall state and decoupled composite-Fermi-liquid pairs, respectively, together with signatures suggesting an IVC state at intermediate $\alpha$, though we were not able to confirm this identification directly. As expected, at all fillings the momentum occupation function suggests Fermi liquid behavior at large $|W|$. Additionally, all phase diagrams are approximately symmetric with respect to $W=0$, consistently with the mapping between $W>0$ and $W<0$ Hamiltonians described in \S\ref{sec:symmetries}. % chktex 8
 
-%An analytic Hartree--Fock treatment of the valley-depolarization transition,
-%developed for both the $\alpha$-driven and $W$-driven cases, reproduced the correct
-%qualitative trends of the numerical phase diagrams -- including the direction of
-%the phase boundaries with $d_{\mathrm{SC}}$ and $l_{\mathrm{RK}}$ -- while
-%systematically overestimating the critical $\alpha_c$ and $W_c$ by up to an order
-%of magnitude, a discrepancy attributed largely to the circular-Fermi-surface
-%approximation used in the mean-field derivation.
+An analytic Hartree--Fock treatment of the valley-depolarization transition, developed for both the $\alpha$-driven and $W$-driven cases, reproduced the correct qualitative trends of the numerical phase diagrams --- including the direction of the phase boundaries with $d_{\mathrm{SC}}$ and $l_{\mathrm{RK}}$ --- while systematically overestimating the critical $\alpha_c$ and $W_c$ by up to an order of magnitude, largely due to the approximation neglecting quantum fluctuations. However, the predictions are improved compared to these of Raines, Glazman and Chubkov~\cite{raines2024unconventional} --- due to the inclusion of cosine dispersion specific for our model. % chktex 8
 
-%Taken together, these results support the picture of Moir\'e TMDs as a
-%magnetic-field-free platform for realizing both fractional Chern insulator and
-%fractional topological insulator physics, and provide a systematic account of how
-%this physics competes with bandwidth, inter-valley coupling, and dielectric
-%screening within a single, tunable model. The main open questions raised by this
-%work --- the precise nature of the intermediate phases identified only indirectly in
-%\S4.3--4.4, the role of finite-size effects, and the extension to non-Abelian
-%Moore--Read-like states in the first excited Landau level --- are left for future work.
+Calculations in $n=1$ Landau level were performed at $\nu=3$ filling, with tilted boundary conditions to alleviate the issues caused by cluster anisotropy. As suspected, the integer quantum Hall state was found in the valley polarized region at low $\alpha$. Near the $\alpha = 1$ limit a non-abelian FTI composed of Moore-Read states is found. It has similar stability against inter-valley interaction and non-zero $W$ to the Laughlin-like FTI in the lowest Landau level. However, likely due to its larger correlation length, the energy spread of the ground-state manifold is much larger for the Moore-Read FTI.
+
+Taken together, these results support the picture of moir\'e TMDs as a magnetic-field-free platform for realizing both fractional Chern insulator and fractional topological insulator physics, including non-abelian variants, and provide a systematic account of how this physics competes with bandwidth, inter-valley coupling, and dielectric screening within a single, tunable model.
+
+\section{Outlook}
+
+The main open questions raised by this work are left for future work.
+
+\begin{itemize}
+    \item \textbf{Finite-size scaling.} All results in this thesis are obtained by exact diagonalization on a single system size per filling ($N_\phi = 12$ for the lowest Landau level, with a separate tilted geometry for the momentum-occupation calculations, and $N_\phi = 10$ and $N_\phi = 12$ for the $n=1$ Landau level). A rigorous identification of topological order requires finite-size scaling --- confirming that the many-body gap remains open and the ground-state degeneracy persists as the system size increases --- which was not performed here due to computational cost. Performing this scaling, particularly for the $\alpha$- and $W$-driven depolarization transitions at $\nu = 2/3$ and $\nu = 1$, would let the phase boundaries reported here (e.g.\ $\alpha_c$, $W_c$) be extrapolated to the thermodynamic limit. % chktex 8
+
+    \item \textbf{Momentum grid choice.} The untilted rectangular momentum grid used by default in Chapter~\ref{ch:results} is known to bias the competition between topological and charge-density-wave-like states relative to more isotropic tilted grids~\cite{lauchli2013hierarchy}. This choice was made for simplicity and consistency across the phase diagrams, so the reported phase boundaries may not be fully representative of the thermodynamic-limit behavior. Repeating the $\nu = 2/3$ and $\nu = 1$ phase diagrams with tilted boundary conditions throughout, as was done for the momentum-occupation calculations and for Chapter~\ref{ch:results_1LL}, would clarify which features are physical and which are artifacts of the cluster shape, as was done explicitly for the $\nu = 1$ case in \S\ref{sec:intermediate_alpha_half_half}.
+
+    \item \textbf{Treatment of the $q=0$ interaction component.} Two variants of the interaction were considered in this thesis, differing in their treatment of the $U(\mathbf{q}=0)$ term. The qualitative difference between the two resulting phase diagrams throughout Chapter~\ref{ch:results} suggests this choice is not negligible, and a more careful treatment of the neutralizing background is left for future work. % chktex 8
+
+    \item \textbf{Model scope.} The model of Chapter~\ref{ch:model} captures the two-valley Landau-level physics of moir\'e TMDs at a single magic angle, projected onto a single Landau-level-like band per valley, and neglects Landau-level mixing. Real moir\'e TMD flat bands deviate from ideal Landau levels in ways not captured by this construction, such as non-uniform Berry curvature, deviations of the form factor from the ideal Gaussian form, and Landau level mixing. Another simplification is the use of square lattice and square Brillouin zone instead of a hexagonal one usually found in moir\'e materials. Quantitative comparison to specific materials and twist angles would require using actual continuum-model form factors rather than the idealized Landau-level ones used here.
+
+    \item \textbf{Unresolved intermediate phases.} Several regions of the phase diagrams --- the candidate IVC regions inferred from flat momentum occupation at $\nu = 2/3$ and $\nu = 1$ (\S\ref{sec:intermediate_alpha_half_half}, \S\ref{sec:third_third_density}), and the $|\mathrm{CFL}\rangle \otimes |\mathrm{CFL}\rangle$--$|\mathrm{FL}\rangle \otimes |\mathrm{FL}\rangle$ transition at $\nu = 1$ (\S\ref{sec:intermediate_alpha_half_half}) --- were identified only indirectly, through the degeneracy/spectral-flow/occupation diagnostics of \S\ref{sec:recognition}. A more conclusive identification of these states, and of the non-abelian FTI of Chapter~\ref{ch:results_1LL}, whose ground-state energy spread is comparable to its many-body gap even at the largest system size studied, would require computing their overlap with candidate trial wavefunctions.
+    
+        \item \textbf{Analytic treatment of transitions out of topological phases.} The mean-field treatment of \S\ref{sec:meanfield} was developed specifically for the valley-depolarization transitions. The other transitions found in this thesis --- the $W$-driven transitions out of the FQH and FTI states at $\nu = 2/3$ and out of the non-abelian FTI at $n=1$, as well as the $\alpha$-driven transition out of the FTI state --- were only detected numerically, through the closing of the many-body gap and the loss of spectral flow, without any corresponding analytic treatment of their location or nature. A corresponding analytic treatment of these transitions was not attempted and is left for future work.
+\end{itemize}
