@@ -1,25 +1,54 @@
+\chapter{Reconciliation of $\nu = 3$ phase diagram results}\label{ch:reconciliation_MR}
 
+Section~\ref{sec:1LL_results} showed a significant discrepancy between the stability of the
+Moore--Read-like FTI obtained from the $N_\phi = 10$ and $N_\phi = 12$ systems. Here, an
+additional tilted cluster with $N_\phi = 14$ and 7 electrons per valley is tested in order to
+elucidate this contradictory result. Due to the significant computational cost, only the
+$W \in [0.0, 0.2]$, $\alpha \in [0.0, 1.0]$ part of the phase diagram is calculated. The
+parameters of the Hamiltonian are the same as those used in \S\ref{sec:1LL_results}. As in the
+$N_\phi = 10$ case, the number of electrons per valley is odd, meaning the candidate
+Moore--Read-like FTI is again expected to have a $2 \times 2 = 4$-fold ground-state degeneracy.
 
-\chapter{Explanations and questions to Glenn}
+\begin{figure}[htbp]
+    \centering
+    \includegraphics[width=0.5\textwidth]{plots/bz_sampling_tilted_14_ratio=1.144_70.3deg.pdf}
+    \caption{$N_\phi = 14$ tilted sampling of the Brillouin zone used for the supplementary
+    odd-sector Moore--Read FTI calculation, and properties of the corresponding $\mathbf{T}_i$
+    real-space vectors.}\label{fig:tilted_14}
+\end{figure}
 
-In the draft, mainly in the results section, I have provided some theories and explanations of the seen phases and transitions which we haven't discussed yet. Namely, the IVC phase --- and its possible transition to the FL phase, as well as the 3-fold degenerate gapped phase in unpolarized region of $\nu = 2/3$ filling. I provided some references to the literature which I used to get these ideas, but I am not at all sure if it is correct so please treat it more as a question than a statement. Does this make sense, or maybe there is something I am missing which busts these explanations?
-\\
-\\
+Figure~\ref{fig:tilted_14} shows the tilted-boundary-condition sampling of the Brillouin zone
+used for the $N_\phi = 14$ calculation. Compared to $N_\phi = 10$ in
+Figure~\ref{fig:bz_sampling_10}, the $N_\phi = 14$ cluster has a larger
+$|\mathbf{T}_1|/|\mathbf{T}_2|$ ratio, however the angle between the vectors is smaller, meaning
+the sampling is closer to the more isotropic hexagonal-lattice case. It cannot, therefore, be
+deemed better than the $N_\phi = 10$ case on these grounds alone. It is nonetheless
+understood that the odd- and even-fermion-number phase diagrams should converge in the
+thermodynamic limit. Taking into account this roughly $40\%$ increase in system size, together
+with the comparatively long correlation length of the Moore--Read state, the $N_\phi = 14$
+results can be \textit{a priori} be expected to be more accurate and trustworthy than those at
+$N_\phi = 10$.
 
-I found a bug in the calculation of the inter valley coherence --- instead of IVC\^2 order parameter I just calculated the inter valley density-density correlation function / structure factor\ldots Unfortunately this also means that the DiagHam density code does not even produce the correct matrix terms so I cannot calculate the IVC order parameter at all. 
-What I did calculate using this, are the inter and intra-valley static structure factors, however, I was not able to infer anything useful from them yet --- I did not add it to the thesis.
-\\
-\\
-I made quite a big mistake calculating the $U(q=0)=0$ phase diagrams I believe --- what i should cancel is just the total-density part of the interaction, meanwhile I just zeroed out the WHOLE $U(q=0)$ term. For now I just left in these phase diagrams and commented shortly on the interaction used, but probably recalculating them with correct interaction would be a good idea.
+\begin{figure}[htbp]
+    \centering
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{results/2026-09-03/non_abelian/phase_diagram_N14.png}
+    \subcaption{\checkthis{there will be a nicer phase diagram here here - calculations running}}\label{fig:phase_diagram_N14}
+    \end{subfigure}
+    \begin{subfigure}{0.45\textwidth}
+    \centering
+    \includegraphics[width=1.0\textwidth]{results/2026-09-03/non_abelian/phase_diagram_N14.png}
+    \subcaption{\checkthis{this will be a plot of spectral flow}}\label{fig:phase_winding_N14}
+    \end{subfigure}
+    \caption{Phase diagram of the $N_\phi =14$ system and spectral flow in the FTI at $\alpha=1$.}\label{fig:results_N14}
+\end{figure}
 
-
-I also have a bit  more results:
-\begin{itemize}
-    \item I have the comparison of Haldane pseudopotentials between different screenings and different Landau levels, which I can add (along with explanation of the pseudopotentials themselves in the introduction)
-    \item I already have additional plots ready --- different spectral gaps at all of the fillings, and also the \textit{relative} gaps (gap\_inside\_GS\_manifold / gap\_to\_first\_excited\_state). I was thinking about adding them but I don't see if they bring much added value compared to what I already have --- the relative gap in abelian topological phases is very close to zero (as it should be) and then it grows quite quickly to high values near the phase boundaries.
-    \item I could also add the phase transitions $\alpha=0$, increasing $W$ and $W=0$, increasing $\alpha$ to compare them with the ones in the textured exciton insulators paper
-    \item I am quite close to calculating the Chern number numerically
-    \item I have some earlier results for systems WITHOUT the valley degree of freedom --- just single valley. But again I am not sure if they provide any additional information.
-\end{itemize}
-
-
+Figure~\ref{fig:phase_diagram_N14} shows the resulting phase diagram of the $N_\phi = 14$
+system. The phase diagram looks qualitatively similar to that at $N_\phi = 10$. The main
+difference is the extent of the MR (Moore--Read-like FTI) phase, which now shows notably
+improved stability against nonzero bandwidth $W$. Furthermore, the extent of the phase agrees
+well with the phase diagram of the same filling at $N_\phi = 12$ in
+Figure~\ref{fig:non_abelian_phase_diag_12}. In light of this agreement between the two larger
+system sizes, the $N_\phi = 12$ results are treated as the more reliable estimate of the phase
+boundary and are used for the remainder of the analysis of the MR state.
