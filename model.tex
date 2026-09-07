@@ -1,9 +1,9 @@
-The model used here is designed to emulate moir\'e materials and is based on the work of Kwan et al.~\cite{kwan2025textured}. As motivated in \S\ref{sec:moire_topology}, the two valleys of a moir\'e TMD carry opposite Chern number and can, near the relevant magic angle, closely emulate a pair of oppositely oriented Landau levels; we take this correspondence as the starting point of the model. For simplicity of implementation and interpretation, we work on a square lattice with lattice constant $a = \sqrt{2\pi}$, in units where the magnetic length is $l_B = 1$ and there is one flux quantum per unit cell. The magnitude of the primitive reciprocal lattice vector is then $Q = 2\pi/a = a = \sqrt{2\pi}$. The single-particle Hilbert space consists of two Landau levels carrying a valley index $\tau = \pm 1$, which experience opposite effective magnetic fields $B_\tau = \tau B$. To represent a generic moir\'e material, the model combines a screened Coulomb interaction projected onto a single Landau level (i.e., neglecting Landau-level mixing) with a single-particle potential representing the moir\'e potential of the real material. We work on a torus (periodic boundary conditions) and treat the magnetic vector potential in the periodic gauge. Relative to the original formulation of Kwan et al., the model is additionally modified to allow projection onto higher Landau levels, and to allow for an inverted single-particle dispersion in one of the two valleys.
+The model used here is designed to emulate moir\'e materials and is based on the work of Kwan et al.~\cite{kwan2025textured}. As motivated in \S\ref{sec:moire_topology}, the two valleys of a moir\'e TMD carry opposite Chern number and can, near the relevant magic angle, closely emulate a pair of oppositely oriented Landau levels; we take this correspondence as the starting point of the model. For simplicity of implementation and interpretation, we work on a square lattice with lattice constant $a = \sqrt{2\pi}$, in units where the magnetic length is $l_B = 1$ and there is one flux quantum per unit cell. The magnitude of the primitive reciprocal lattice vector is then $Q = 2\pi/a = a = \sqrt{2\pi}$. The single-particle Hilbert space consists of two Landau levels carrying a valley index $\tau = \pm 1$, which experience opposite effective magnetic fields $\mathbf{B}_\tau = - \tau B \hat{\mathbf{z}}$, corresponding to opposite Chern numbers $C = \tau$. Single-particle states within each LLL are given by magnetic Bloch functions, eigenfunctions of the magnetic translation operators labeled by momentum $\mathbf{k}$ in the magnetic Brillouin zone. We denote by $\hat{d}_{\mathbf{k},\,\tau}^\dagger$ the operator creating a particle in the corresponding state. We work on a torus (periodic boundary conditions) and treat the magnetic vector potential in the periodic gauge.  To represent a generic moir\'e material, the model combines a screened Coulomb interaction projected onto a single Landau level (i.e., neglecting Landau-level mixing) with a single-particle potential representing the moir\'e potential of the real material. Relative to the original formulation of Ref.~\cite{kwan2025textured}, the model is additionally modified to allow projection onto higher Landau levels, and to allow for an inverted single-particle dispersion in one of the two valleys.
 
 \section{Interactions}\label{sec:interactions}
 The interaction is modeled as a screened Coulomb density-density interaction projected onto the Landau level, with a tunable inter-valley coupling strength:
 \begin{equation}
-    H_{\text{int}} = \frac{1}{2A} \sum_{\substack{\mathbf{k} \in \text{BZ} \\ \mathbf{k}' \in \text{BZ} \\ \mathbf{q}}} \tilde{U}_{\tau \tau'}(\mathbf{q}) \, \Lambda_\tau(\mathbf{k}, \mathbf{q}) \, \Lambda_{\tau'}(\mathbf{k}', -\mathbf{q}) \, d^\dagger_{\mathbf{k}, \tau} \, d^\dagger_{\mathbf{k}', \tau'} \, d_{\lfloor \mathbf{k}' - \mathbf{q} \rfloor, \tau'} \, d_{\lfloor \mathbf{k} + \mathbf{q} \rfloor, \tau},
+    H_{\text{int}} = \frac{1}{2A} \sum_{\substack{\mathbf{k} \in \text{BZ} \\ \mathbf{k}' \in \text{BZ} \\ \mathbf{q}}} \tilde{U}_{\tau \tau'}(\mathbf{q}) \, \Lambda_\tau(\mathbf{k}, \mathbf{q}) \, \Lambda_{\tau'}(\mathbf{k}', -\mathbf{q}) \, d^\dagger_{\mathbf{k}, \tau} \, d^\dagger_{\mathbf{k}', \tau'} \, \hat{d}_{\lfloor \mathbf{k}' - \mathbf{q} \rfloor, \tau'} \, \hat{d}_{\lfloor \mathbf{k} + \mathbf{q} \rfloor, \tau},
     \label{eq:interaction}
 \end{equation}
 where $A$ is the area of the system, $\tau, \tau'$ is the valley index and
@@ -15,10 +15,10 @@ is the interaction potential. The $l_{\text{RK}} = 0$ limit of Eq.~\eqref{eq:int
 
 The interaction is projected onto a Landau level through the form factor $\Lambda$, which, in the periodic gauge with $\mathbf{k} \in [0, Q) \times [0, Q)$ (the Brillouin zone), takes the following form for the lowest Landau level:
 \begin{equation}
-    \Lambda_\tau(\mathbf{k}, \mathbf{q}) = e^{-|\mathbf{q}|^2/4} \, e^{-i \tau \left( -q_x (k_y + q_y/2) \, - \, k_x k_y \, + \, \lfloor k_x + q_x \rfloor (k_y + q_y) \right)}
+    \Lambda_\tau(\mathbf{k}, \mathbf{q}) = e^{-|\mathbf{q}|^2/4} \, e^{-i \tau \left( -q_x (k_y + q_y/2) \, - \, k_x k_y \, + \, \lfloor k_x + q_x \rfloor (k_y + q_y) \right)}.
     \label{eq:form_factor_lll}
 \end{equation}
-following Kwan et al.~\cite{kwan2025textured}.
+
 Alternatively, the form factor can be expressed in smooth gauge:
 \begin{equation}
     \Lambda_\tau(\mathbf{k}, \mathbf{q}) = e^{-|\mathbf{q}|^2/4} \, e^{i \tau (k_x + q_x/2) q_y}.
@@ -31,13 +31,13 @@ Abouelkomsan and Fu~\cite{abouelkomsan2025non} further showed that projecting th
     \Lambda_{n, \, \tau}(\mathbf{k}, \mathbf{q}) = \Lambda_\tau(\mathbf{k}, \mathbf{q}) \, L_n\!\left( \frac{|\mathbf{q}|^2}{2} \right).
     \label{eq:form_factor_general}
 \end{equation}
-The two Laguerre polynomials relevant to this work are $L_0(x) = 1$ and $L_1(x) = 1-x$, corresponding respectively to the lowest Landau level (LLL, $n=0$) and the first excited Landau level (1LL, $n=1$). The operator $\lfloor \cdot \rfloor$ denotes reduction modulo $Q$, mapping momenta back into the Brillouin zone.
+The two Laguerre polynomials relevant to this work are $L_0(x) = 1$ and $L_1(x) = 1-x$, corresponding respectively to the lowest Landau level (LLL, $n=0$) and the first excited Landau level (1LL, $n=1$). The operator $\lfloor \cdot \rfloor$ denotes reduction modulo $Q$, mapping momenta back into the first Brillouin zone.
 
-Throughout this work we consider two variants of the interaction potential $\tilde{U}_{\tau \tau'}(\mathbf{q})$ defined in Eq.~\eqref{eq:interaction_potential}. For most of the thesis, the full interaction is treated, as given in the equation above, matching Kwan et al.~\cite{kwan2025textured}. This is equivalent to treating the system without a uniform neutralizing background, or with one that couples to the total electron density (shift all energy levels by a constant).
-Zou, Li and MacDonald~\cite{kl58-rj3r} on the other hand claim that the physically relevant neutralizing background would be one where coupling to electron density scales with inter- and intra-valley interaction strength giving a complete cancellation of the $q=0$ term of interaction, $\tilde{U}_{\tau \tau'}(\mathbf{q} = 0) = 0$ for all $\tau,\, \tau'$. The phase diagrams of this variant are also sketched. It is, however, worth noting that in the most physically relevant limit of $\alpha = 0$ both versions of the interaction are equivalent.
+Throughout this work we consider two variants of the interaction potential $\tilde{U}_{\tau \tau'}(\mathbf{q})$ defined in Eq.~\eqref{eq:interaction_potential}. For most of the thesis, the full interaction is treated, as given in the equation above, matching Kwan et al.~\cite{kwan2025textured}. This is equivalent to treating the system without a uniform neutralizing background, or with one that couples to the total electron density (all energy levels shifted by a constant).
+Zou, Li and MacDonald~\cite{kl58-rj3r} on the other hand argue that the physically relevant neutralizing background would be one where coupling to electron density scales with inter- and intra-valley interaction strength giving a complete cancellation of the $q=0$ term of interaction, $\tilde{U}_{\tau \tau'}(\mathbf{q} = 0) = 0$ for all $\tau,\, \tau'$. The phase diagrams of this variant are also sketched. It is, however, worth noting that in the most physically relevant limit of $\alpha = 0$ both versions of the interaction are equivalent.
 
 \section{Single-particle dispersion}
-The single-particle dispersion is modeled as a lowest-harmonic cosine potential, compatible with the choice of the magnetic unit cell, following Kwan et al.~\cite{PhysRevLett.124.166601} and Bultinck et al.~\cite{PhysRevLett.124.166601}:
+The single-particle dispersion is modeled as a lowest-harmonic cosine potential, compatible with the choice of the magnetic unit cell, following Kwan et al.~\cite{kwan2025textured} and Bultinck et al.~\cite{PhysRevLett.124.166601}:
 \begin{equation}
     \epsilon_\tau(\mathbf{k}) = -\frac{W}{4} \left( \cos(k_x a) + \cos(k_y a) \right) \cdot \tau^{(1 - \mathrm{sgn}(W))/2}.
     \label{eq:dispersion}
@@ -47,13 +47,13 @@ Relative to these references, we introduce the valley-dependent prefactor $\tau^
 
 \section{Extension of the model to \texorpdfstring{$W<0$}{W < 0}}\label{sec:symmetries}
 
-Instead of considering the extension of the model as an algebraic modification of the dispersion relation, it can also be done through a unitary transformation of the many-body Hamiltonian. A consequence of this is that the phase diagram must be symmetric under $W \to -W$ in the thermodynamic limit. Let us dissect the Hamiltonian of Kwan et al.\ into parts,
+Instead of considering the extension of the model as an algebraic modification of the dispersion relation, it can also be done through a unitary transformation of the many-body Hamiltonian. A consequence of this is that the phase diagram must be symmetric under $W \to -W$ in the thermodynamic limit. Let us dissect the Hamiltonian of Ref.~\cite{kwan2025textured} into parts,
 \begin{equation}
-    \hat{H}(W) = \hat{H}_K^+(W) + \hat{H}_K^-(W) + \hat{H}_{\text{int}},
+    \hat{H}(W) = \hat{H}_{\text{kin}}^+(W) + \hat{H}_{\text{kin}}^-(W) + \hat{H}_{\text{int}},
 \end{equation}
 where
 \begin{equation}
-    \hat{H}_K^\pm(W) = \sum_{\mathbf{k}} \epsilon_\pm(\mathbf{k}) \hat{d}_{\mathbf{k},\pm}^\dagger \hat{d}_{\mathbf{k},\pm}
+    \hat{H}_{\text{kin}}^\pm(W) = \sum_{\mathbf{k}} \epsilon_\pm(\mathbf{k}) \hat{d}_{\mathbf{k},\pm}^\dagger \hat{d}_{\mathbf{k},\pm}
 \end{equation}
 is the kinetic energy in valley $\pm$ and $\hat{H}_{\text{int}}$ is the interaction term.
 
@@ -63,20 +63,20 @@ One can consider a unitary operator $\hat{C}$ such that
 \end{equation}
 which is equivalent to
 \begin{equation}
-    \hat{C} \hat{H}_K^-(W) \hat{C}^{-1} = \hat{H}_K^-(-W),
+    \hat{C} \hat{H}_{\text{kin}}^-(W) \hat{C}^{-1} = \hat{H}_{\text{kin}}^-(-W),
 \end{equation}
-and identity operator on all other parts of the Hamiltonian. Effectively, this amounts to shifting (boosting) of a chosen valley ($-$) dispersion by half the Brillouin zone, $\mathbf{Q}_0 = (Q/2, Q/2)$, since $\cos(k_i + Q/2) = -\cos(k_i),\, i = x,y$.
+and identity operator on all other parts of the Hamiltonian. Effectively, this amounts to shifting (boosting) a chosen valley's ($-$) dispersion by half the Brillouin zone, $\mathbf{Q}_0 = (Q/2, Q/2)$, since $\cos(k_i + Q/2) = -\cos(k_i),\, i = x,y$.
 
 Thus, the form of the operation $\hat{C}$ is deduced to be
 \begin{equation}
     \hat{C}\, \hat{d}^\dagger_{\mathbf{k},-}\, \hat{C}^{-1} = e^{i\Theta(\mathbf{k})}\, \hat{d}^\dagger_{\mathbf{k} + \mathbf{Q}_0,-},
     \label{eq:C-action}
 \end{equation}
-where $\Theta(\mathbf{k})$ is a gauge dependent phase factor. In the smooth gauge, its (non-unique) form follows from the magnetic periodic boundary conditions
+where $\Theta(\mathbf{k})$ is a gauge dependent phase factor. In the smooth gauge, its (non-unique) form follows from the basis operators satisfying the magnetic periodic boundary conditions:
 \begin{equation}
-    d_{\mathbf{k}+Q\hat{x},\tau}^\dagger = e^{i\tau k_y Q}\, d_{\mathbf{k},\tau}^\dagger,
+    \hat{d}_{\mathbf{k}+Q\hat{x},\tau}^\dagger = e^{i\tau k_y Q}\, \hat{d}_{\mathbf{k},\tau}^\dagger,
     \qquad
-    d_{\mathbf{k}+Q\hat{y},\tau}^\dagger = d_{\mathbf{k},\tau}^\dagger.
+    \hat{d}_{\mathbf{k}+Q\hat{y},\tau}^\dagger = \hat{d}_{\mathbf{k},\tau}^\dagger.
     \label{eq:mbc}
 \end{equation}
 The phase $\Theta(\mathbf{k})$ can be fixed by additionally requiring that two applications of $\hat{C}$ return the system to its original state,
@@ -84,10 +84,10 @@ The phase $\Theta(\mathbf{k})$ can be fixed by additionally requiring that two a
     \hat{C}^2\, \hat{d}^\dagger_{\mathbf{k},-}\, \hat{C}^{-2}
     &= e^{i\Theta(\mathbf{k})} e^{i\Theta(\mathbf{k} + \mathbf{Q}_0)}\, \hat{d}^\dagger_{\mathbf{k} + 2\mathbf{Q}_0,-} \notag \\
     &= e^{i\Theta(\mathbf{k})} e^{i\Theta(\mathbf{k} + \mathbf{Q}_0)}\, e^{-ik_y Q}\, \hat{d}^\dagger_{\mathbf{k},-}
-    \overset{!}{=} \hat{d}^\dagger_{\mathbf{k},-}.
+    \overset{!}{=} \hat{d}^\dagger_{\mathbf{k},-},
     \label{eq:closure}
 \end{align}
-This is solved by the linear ansatz
+which is solved by the linear ansatz
 \begin{equation}
     \Theta(\mathbf{k}) = \frac{k_y Q}{2} + \Theta_0.
     \label{eq:theta}
@@ -104,12 +104,12 @@ This informed guess for the operator $\hat{C}$ correctly transforms the many-bod
 \paragraph{Action on the kinetic energy.}
 By definition, $\hat{C}$ acts only on the $-$ valley. Using Eq.~\eqref{eq:bilinear} with $\mathbf{q}=0$,
 \begin{align}
-    \hat{H}_K^-(W)
-    &= -\frac{W}{4} \sum_{\mathbf{k} \in \mathrm{BZ}} \epsilon(\mathbf{k})\, \hat{d}_{\mathbf{k},-}^\dagger \hat{d}_{\mathbf{k},-} \notag \\
-    &\mapsto -\frac{W}{4} \sum_{\mathbf{k} \in \mathrm{BZ}} \epsilon(\mathbf{k})\, \hat{d}_{\mathbf{k} + \mathbf{Q}_0,-}^\dagger \hat{d}_{\mathbf{k} + \mathbf{Q}_0,-} \notag \\
+    \hat{C}\, \hat{H}_{\text{kin}}^-(W) \,\hat{C}^{-1}
+    &= -\frac{W}{4} \sum_{\mathbf{k} \in \mathrm{BZ}} \epsilon(\mathbf{k})\; \hat{C}\, \hat{d}_{\mathbf{k},-}^\dagger \hat{d}_{\mathbf{k},-} \,\hat{C}^{-1} \notag \\
+    &= -\frac{W}{4} \sum_{\mathbf{k} \in \mathrm{BZ}} \epsilon(\mathbf{k})\, \hat{d}_{\mathbf{k} + \mathbf{Q}_0,-}^\dagger \hat{d}_{\mathbf{k} + \mathbf{Q}_0,-} \notag \\
     &= -\frac{W}{4} \sum_{\mathbf{k} \in \mathrm{BZ}} \epsilon(\mathbf{k} - \mathbf{Q}_0)\, \hat{d}_{\mathbf{k},-}^\dagger \hat{d}_{\mathbf{k},-} \notag \\
     &= -\frac{W}{4} \sum_{\mathbf{k}' \in \mathrm{BZ}} \big[-\epsilon(\mathbf{k}')\big]\, \hat{d}_{\mathbf{k}',-}^\dagger \hat{d}_{\mathbf{k}',-} \notag \\
-    &= \hat{H}_K^-(-W),
+    &= \hat{H}_{\text{kin}}^-(-W),
 \end{align}
 where the limits of summation are left unchanged owing to the periodicity of the summands modulo the Brillouin zone. The operation $\hat{C}$ therefore correctly transforms the kinetic energy of the $-$ valley.
 
@@ -125,7 +125,7 @@ Using Eq.~\eqref{eq:bilinear} (generalized to valley $\tau$),
 \end{align}
 Since the LL density operator is invariant under $\hat{C}$, the interaction term is invariant as well.
 
-Thus we have seen that the operation $\hat{C}$ correctly transforms the many-body Hamiltonian of Kwan et al.\ with $W>0$ into the one with $W<0$. Consequently, there is a bijective mapping between the many-body states of the two Hamiltonians, and the phase diagrams should be symmetric with respect to the sign of $W$ — up to the difference in sampling of Brillouin zone points under the momentum shift by $\mathbf{Q}_0$, which is irrelevant in the thermodynamic limit.
+Thus we have seen that the operation $\hat{C}$ correctly transforms the many-body Hamiltonian of Ref.~\cite{kwan2025textured} with $W>0$ into the one with $W<0$. Consequently, there is a bijective mapping between the many-body states of the two Hamiltonians, and the phase diagrams should be symmetric with respect to the sign of $W$ — up to the difference in sampling of Brillouin zone points under the momentum shift by $\mathbf{Q}_0$, which is irrelevant in the thermodynamic limit.
 
 \subsection{Symmetry of the \texorpdfstring{$W<0$}{W < 0} Hamiltonian.}
 It is worth noting that while the $W>0$ Hamiltonian is time-reversal symmetric, the $W<0$ Hamiltonian is not. However, a new symmetry can be constructed from the operation $\hat{C}$ together with the time-reversal operator $\hat{T}$. Starting from the time-reversal symmetry of $\hat{H}(W)$,
