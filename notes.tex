@@ -2,7 +2,7 @@
 
 Section~\ref{sec:1LL_results} showed a significant discrepancy between the stability of the
 Moore--Read-like FTI obtained from the $N_\phi = 10$ and $N_\phi = 12$ systems. Here, an
-additional tilted cluster with $N_\phi = 14$ and 7 electrons per valley is tested in order to
+additional calculation is done on a tilted cluster with $N_\phi = 14$ and 7 electrons per valley, in order to
 elucidate this contradictory result. Due to the significant computational cost, only the
 $W \in [0.0, 0.2]$, $\alpha \in [0.0, 1.0]$ part of the phase diagram is calculated. The
 parameters of the Hamiltonian are the same as those used in \S\ref{sec:1LL_results}. As in the
@@ -12,8 +12,8 @@ Moore--Read-like FTI is again expected to have a $2 \times 2 = 4$-fold ground-st
 \begin{figure}[htbp]
     \centering
     \includegraphics[width=0.5\textwidth]{plots/bz_sampling_tilted_14_ratio=1.144_70.3deg.pdf}
-    \caption{$N_\phi = 14$ tilted sampling of the Brillouin zone used for the supplementary
-    odd-sector Moore--Read FTI calculation, and properties of the corresponding $\mathbf{T}_i$
+    \caption{Sampling of the Brillouin zone used for the supplementary
+    odd-sector Moore--Read FTI calculation with $N_\phi = 14$, and properties of the corresponding $\mathbf{T}_i$
     real-space vectors.}\label{fig:tilted_14}
 \end{figure}
 
@@ -21,12 +21,12 @@ Figure~\ref{fig:tilted_14} shows the tilted-boundary-condition sampling of the B
 used for the $N_\phi = 14$ calculation. Compared to $N_\phi = 10$ in
 Figure~\ref{fig:bz_sampling_10}, the $N_\phi = 14$ cluster has a larger
 $|\mathbf{T}_1|/|\mathbf{T}_2|$ ratio, however the angle between the vectors is smaller, meaning
-the sampling is closer to the more isotropic hexagonal-lattice case. It cannot, therefore, be
+the sampling is closer to the more isotropic hexagonal-lattice case. It cannot be
 deemed better than the $N_\phi = 10$ case on these grounds alone. It is nonetheless
 understood that the odd- and even-fermion-number phase diagrams should converge in the
-thermodynamic limit. Taking into account this roughly $40\%$ increase in system size, together
-with the comparatively long correlation length of the Moore--Read state, the $N_\phi = 14$
-results can be \textit{a priori} be expected to be more accurate and trustworthy than those at
+thermodynamic limit. Taking into account the $40\%$ increase in system size between the two clusters, together
+with the expected long correlation length of the Moore--Read state, the $N_\phi = 14$
+results can \textit{a priori} be expected to be more accurate and trustworthy than those at
 $N_\phi = 10$.
 
 \begin{figure}[htbp]
@@ -39,11 +39,10 @@ $N_\phi = 10$.
     \begin{subfigure}{0.35\textwidth}
     \centering
     \includegraphics[width=1.0\textwidth]{plots/phase_winding_moore_read_N14_W=0.05_alpha=1.0.pdf}
-    \subcaption{Flux insertion @ $W=0.05,\, \alpha = 1.0$}\label{fig:phase_winding_N14}
+    \subcaption{Flux insertion at $W=0.05,\, \alpha = 1.0$}\label{fig:phase_winding_N14}
     \end{subfigure}
-    \caption{Phase diagram of the $N_\phi =14,\,\nu=3$ system and spectral flow in the FTI at $\alpha=1$.}\label{fig:results_N14}
+    \caption{Phase diagram of the $N_\phi =14,\,\nu=3$ system and flux-insertion plot of the FTI at $\alpha=1$.}\label{fig:results_N14}
 \end{figure}
-\checkthis{consistent dots in plot descriptions}
 Figure~\ref{fig:phase_diagram_N14} shows the resulting phase diagram of the $N_\phi = 14$
 system. The phase diagram looks qualitatively similar to that at $N_\phi = 10$. The main
 difference is the extent of the MR (Moore--Read-like FTI) phase, which now shows notably
@@ -51,4 +50,7 @@ improved stability against nonzero bandwidth $W$. Furthermore, the extent of the
 well with the phase diagram of the same filling at $N_\phi = 12$ in
 Figure~\ref{fig:non_abelian_phase_diag_12}. In light of this agreement between the two larger
 system sizes, the $N_\phi = 12$ results are treated as the more reliable estimate of the phase
-boundary and are used for the remainder of the analysis of the MR state.
+boundary and are used for the remainder of the analysis of the MR state in Chapter~\ref{ch:results_1LL}.
+
+
+

@@ -1,14 +1,37 @@
-Extending the model to the $n=1$ Landau level modifies the interaction profile --- it is effectively multiplied by Laguerre polynomials. While the phase diagram is still expected to partition broadly into valley-polarized and valley-unpolarized regimes, following a similar exchange-driven mechanism, the specific ground-state competition across $(\alpha, W)$ changes. Here, only the filling of $\nu = 3$ is studied as it is one where a qualitative difference compared to the lowest Landau level is expected --- existence of a non-abelian FTI.
+Extending the model to the $n=1$ Landau level modifies the interaction profile --- it is effectively multiplied by the Laguerre polynomials. While the phase diagram is still expected to partition broadly into valley-polarized and unpolarized regimes, following a similar exchange-driven mechanism, the specific ground-state competition across $(\alpha, W)$ changes. Here, only the filling of $\nu = 3$ ($\nu_{n=1} = 1$) is studied as it is one where a qualitative difference compared to the lowest Landau level is expected --- existence of a non-abelian FTI.
 
 \section{Anticipated phases}
 Across the parameter space, we anticipate the following phase competition:
 \begin{itemize}
-    \item \textbf{Valley-polarized IQH state (low $W$, small $\alpha$)}: At small inter-valley coupling and low bandwidth, similarly to the LLL case, complete valley polarization is suspected ($\nu = 1 + 0$). Analogously, integer filling in a single valley stabilizes an integer quantum Hall (IQH) state.
-    \item \textbf{Paired non-Abelian state ($\alpha = 1$, $W = 0$)}: In the decoupled limit each valley independently hosts a half-filled $n=1$ Landau level ($\nu = \tfrac{1}{2} + \tfrac{1}{2}$). Instead of a composite Fermi liquid, the fermions become unstable to pairing, creating a non-Abelian FTI consisting of two Moore--Read states, $\ket{\mathrm{MR}} \otimes \ket{\mathrm{MR}}$ --- found by Abouelkomsan and Fu~\cite{abouelkomsan2025non} in a similar Landau level model. Since a single Moore--Read state has 2- and 6-fold degeneracy for odd and even number of fermions respectively, a ground-state degeneracy of an FTI formed from it will have a degeneracy of $2\cdot2 = 4$ or $6\cdot 6 = 36$ respectively. % chktex 8
+    \item \textbf{Valley-polarized IQH state (low $|W|$, small $\alpha$)}: At small inter-valley coupling and small bandwidth, similarly to the LLL case, complete valley polarization is suspected ($\nu_{n=1} = 1 + 0$). Analogously, integer filling in a single valley stabilizes an integer quantum Hall (IQH) state.
+    \item \textbf{Paired non-abelian state ($\alpha = 1$, $W = 0$)}: In the decoupled limit each valley independently hosts a half-filled $n=1$ Landau level ($\nu_{n=1} = \tfrac{1}{2} + \tfrac{1}{2}$). Instead of forming a composite Fermi liquid, the fermions become unstable to pairing, creating a non-abelian FTI consisting of two Moore--Read states, $\ket{\mathrm{MR}} \otimes \overline{\ket{\mathrm{MR}}}$ --- found by Abouelkomsan and Fu~\cite{abouelkomsan2025non} in a similar Landau level model. Since a single Moore--Read state has 2- and 6-fold degeneracy for odd and even number of fermions respectively, a ground-state degeneracy of an FTI formed from it will have a degeneracy of $2\cdot2 = 4$ or $6\cdot 6 = 36$ respectively. % chktex 8
     \item \textbf{Depolarization to Fermi liquid (large $W$)}: As the bandwidth $W$ increases, kinetic energy overcomes two-body interactions, eventually forcing a transition to a gapless, unpolarized Fermi liquid (FL).
 \end{itemize}
 
-\section{Results for \texorpdfstring{$\nu = 1$}{nu=1} of 1LL (\texorpdfstring{$\nu = 3$}{nu=3} overall)}\label{sec:1LL_results}
+\subsection{Numerical criteria for defining phases}
+Similarly to the lowest Landau level, the phases are classified according to valley polarization, spectral gap, and the presence of spectral flow, using numeric criteria as in Table~\ref{tab:1ll-phases}. Because of the thesis' focus on the non-abelian FTI (MR), additional analysis of the UP umbrella-region is not performed here.
+
+\begin{table}[htbp]
+\centering
+\small
+\begin{tabular}{@{}l l l@{}}
+\toprule
+Label & $P_z$ & Criterion \\
+\midrule
+IQH & full & $\Delta_1>0$ \\
+UP  & 0 & gapless (unresolved) \\
+NTG & 0 & $\Delta_{36}>10^{-3}$, no spectral flow \\
+MR  & 0 & $\Delta_{4/36}>10^{-3}$, spectral flow \\
+\bottomrule
+\end{tabular}
+\caption{Numerical criteria used for the primary phase classification of the $n=1$ Landau level results at $\nu=3$ (Fig.~\ref{fig:non_abelian_gaps}).}
+\label{tab:1ll-phases}
+\end{table}
+
+
+
+
+\section{Results for \texorpdfstring{$\nu_{n=1} = 1$}{nu=1} of 1LL (\texorpdfstring{$\nu = 3$}{nu=3} overall)}\label{sec:1LL_results}
 
 Since the Moore--Read state is known to be influenced by the anisotropy of the real-space cluster on which it is defined, tilted boundary conditions were used to stabilize it. To detect the characteristic dependence of the ground-state degeneracy on the fermion-number parity, systems with $N_\phi = 12$ and $N_\phi = 10$ per valley were studied ($N_e = 6$ and $N_e = 5$ per valley, respectively). Due to computational cost, finite size scaling was again not performed. % chktex 8
 
@@ -24,22 +47,22 @@ Since the Moore--Read state is known to be influenced by the anisotropy of the r
         \includegraphics[width=\linewidth]{plots/bz_sampling_tilted_12_ratio=1.265_71.6deg.pdf}
         \caption{$N_\phi = 12$}\label{fig:bz_sampling_12}
     \end{subfigure}
-    \caption{BZ sampling for the two system sizes used in the $n=1$ LL calculations, and the properties of the corresponding real-space cluster vectors $T_1$, $T_2$.}\label{fig:bz_sampling}
+    \caption{BZ sampling for the two system sizes used in the $n=1$ LL calculations, and the properties of the corresponding real-space cluster vectors $\mathbf{T}_1$, $\mathbf{T}_2$.}\label{fig:bz_sampling}
 \end{figure}
 
-The used tilted boundary condition samplings are shown in Fig.~\ref{fig:bz_sampling}.
+The used tilted boundary condition BZ samplings are shown in Fig.~\ref{fig:bz_sampling}.
 
 \begin{figure}[htbp]
     \centering
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{plots/non_abelian_N10_gap_n4.pdf}
-        \subcaption{$\Delta_4$ gap for $N_\phi = 10$}
+        \subcaption{$\Delta_4$ for $N_\phi = 10$}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{plots/non_abelian_N12_gap_n36.pdf}
-        \subcaption{$\Delta_{36}$ gap for $N_\phi = 12$}\label{fig:non_abelian_gaps_12}
+        \subcaption{$\Delta_{36}$ for $N_\phi = 12$}\label{fig:non_abelian_gaps_12}
     \end{subfigure}
     \begin{subfigure}[b]{0.45\textwidth}
         \centering
@@ -51,10 +74,10 @@ The used tilted boundary condition samplings are shown in Fig.~\ref{fig:bz_sampl
         \includegraphics[width=1.0\textwidth]{plots/non_abelian_N12_phase_diagram.pdf}
         \subcaption{Phase diagram for $N_\phi = 12$}\label{fig:non_abelian_phase_diag_12}
     \end{subfigure}
-    \caption{Relevant spectral gaps and phase diagrams for the $n=1$ Landau level at $\nu = 1$. VP:\@ gapless valley-polarized state. UP:\@ general unpolarized state. MR:\@ non-abelian Moore--Read-like FTI. IQH:\@ valley-polarized integer quantum Hall state. NTG:\@ non-topological gapped state.}\label{fig:non_abelian_gaps}
+    \caption{Relevant spectral gaps and phase diagrams for the $n=1$ Landau level at $\nu = 1$. UP:\@ general unpolarized state. MR:\@ non-abelian Moore--Read-like FTI. IQH:\@ valley-polarized integer quantum Hall state. NTG:\@ non-topological gapped state.}\label{fig:non_abelian_gaps}
 \end{figure}
 
-Figure~\ref{fig:non_abelian_gaps} shows the $\Delta_4$ and $\Delta_{36}$ gaps for the two system sizes, as well as the schematic phase diagrams. The suspected results are confirmed: at low $\alpha$ and low $W$ the system is in a $\Delta_1 > 0$ gapped, valley-polarized IQH phase, and the gap closes at large $W$ as the system transitions to a gapless Fermi liquid, first valley-polarized, then unpolarized. At $\alpha = 1$, $W = 0$, the system is in a gapped, unpolarized phase with 4-fold and 36-fold degeneracy for $N_\phi = 10$ and $N_\phi = 12$ respectively, which is consistent with the expected non-Abelian FTI phase. However, despite qualitative agreement of both system sizes, the stability of the MR phase against $\alpha$ and $W$ differs significantly. This discrepancy is resolved through supplementary calculation in a larger system with $N_\phi = 14$ in Appendix~\ref{ch:reconciliation_MR} and due to this results the $N_\phi = 12$ results are used in the following calculations as more reliable. Interestingly, the stability against finite $|W|$ is very similar to the abelian FTI in the lowest Landau level. On the other hand, the stability against $\alpha \neq 0$ is slightly better, giving $\alpha_c \approx 0.72$, compared to $\alpha_c \approx 0.64$ for the FTI in the LLL examined in \S\ref{sec:third_third_results}. \checkthis{numbers here - is it consistent??}
+Figure~\ref{fig:non_abelian_gaps} shows the $\Delta_4$ and $\Delta_{36}$ gaps for the two system sizes, as well as the schematic phase diagrams. The suspected results are confirmed: at low $\alpha$ and low $W$ the system is in a $\Delta_1 > 0$ gapped, valley-polarized IQH phase, and the gap closes at large $W$ as the system transitions to an unpolarized gapless Fermi liquid. At $\alpha = 1$, $W = 0$, the system is in a gapped, unpolarized phase with 4-fold and 36-fold degeneracy for $N_\phi = 10$ and $N_\phi = 12$ respectively, which is consistent with the expected non-abelian FTI phase. However, despite qualitative agreement of both system sizes, the stability of the MR phase against $\alpha$ and $W$ differs significantly between them. This discrepancy is resolved through a supplementary calculation in a larger system with $N_\phi = 14$ in Appendix~\ref{ch:reconciliation_MR}, and due to this, the $N_\phi = 12$ results are deemed more reliable and used in following calculations. Interestingly, the stability against finite $|W|$ is very similar to the abelian FTI in the lowest Landau level. On the other hand, the stability against $\alpha \neq 1$ is slightly better, giving $\alpha_c \approx 0.64$, compared to $\alpha_c \approx 0.72$ for the FTI in the LLL examined in \S\ref{sec:third_third_results}.
 
 \subsection{Spectral flow in the \texorpdfstring{$N_\phi = 12$}{Nphi=12} system}
 
@@ -75,17 +98,17 @@ Figure~\ref{fig:non_abelian_gaps} shows the $\Delta_4$ and $\Delta_{36}$ gaps fo
 
 To confirm the nature of the $\Delta_{36} > 0$ regions of the phase diagram, flux insertion was performed to check for spectral flow. Figure~\ref{fig:phase_winding_moore_read} shows flux-insertion for the $N_\phi = 12$ system at $\alpha = 1$, $W = 0.05$. The 36-fold degenerate ground-state manifold is clearly visible, and spectral flow is seen between groups of states in the manifold. However, the gap between the 36-fold degenerate ground-state manifold and the first excited state is in fact smaller than the spread of energies in the ground-state manifold itself. While the large spread is often interpreted as questionable stability of the state, here it might be caused by the Moore--Read state exhibiting significantly larger correlation length compared to the Laughlin state~\cite{estienne2015correlation} --- larger system sizes are needed to capture good degeneracy. % chktex 8
 
-At the lower--$\alpha$ end of the unpolarized phase, the $\Delta_{36}$ gap is also significant (Fig.~\ref{fig:non_abelian_gaps_12}). Under flux insertion (Fig.~\ref{fig:phase_winding_cdw}), it is clear that the spectral flow is not present in this region --- the periodicity is $2\pi$ and the states don't permute. Additionally the region is not adiabatically connected to the $\alpha = 1$, $W = 0$ point. The phase is not topological in nature, likely a charge density wave (CDW). It is not studied here further and labeled as NTG on the phase diagram. % chktex 8
+At the lower--$\alpha$ end of the unpolarized phase, the $\Delta_{36}$ gap is also significant (Fig.~\ref{fig:non_abelian_gaps_12}). Under flux insertion (Fig.~\ref{fig:phase_winding_cdw}), it is clear, however, that the spectral flow is not present in this region --- the states don't permute under $2\pi$ flux insertion. Additionally the region is not adiabatically connected to the $\alpha = 1$, $W = 0$ point. The phase is not topological in nature, likely a charge density wave (CDW). It is not studied here further and is labeled as NTG on the phase diagram. % chktex 8
 
 \subsection{Stability of the LLL and $n=1$ LL FTI phases --- screening dependence}
 
-The ground-state degeneracy of the topologically nontrivial states becomes exact only  in the thermodynamic limit. For finite systems, instead of the direct spectral gap, the ratio of the energy spread $\delta_n$ of the $n$-fold degenerate ground-state manifold to the $\Delta_n$ gap is often considered, with the premise that
+The ground-state degeneracy of the topologically nontrivial states becomes exact only  in the thermodynamic limit. For finite systems, instead of the direct spectral gap, the ratio of the energy spread $\delta_N$ of the $N$-fold degenerate ground-state manifold to the $\Delta_N$ gap is often considered, with the premise that
 \[
-    \frac{\delta_n}{\Delta_n} = 0
+    \frac{\delta_N}{\Delta_N} = 0
 \]
 indicates a perfectly degenerate ground state~\cite{kwan2024could}.
 
-Since the non-Abelian FTI phase has a large spread of energies in the ground-state manifold, its stability is tested against the screening parameters $d_{\mathrm{SC}}$ and $l_{\mathrm{RK}}$. For simplicity, the decoupled limit $\alpha = 1$, $W = 0$ is considered. This means that each valley can be treated independently --- a model is restricted to a single valley, where instead of 4-fold and 36-fold degeneracy, a 2-fold and 6-fold degeneracy is expected.
+Since the non-abelian FTI phase has a large spread of energies in the ground-state manifold, its stability is tested against the screening parameters $d_{\mathrm{SC}}$ and $l_{\mathrm{RK}}$. For simplicity, the decoupled limit $\alpha = 1$, $W = 0$ is considered. This means that each valley can be treated independently --- the model is restricted to a single valley, where instead of 4-fold and 36-fold degeneracy, a 2-fold and 6-fold degeneracy is expected.
 
 \begin{figure}[htbp]
     \centering
@@ -99,12 +122,12 @@ Since the non-Abelian FTI phase has a large spread of energies in the ground-sta
         \includegraphics[width=\linewidth]{plots/1LL_stability_n6.pdf}
         \caption{$n=1$ Landau level}\label{fig:1LL_stability_n6}
     \end{subfigure}
-    \caption{$\delta_n/\Delta_n$ ratio in one decoupled $\ket{\mathrm{FCI}}$ state corresponding to $W=0$ and $\alpha=1$. Value near zero means good stability.}\label{fig:stability_phases}
+    \caption{$\delta_n/\Delta_n$ ratio in one decoupled $\ket{\mathrm{FCI}}$ state corresponding to $W=0$ and $\alpha=1$, as a function of $d_{\text{SC}}$ and $l_{\text{RK}}$ screening parameters.}\label{fig:stability_phases}
 \end{figure}
 
-In Fig.~\ref{fig:1LL_stability_n6}, the dependence of the $\delta_6/\Delta_6$ ratio on the screening parameters is shown. The ratio decreases monotonically with increasing $d_{\mathrm{SC}}$ and $l_{\mathrm{RK}}$. For comparison, an analogous plot for the $\delta_3/\Delta_3$ ratio in a single-valley $\nu=1/3$ Laughlin-like FCI state in lowest Landau level is shown on Figure~\ref{fig:LLL_stability_n3}. The ratio is much larger for the $\nu=1/2$ Moore--Read state. While for the lowest Landau level FCI it is consistently close to 0, for the $n=1$ Landau level it does not fall below the $0.5$ threshold. The monotonicity suggests that for both the states in LLL and $n=1$ LL the dependence of stability on screening is similar, while the difference in absolute values once again indicates the difference in correlation lengths between Laughlin and Moore-Read states.  % chktex 8
+In Fig.~\ref{fig:1LL_stability_n6}, the dependence of the $\delta_6/\Delta_6$ ratio on the screening parameters is shown. The ratio decreases monotonically with increasing $d_{\mathrm{SC}}$ and $l_{\mathrm{RK}}$. For comparison, an analogous plot for the $\delta_3/\Delta_3$ ratio in a single-valley $\nu=1/3$ Laughlin-like FCI state in lowest Landau level is shown on Figure~\ref{fig:LLL_stability_n3}. The ratio is much larger for the $\nu_{n=1}=1/2$ Moore--Read state. While for the lowest Landau level FCI it is consistently close to 0, for the $n=1$ Landau level it does not fall below the $0.5$ threshold. The monotonicity suggests that for both the states in LLL and $n=1$ LL the dependence of stability on screening is similar, while the difference in absolute values once again might indicate the difference in correlation lengths between Laughlin and Moore--Read states.  % chktex 8
 
-On the other hand, it is important to note that the stability of the FTI phase shown here at the $\alpha=1$ point does not directly correspond to the extent of the FTI phase in the full $(\alpha, W)$ phase diagram. In Figure~\ref{fig:third_third_screening_alpha_vs_lRK_phase_diagram_b} a maximum of inter--valley coupling stability was shown at $l_{\mathrm{RK}} \neq 0$, while here, the $\delta/\Delta$ ratio decreases monotonically with increasing $l_{\mathrm{RK}}$. This further shows the importance of taking the inter-valley interaction into account. % chktex 8
+On the other hand, it is important to note that the stability of the FTI phase shown here at the $\alpha=1$ point does not directly correspond to the extent of the FTI phase in the full $(\alpha, W)$ phase diagram. In Figure~\ref{fig:third_third_screening_alpha_vs_lRK_phase_diagram_b} a maximum of inter--valley coupling stability was shown at $l_{\mathrm{RK}} \neq 0$, while here, the $\delta/\Delta$ ratio decreases monotonically with increasing $l_{\mathrm{RK}}$. This further demonstrates the necessity of accounting for inter-valley interactions --- a consideration addressed directly in the following section.% chktex 8
 
 
 
@@ -118,20 +141,19 @@ The stability of the topological phases in $n=1$ LL was tested against the two s
     \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{plots/non_abelian_N12_screening_alpha_vs_d_phase_diagram.pdf}
-        \subcaption{$\alpha$ vs.\ $d_{\text{SC}}$, at $l_{\text{RK}} = 0$}\label{fig:non_abelian_N12_screening_alpha_vs_d_phase_diagram_a}
+        \subcaption{$\alpha$ vs.\ $d_{\text{SC}}/a$, at $l_{\text{RK}} = 0$}\label{fig:non_abelian_N12_screening_alpha_vs_d_phase_diagram_a}
     \end{subfigure}
     \begin{subfigure}{0.45\textwidth}
         \centering
         \includegraphics[width=1.0\textwidth]{plots/non_abelian_N12_screening_alpha_vs_lRK_phase_diagram_d5.01.pdf}
-        \subcaption{$\alpha$ vs.\ $l_{\text{RK}}$, at $d_{\text{SC}} = 2a$}\label{fig:non_abelian_N12_screening_alpha_vs_lRK_phase_diagram_b}
+        \subcaption{$\alpha$ vs.\ $l_{\text{RK}}/a$, at $d_{\text{SC}} = 2a$}\label{fig:non_abelian_N12_screening_alpha_vs_lRK_phase_diagram_b}
     \end{subfigure}
     \caption{Phase diagrams of the $\nu = 3$ filling at $W=0$ with respect to the screening parameters.}\label{fig:non_abelian_N12_screening_alpha_vs_d_phase_diagram}
 \end{figure}
 
-Figure~\ref{fig:non_abelian_N12_screening_alpha_vs_d_phase_diagram_a} shows the extent of the phases at $W=0$ as a function of $\alpha$ and the screening length $d_{\text{SC}}$. The conclusions are analogous to the LLL results. The $\alpha$-stability of the IQH phase decreases monotonically with increasing $d_{\text{SC}}$, while no significant change in the extent of the FTI phase is seen.
+Figure~\ref{fig:non_abelian_N12_screening_alpha_vs_d_phase_diagram_a} shows the extent of the phases at $W=0$ as a function of $\alpha$ and the screening length $d_{\text{SC}}$. The conclusions are analogous to the LLL results. The $\alpha$-stability of the IQH phase decreases monotonically with increasing $d_{\text{SC}}$, while no significant change in the extent of the MR (FTI) phase is seen.
 
-Figure~\ref{fig:non_abelian_N12_screening_alpha_vs_lRK_phase_diagram_b} shows the analogous dependence on $l_{\text{RK}}$ at $W=0$. again, while the IQH phase becomes less stable with increasing $l_{\text{RK}}$, the non-abelian FTI phase instead shows a maximum of stability at non-zero $l_{\text{RK}}$, with the lowest transition found at $\alpha_c = \ldots$, which is much closer to the physically relevant point of $\alpha=0$ than in the case of the abelian FTI in LLL.
-Additionally, the extent of the non-topological gapped state found at intermediate $\alpha$ decreases with increasing $l_{\text{RK}}$ as well.
+Figure~\ref{fig:non_abelian_N12_screening_alpha_vs_lRK_phase_diagram_b} shows the analogous dependence on $l_{\text{RK}}$ at $W=0$. Again, while the IQH phase becomes less stable with increasing $l_{\text{RK}}$, the non-abelian FTI phase instead shows a maximum of stability at non-zero $l_{\text{RK}}$, with the lowest transition found at $\alpha_c \approx 0.12$, which is much closer to the physically relevant point of $\alpha=0$ than in the case of the abelian FTI in LLL.
 
 
 
@@ -184,11 +206,11 @@ Additionally, the extent of the non-topological gapped state found at intermedia
         node[midway, labelstyle] {$\mathbf{l_{\mathrm{RK}} \nearrow }$};
 
 \end{tikzpicture}
-\caption{Phase diagrams of the $\nu = 3$ filling in the $\alpha$--$W$ plane at different screening parameters. Arrows indicate the direction of increasing screening.\ (a) $d_{\text{SC}} = 1a$, $l_{\text{RK}} = 0$.\ (b) $d_{\text{SC}} = 6a$, $l_{\text{RK}} = 0$.\ (c) $d_{\text{SC}} = 6a$, $l_{\text{RK}} = 2a$.}\label{fig:non_abelian_N12_screening_alpha_vs_W_phase_diagram_mindmap}
+\caption{Phase diagrams of the $\nu = 3$ filling in the $\alpha$--$W$ plane at different $d_{\text{SC}}$ and $l_{\text{RK}}$. Arrows indicate the direction of change of the parameters.\ (a) $d_{\text{SC}} = 1a$, $l_{\text{RK}} = 0$.\ (b) $d_{\text{SC}} = 6a$, $l_{\text{RK}} = 0$.\ (c) $d_{\text{SC}} = 6a$, $l_{\text{RK}} = 2a$.}\label{fig:non_abelian_N12_screening_alpha_vs_W_phase_diagram_mindmap}
 \end{figure}
 
 
 
 
-However, looking at full $\alpha$--$W$ phase diagrams at different screening parameters in Figure~\ref{fig:non_abelian_N12_screening_alpha_vs_W_phase_diagram_mindmap}  one can again see that while $\alpha$-extent of the FTI does not change with $d_{SC}$ and increases with $l_{RK}$, the $|W|$-extent actually decreases in both cases. The result is thus again qualitatively similar to the LLL screening analysis, however, with a comparatively larger $\alpha$-extent in the non-abelian FTI examined here.
+Looking at full $\alpha$--$W$ phase diagrams at different screening parameters in Figure~\ref{fig:non_abelian_N12_screening_alpha_vs_W_phase_diagram_mindmap}  one can again see that while the MR (FTI) responds only to $l_{RK}$, the $W$-extent of both topological phases significantly decreases at non-zero $l_{RK}$. The result is thus again qualitatively similar to the LLL screening analysis, however, with a comparatively larger $\alpha$-extent in the non-abelian FTI examined here.
 
