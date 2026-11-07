@@ -3,7 +3,7 @@ The model used here, based on the work of Kwan et al.~\cite{kwan2025textured}, i
 \section{Interactions}\label{sec:interactions}
 The interaction is modeled as a screened Coulomb density-density interaction projected onto the Landau level, with a tunable inter-valley coupling strength:
 \begin{equation}
-    H_{\text{int}} = \frac{1}{2A} \sum_{\substack{\mathbf{k} \in \text{BZ} \\ \mathbf{k}' \in \text{BZ} \\ \mathbf{q}}} \tilde{U}_{\tau \tau'}(\mathbf{q}) \, \Lambda_\tau(\mathbf{k}, \mathbf{q}) \, \Lambda_{\tau'}(\mathbf{k}', -\mathbf{q}) \, d^\dagger_{\mathbf{k}, \tau} \, d^\dagger_{\mathbf{k}', \tau'} \, \hat{d}_{\lfloor \mathbf{k}' - \mathbf{q} \rfloor, \tau'} \, \hat{d}_{\lfloor \mathbf{k} + \mathbf{q} \rfloor, \tau},
+    H_{\text{int}} = \frac{1}{2A} \sum_{\substack{\mathbf{k} \in \text{BZ} \\ \mathbf{k}' \in \text{BZ} \\ \mathbf{q}}} \tilde{U}_{\tau \tau'}(\mathbf{q}) \, \Lambda_\tau(\mathbf{k}, \mathbf{q}) \, \Lambda_{\tau'}(\mathbf{k}', -\mathbf{q}) \, \hat{d}^\dagger_{\mathbf{k}, \tau} \, \hat{d}^\dagger_{\mathbf{k}', \tau'} \, \hat{d}_{\lfloor \mathbf{k}' - \mathbf{q} \rfloor, \tau'} \, \hat{d}_{\lfloor \mathbf{k} + \mathbf{q} \rfloor, \tau},
     \label{eq:interaction}
 \end{equation}
 where $A$ is the area of the system, $\tau, \tau'$ is the valley index and
